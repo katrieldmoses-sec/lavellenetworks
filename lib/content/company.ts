@@ -153,4 +153,75 @@ export const companyPages: PageContent[] = [
       },
     ],
   },
+  {
+    slug: "careers",
+    metaTitle: "Careers \u2014 Lavelle Networks",
+    metaDescription: "Join the team making enterprise networking smarter, faster, and more secure \u2014 built in India for the world.",
+    sections: [
+      { kind: "hero", eyebrow: "We're Hiring", title: "Build the network of the next decade", body: "Join the team making enterprise networking smarter, faster, and more secure \u2014 built in India for the world.", ctas: [{ label: "View Open Roles", href: "/company/contact" }] },
+      { kind: "capabilities", eyebrow: "Why Lavelle", title: "Craft that matters, at scale", items: [
+        { title: "Global Impact, Indian Roots", body: "Build enterprise networking technology trusted by India's largest organisations \u2014 competing with global vendors from Bangalore." },
+        { title: "Deep Engineering Problems", body: "Work on SD-WAN, SASE, AI Ops, and cloud networking \u2014 real distributed systems challenges at enterprise scale." },
+        { title: "A Decade of Craft", body: "A seasoned team that's shipped mission-critical networking products since 2015. Learn from engineers who've done it before." },
+        { title: "Ownership & Speed", body: "Small teams, high ownership. Your decisions ship to production and land in enterprise networks across India." },
+        { title: "Built in India", body: "Be part of building world-class enterprise technology from India \u2014 a product that competes globally and is trusted by India's largest organisations." }] },
+      { kind: "stats", eyebrow: "By the numbers", items: [
+        { value: "10+", title: "Years", body: "In enterprise networking" },
+        { value: "30+", title: "States & UTs", body: "Covered" },
+        { value: "100%", title: "Built & supported", body: "In India" }] },
+      { kind: "components", eyebrow: "Open Roles", title: "Current openings", items: [
+        { title: "Senior Software Engineer \u2014 SD-WAN Data Plane", href: "/company/contact", linkLabel: "Apply", bullets: ["Engineering \u00b7 Full-time \u00b7 Bangalore", "Design and optimise the data plane for our ScaleAOn SD-WAN platform.", "Deep experience in Linux networking, DPDK, or eBPF required."] },
+        { title: "Product Manager \u2014 AI Operations", href: "/company/contact", linkLabel: "Apply", bullets: ["Product \u00b7 Full-time \u00b7 Bangalore", "Own the roadmap for ipDesk AI Ops.", "Drive AIOps features that reduce NOC effort and improve network visibility."] },
+        { title: "Staff Engineer \u2014 Cloud Infrastructure", href: "/company/contact", linkLabel: "Apply", bullets: ["Engineering \u00b7 Full-time \u00b7 Bangalore", "Architect and scale the cloud orchestration layer powering CloudStation Controller and CloudStation Insights."] },
+        { title: "Enterprise Account Executive", href: "/company/contact", linkLabel: "Apply", bullets: ["Sales \u00b7 Full-time \u00b7 Mumbai / Delhi / Bangalore", "Drive new enterprise logos in BFSI, manufacturing, and government verticals."] }] },
+      { kind: "cta", title: "Don't see the right role?", body: "We're always interested in exceptional people. Send us your profile and tell us what you'd build at Lavelle.", ctas: [{ label: "Get in Touch", href: "/company/contact" }] },
+    ],
+  },
+  {
+    slug: "contact",
+    metaTitle: "Contact Lavelle Networks",
+    metaDescription: "Talk to the right team directly \u2014 enterprise demos, sales, technical consultation, partnerships, support, and media enquiries.",
+    sections: [
+      { kind: "hero", eyebrow: "Contact Lavelle Networks", title: "Talk to the right team, directly.", body: "Whether you're evaluating our platform, planning a deployment, exploring a partnership, or looking for technical support \u2014 we'll connect you with the right person." },
+      { kind: "capabilities", eyebrow: "Choose Your Path", title: "How can we help?", items: [
+        { title: "Enterprise Demo", body: "See ScaleAOn or indusWall in action. Get a customised platform walkthrough for your use case." },
+        { title: "Sales Enquiry", body: "Talk to our enterprise sales team about pricing, deployment scope, or trial options. sales@lavellenetworks.com" },
+        { title: "Technical Consultation", body: "Speak with a network architect about your specific requirements and infrastructure context." },
+        { title: "Partnerships", body: "Explore becoming a channel partner, reseller, or technology alliance partner." },
+        { title: "Customer Support", body: "Existing customers \u2014 access technical support, raise tickets, and reach our help portal." },
+        { title: "Media & Analysts", body: "Press, analyst, and industry enquiries welcome. We respond to all credentialed requests. media@lavellenetworks.com" }] },
+      { kind: "table", eyebrow: "Find Us", title: "Our offices", headers: ["Office", "Address", "Contact"], rows: [
+        ["Headquarters \u2014 Bangalore, India", "#47, 2nd Floor, Whitefield Main Road, Whitefield, Bangalore \u2014 560066", "+91 80 4567 8900 \u00b7 enterprise@lavellenetworks.com"],
+        ["Regional Office \u2014 Mumbai, India", "Level 8, One BKC, Bandra Kurla Complex, Mumbai \u2014 400051", "+91 22 6789 1000"]] },
+      { kind: "cta", title: "Send us a message", body: "Tell us about your enterprise networking requirements and we will route your enquiry to the right team.", ctas: [{ label: "Email Enterprise Team", href: "mailto:enterprise@lavellenetworks.com" }, { label: "Request a Demo", href: "/contact/request-demo" }] },
+    ],
+  },
+  {
+    slug: "investors",
+    metaTitle: "Investor Relations \u2014 Lavelle Networks",
+    metaDescription: "Lavelle Networks is an enterprise networking platform company headquartered in Bangalore, building SD-WAN, SASE, and AI-driven network operations software.",
+    sections: [
+      { kind: "hero", eyebrow: "Company / Investor Relations", title: "Investor Relations", body: "Lavelle Networks is an enterprise networking platform company headquartered in Bangalore, India. We build and operate SD-WAN, SASE, and AI-driven network operations software for large Indian enterprises." },
+      { kind: "stats", eyebrow: "At a glance", items: [
+        { value: "10+", title: "Years", body: "In enterprise networking" },
+        { value: "25,000+", title: "Managed network sites", body: "Across India" },
+        { value: "6+", title: "Industry verticals", body: "Served" }] },
+      { kind: "note", eyebrow: "Company Overview", title: "Built in India. Trusted by enterprises.", body: "Founded in 2015, Lavelle Networks has grown from a Bangalore-based engineering startup to a platform company serving enterprises across India's most complex and regulated industries. Our four-pillar platform \u2014 ScaleAOn SD-WAN, ScaleAOn SD-Branch, indusWall SASE, and ipDesk AI Ops \u2014 is designed, built, and maintained by our engineering teams in Bangalore. We do not resell third-party software. Lavelle is positioned to serve the global enterprise networking market from an India-first foundation \u2014 \"Built in India for global markets\" is not a marketing position, it is an engineering strategy." },
+      { kind: "table", eyebrow: "Company Milestones", title: "A decade of platform evolution", headers: ["Year", "Milestone", "Detail"], rows: [
+        ["[Insert Year \u2014 Verify]", "Company Founded", "Lavelle Networks founded in Bangalore. Development of the first SD-WAN platform begins with a founding engineering team focused on enterprise networking."],
+        ["[Insert Year \u2014 Verify]", "First Enterprise Deployments", "Initial enterprise customer deployments across BFSI and retail sectors in India. Product-market fit validated in complex multi-branch environments."],
+        ["[Insert Year \u2014 Verify]", "Platform Expansion", "Platform expanded for multi-cloud era with AWS, Azure, and GCP integration. Customer base grows to include manufacturing and healthcare verticals."],
+        ["[Insert Year \u2014 Verify]", "SASE Platform Launch", "indusWall SASE launched, converging cloud-native security with the networking platform."]] },
+      { kind: "capabilities", eyebrow: "Investment Highlights", title: "Why Lavelle Networks", items: [
+        { title: "Large and Growing TAM", body: "The enterprise WAN and SASE market represents a large and rapidly growing opportunity. Indian enterprises are accelerating investment in network modernisation, cloud connectivity, and security convergence \u2014 a multi-billion dollar addressable market." },
+        { title: "Established Customer Base", body: "Lavelle serves enterprise customers across BFSI, retail, manufacturing, healthcare, and government sectors in India. Multi-year deployment relationships and platform dependency provide durable revenue." },
+        { title: "Proven Product Portfolio", body: "Four integrated platform pillars \u2014 ScaleAOn SD-WAN, ScaleAOn SD-Branch, indusWall SASE, and ipDesk AI Ops \u2014 cover the full enterprise networking stack. Built, owned, and evolved by Lavelle's engineering teams." }] },
+      { kind: "checklist", eyebrow: "Investor Enquiries", title: "What to include in your enquiry", items: [
+        "Your organisation and role",
+        "Nature of the investment enquiry",
+        "Preferred format for initial discussion",
+        "Any specific areas of focus \u2014 product, market, financials"] },
+      { kind: "cta", title: "Contact our team", body: "For investor relations enquiries, please contact our team directly. All investor communications are handled confidentially by the Lavelle leadership team. Lavelle Networks does not publish financial data on this website. All financial information is shared under NDA with qualified investors.", ctas: [{ label: "Contact Investor Relations", href: "/company/contact" }] },
+    ],
+  },
 ];

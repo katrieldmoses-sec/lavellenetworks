@@ -161,4 +161,36 @@ export const solutionPages: PageContent[] = [
   },
   { slug: "branch-transformation", ...branchTransformation },
   { slug: "hybrid-workforce", ...hybridWorkforce },
+  {
+    slug: "information-technology",
+    metaTitle: "IT & Technology Networking Solutions",
+    metaDescription: "Multi-site connectivity, cloud-optimised routing, and scalable hybrid workforce access for IT services, software, and technology companies.",
+    sections: [
+      { kind: "hero", eyebrow: "Solutions \u00b7 Information Technology", title: "Networking for IT services, software, and technology companies.", body: "Multi-site connectivity, cloud-optimised routing, and scalable hybrid workforce access \u2014 built for organisations where the network is critical infrastructure, not just plumbing.", ctas: [{ label: "Request a Demo", href: "/contact/request-demo" }, { label: "Talk to an Expert", href: "/contact/talk-to-expert" }] },
+      { kind: "capabilities", eyebrow: "Industry Challenges", title: "Where standard enterprise networking falls short for IT companies.", items: [
+        { title: "Multi-site office connectivity", body: "IT services companies operate development centres, delivery centres, and client-facing offices across multiple cities and countries. Consistent, high-quality connectivity between sites is a baseline requirement for collaborative development workflows." },
+        { title: "Developer toolchain performance", body: "Continuous integration pipelines, source control systems, container registries, and remote development environments require low-latency, high-throughput connectivity. Network degradation has a direct and measurable impact on developer productivity." },
+        { title: "Cloud-first workloads", body: "IT companies run workloads distributed across AWS, Azure, and GCP. Optimising the path from offices and delivery centres to cloud regions is essential to application and pipeline performance." }] },
+      { kind: "capabilities", eyebrow: "The Lavelle Approach", title: "Four capabilities that address IT industry network requirements.", items: [
+        { title: "SASE for hybrid and remote workforce access", body: "indusWall ZTNA replaces traditional VPN with identity-aware, application-level access. Developers and consultants connect to exactly the applications they need \u2014 from any location \u2014 without broad network access or per-user VPN client management." },
+        { title: "SD-WAN for office and delivery centre connectivity", body: "ScaleAOn connects development centres and offices with hybrid WAN \u2014 combining MPLS, broadband, and 4G/LTE transports. Application-aware routing ensures CI/CD pipelines, source control, and collaboration tools always have the connectivity they need." },
+        { title: "Optimised cloud connectivity for AWS, Azure, and GCP", body: "CloudStation Controller defines routing policies that optimise the path from every office location to cloud service regions. Direct internet breakout for cloud-destined traffic eliminates backhaul latency. Multi-cloud routing is managed centrally." },
+        { title: "Network monitoring and observability", body: "CloudStation Insights provides Quality Score, Capacity Score, and API access for integration with DevOps toolchains and existing observability platforms." }] },
+      { kind: "table", eyebrow: "Workforce Access", title: "ZTNA vs VPN \u2014 why it matters for IT industry workforces.", headers: ["Scenario", "With VPN", "With indusWall ZTNA"], rows: [
+        ["Remote developer access to dev environment", "VPN client required, full network access granted", "App-level access only, no client required on managed devices"],
+        ["Consultant accessing client delivery portal", "Separate VPN profile, IT change request required", "Role-scoped access from CloudStation identity policy"],
+        ["New hire onboarding", "VPN client provisioned, credentials distributed manually", "Access follows identity \u2014 AD group membership drives access policy"],
+        ["Network access on client's premises", "Split-tunnel configuration required, often unreliable", "Consistent access regardless of physical network"]] },
+      { kind: "capabilities", eyebrow: "Cloud Connectivity", title: "Optimised routing to AWS, Azure, and GCP \u2014 managed centrally.", items: [
+        { title: "Microsoft Azure", body: "Direct breakout for Microsoft 365 and Azure workloads. ExpressRoute integration support." },
+        { title: "Amazon Web Services", body: "Optimised routing to AWS regions. Application policy aware of AWS-hosted services." },
+        { title: "Google Cloud Platform", body: "Low-latency path selection for GCP-hosted workloads and Workspace services." },
+        { title: "Multi-cloud", body: "Centralised routing policy across all cloud providers managed in CloudStation Controller." }] },
+      { kind: "platform", eyebrow: "Relevant Products", title: "Products deployed in IT and technology environments.", links: [
+        { title: "ScaleAOn SD-WAN", body: "Hybrid WAN for development centres and offices. Application-aware routing for developer toolchains and cloud workloads.", href: "/products/sd-wan" },
+        { title: "indusWall SASE", body: "ZTNA for hybrid and remote workforce. Replaces VPN with scalable, identity-aware application access.", href: "/products/sase" },
+        { title: "CloudStation Insights", body: "Network observability with Quality Score, Capacity Score, and API access for integration with DevOps toolchains.", href: "/products/cloudstation-insights" }] },
+      { kind: "cta", title: "A network your developers, operations, and security teams can all rely on.", body: "Talk to a Lavelle Networks specialist about multi-site connectivity, workforce access, and cloud routing for your IT organisation.", ctas: [{ label: "Request a Demo", href: "/contact/request-demo" }, { label: "Talk to an Expert", href: "/contact/talk-to-expert" }] },
+    ],
+  },
 ];

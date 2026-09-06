@@ -669,6 +669,70 @@ export const productPages: PageContent[] = [
       },
     ],
   },
+  {
+    slug: "cloudstation-controller",
+    metaTitle: "CloudStation Controller \u2014 ScaleAOn SD-WAN",
+    metaDescription: "Central orchestration, policy, and control for the entire ScaleAOn network from a single management plane.",
+    sections: [
+      { kind: "hero", eyebrow: "CloudStation Controller \u00b7 ScaleAOn SD-WAN", title: "Central orchestration, policy, and control for the entire ScaleAOn network.", body: "The CloudStation Controller provides intent-driven network policy, centralised orchestration across all edge and gateway devices, and a single management plane for every enterprise location \u2014 from a handful of branches to thousands of sites.", ctas: [{ label: "Request a Demo", href: "/contact/request-demo" }, { label: "View Documentation", href: "/resources/documentation" }] },
+      { kind: "flow", eyebrow: "Platform Role", title: "The control and orchestration layer of the ScaleAOn platform.", intro: "The CloudStation Controller is the management brain of the ScaleAOn platform. Every CloudPort Edge and CloudPort Gateway device receives its configuration, policy, and operational directives from the controller \u2014 enabling centralised management of any number of enterprise locations from a single interface.", nodes: [{ title: "CloudStation Controller", sub: "Control plane" }, { title: "CloudPort Gateway", sub: "Aggregation layer" }, { title: "CloudPort Edge", sub: "Branch edge devices" }, { title: "Enterprise locations", sub: "Thousands of sites" }] },
+      { kind: "capabilities", eyebrow: "Key Capabilities", title: "Orchestration capabilities for enterprise-scale networks.", items: [
+        { title: "Intent-driven policies", body: "Express network intent through high-level policies. The controller automatically translates policies into device-level configuration across all locations \u2014 no per-device manual work required." },
+        { title: "Network segmentation", body: "Define and enforce network segments to isolate user groups, applications, and data flows across the enterprise. Consistent segmentation from a single policy authority." },
+        { title: "Network groups", body: "Organise sites, users, and devices into logical groups for efficient policy management at scale. Policies applied to a group propagate to every member automatically." },
+        { title: "High availability", body: "Controller redundancy ensures continuous network management even during infrastructure events. Policy and orchestration remain available without manual failover actions." },
+        { title: "Multi-tenancy", body: "Manage multiple enterprise customers or business units from a single controller instance with complete isolation between tenants. Suited for managed service providers and large enterprises." },
+        { title: "Third-party integrations", body: "REST API enables integration with ITSM, SIEM, and other enterprise management platforms. Microsoft Active Directory integration enables identity-aware policies for users and groups." }] },
+      { kind: "components", eyebrow: "Licence Tiers", title: "Standard and Advanced licencing.", intro: "Contact Lavelle Networks for current licence details and feature comparison.", items: [
+        { title: "Standard", href: "/contact/talk-to-expert", linkLabel: "Talk to an expert", bullets: ["Core SD-WAN management", "Basic WAN services", "Centralised monitoring", "Standard policy management", "Network groups", "REST API access"] },
+        { title: "Advanced", href: "/contact/talk-to-expert", linkLabel: "Talk to an expert", bullets: ["Full intent-driven orchestration", "Advanced network segmentation", "Multi-tenancy support", "Extended API access", "Third-party integrations", "Microsoft Active Directory integration"] }] },
+      { kind: "deployment", eyebrow: "Deployment Options", title: "Deploy the controller where your operations require it.", items: [
+        { title: "Physical controller appliance", body: "Purpose-built hardware for on-premises controller deployment in enterprise data centres." },
+        { title: "Virtual controller", body: "Deploy on VMware, KVM, or Hyper-V hypervisors. Runs on existing virtualised infrastructure already in operation." },
+        { title: "Private or public cloud", body: "Deploy on on-premises private cloud infrastructure or in AWS, Azure, or GCP for cloud-hosted controller deployments." }] },
+      { kind: "platform", eyebrow: "ScaleAOn Platform", title: "Explore the other ScaleAOn components.", links: [
+        { title: "CloudPort Edge", body: "The WAN edge device deployed at every enterprise location", href: "/products/cloudport-edge" },
+        { title: "CloudPort Gateway", body: "The aggregation hub connecting edge locations to data centres and cloud", href: "/products/cloudport-gateway" },
+        { title: "CloudStation Insights", body: "Analytics and intelligence layer for end-to-end network visibility", href: "/products/cloudstation-insights" }] },
+      { kind: "cta", title: "Centralise control across your entire enterprise network.", body: "Talk to a Lavelle Networks specialist to understand how CloudStation Controller fits your network management and orchestration requirements.", ctas: [{ label: "Request a Demo", href: "/contact/request-demo" }, { label: "Talk to an Expert", href: "/contact/talk-to-expert" }] },
+    ],
+  },
+  {
+    slug: "cloudstation-insights",
+    metaTitle: "CloudStation Insights \u2014 Network Analytics",
+    metaDescription: "Network analytics and intelligence for the complete ScaleAOn platform, providing the analytics foundation for ipDesk AI Ops.",
+    sections: [
+      { kind: "hero", eyebrow: "CloudStation Insights \u00b7 ScaleAOn SD-WAN", title: "Network analytics and intelligence for the complete ScaleAOn platform.", body: "CloudStation Insights collects and analyses telemetry from every device, link, and application across the ScaleAOn network \u2014 providing the analytics foundation for operational decisions and the ipDesk AI Ops platform.", ctas: [{ label: "Request a Demo", href: "/contact/request-demo" }, { label: "Explore AI Ops", href: "/products/ai-operations" }] },
+      { kind: "flow", eyebrow: "Platform Role", title: "The analytics and intelligence layer of the ScaleAOn platform.", intro: "Every CloudPort Edge device and CloudPort Gateway streams continuous telemetry to CloudStation Insights. The platform processes this data to produce Network Scores, historical trend analysis, and the structured telemetry that powers the ipDesk AI Ops platform.", nodes: [{ title: "CloudPort Edge", sub: "Link + app telemetry" }, { title: "CloudStation Insights", sub: "Analytics layer" }, { title: "Network Scores", sub: "Quality / Capacity / Health" }, { title: "ipDesk AI Ops", sub: "AI-powered intelligence" }] },
+      { kind: "capabilities", eyebrow: "Key Capabilities", title: "Analytics capabilities across every network dimension.", items: [
+        { title: "Network Scores", body: "Composite scores measuring overall network quality, capacity, and health across every site and the complete enterprise network. A single, consistent view of network performance." },
+        { title: "Quality Score", body: "Continuous measurement of packet loss, jitter, latency, and application performance across every WAN link. Quality degradation is detected and reported before users notice an impact." },
+        { title: "Capacity Score", body: "Track bandwidth utilisation trends across every link and site to identify capacity constraints before they affect users. Capacity planning informed by real operational data." },
+        { title: "Advanced network-flow analysis", body: "Deep visibility into application flows, traffic patterns, and endpoint behaviour across the enterprise. Understand exactly what is on the network and how it is using WAN capacity." },
+        { title: "Historical analysis", body: "Store and analyse historical network performance data for trend identification, capacity planning, and incident investigation. Look back across the full data retention period." },
+        { title: "Statistics export", body: "Export raw network telemetry data for custom analysis, reporting, and integration with third-party analytics platforms, SIEM systems, and business intelligence tools." }] },
+      { kind: "capabilities", eyebrow: "Network Scores", title: "Three scores. One clear view of network health.", items: [
+        { title: "Quality Score", body: "Measures real-time link quality across packet loss, jitter, and latency dimensions. A low Quality Score triggers dynamic path selection in CloudPort Edge devices to route traffic away from degraded links automatically." },
+        { title: "Capacity Score", body: "Measures how much of each link's capacity is being consumed relative to its available bandwidth. Consistently high Capacity Scores indicate that an upgrade or traffic optimisation is needed before performance is affected." },
+        { title: "Capacity Health Score", body: "A composite score combining quality and capacity trends to give IT teams a single indicator of each link's overall operational health. Enables prioritisation of network improvements across large site portfolios." }] },
+      { kind: "capabilities", eyebrow: "Analytics to AI Ops", title: "The foundation for ipDesk AI Ops.", items: [
+        { title: "Continuous telemetry ingestion", body: "Every device, every link, every application \u2014 streamed in real time" },
+        { title: "AI anomaly detection", body: "Machine learning models identify unusual patterns before incidents occur" },
+        { title: "Predictive capacity analysis", body: "Forecast capacity constraints weeks in advance from trend data" },
+        { title: "Automated root-cause analysis", body: "AI-driven diagnosis correlates events across the network to identify causes" }] },
+      { kind: "deployment", eyebrow: "Deployment Options", title: "Deploy Insights alongside your controller infrastructure.", items: [
+        { title: "Physical Insights appliance", body: "Purpose-built hardware with expandable storage for long-term data retention. Sized for large enterprise networks with high telemetry volume." },
+        { title: "Virtual appliance", body: "Deploy on standard server hardware in virtualised environments. Storage can be extended to meet data retention requirements without dedicated hardware." }] },
+      { kind: "components", eyebrow: "Licencing", title: "Standard and Advanced analytics licences.", intro: "Contact Lavelle Networks for current specifications and feature comparison.", items: [
+        { title: "Standard", href: "/contact/talk-to-expert", linkLabel: "Talk to an expert", bullets: ["Core analytics and reporting", "Network Scores (Quality, Capacity, Health)", "Real-time dashboards", "Standard data retention", "Basic alerting and notifications"] },
+        { title: "Advanced", href: "/contact/talk-to-expert", linkLabel: "Talk to an expert", bullets: ["Extended data retention", "Raw statistics export", "Advanced network-flow analysis", "Custom ML analysis integrations", "API access for third-party analytics"] }] },
+      { kind: "platform", eyebrow: "Related Components", title: "Explore the full ScaleAOn platform.", links: [
+        { title: "CloudPort Edge", body: "The WAN edge device streaming telemetry to CloudStation Insights", href: "/products/cloudport-edge" },
+        { title: "CloudStation Controller", body: "Central orchestration and policy management for the ScaleAOn network", href: "/products/cloudstation-controller" },
+        { title: "ipDesk AI Ops", body: "AI-powered operations platform built on CloudStation Insights data", href: "/products/ai-operations" }] },
+      { kind: "cta", title: "Gain full visibility across your enterprise WAN.", body: "Talk to a Lavelle Networks specialist to understand how CloudStation Insights fits your analytics and network operations requirements.", ctas: [{ label: "Request a Demo", href: "/contact/request-demo" }, { label: "Talk to an Expert", href: "/contact/talk-to-expert" }] },
+    ],
+  },
 ];
 
 /** Product pages that are placeholder-only in the source design. */

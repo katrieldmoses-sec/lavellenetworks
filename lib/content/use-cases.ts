@@ -166,9 +166,96 @@ const applicationAvailability: PageContent = {
   ],
 };
 
+
+const multiCloud: Omit<PageContent, "slug"> = {
+  metaTitle: "Multi-Cloud Connectivity — One Enterprise Policy",
+  metaDescription:
+    "Create a consistent connectivity layer across branches, data centres, SaaS applications, private clouds and multiple public-cloud environments.",
+  sections: [
+    { kind: "hero", eyebrow: "Use Case \u00b7 Multi-Cloud", title: "Connect every branch to every cloud through one enterprise policy.", body: "Create a consistent connectivity layer across branches, data centres, SaaS applications, private clouds and multiple public-cloud environments.", ctas: [{ label: "Discuss Your Cloud Architecture", href: "/contact/talk-to-expert" }, { label: "Explore Cloud Connectivity", href: "/products/cloud-connectivity" }] },
+    { kind: "challenge", eyebrow: "The challenge", title: "Multi-cloud adoption creates a network consistency problem.", intro: "Cloud migration rarely happens in a single step. Applications may remain distributed across data centres, private clouds, SaaS platforms and multiple public-cloud providers. Each environment introduces different connectivity, security and operational requirements.", bullets: ["Fragmented cloud connectivity", "Inconsistent network policies", "Limited end-to-end visibility", "Complex hybrid migration", "Application-performance variation", "Security and segmentation requirements"] },
+    { kind: "flow", eyebrow: "Architecture", title: "One policy-driven network", intro: "A unified architecture spanning branches, the Lavelle platform and every cloud destination. Conceptual architecture. Cloud provider names shown for reference only.", nodes: [{ title: "Enterprise Sources", sub: "Branches, HQ, remote users, data centres" }, { title: "Lavelle Platform", sub: "CloudPort, CloudStation, ScaleAOn policy" }, { title: "Cloud Destinations", sub: "AWS, Azure, Google Cloud, private cloud, SaaS" }] },
+    { kind: "capabilities", eyebrow: "Platform capabilities", title: "A consistent architecture that bridges enterprise locations and cloud environments without requiring separate tooling per provider.", items: [
+      { title: "Branch-to-cloud access", body: "Controlled connectivity between enterprise locations and cloud-hosted applications." },
+      { title: "DC and cloud interconnection", body: "Connect physical and virtual environments through a consistent WAN architecture." },
+      { title: "Application-aware routing", body: "Select paths according to application requirements and real-time network conditions." },
+      { title: "Cloud local breakout", body: "Direct access to approved SaaS and cloud applications from enterprise branches." },
+      { title: "Network segmentation", body: "Separate users, branches, applications or business environments using centrally governed policies." },
+      { title: "Deployment flexibility", body: "Use physical, virtual or cloud-hosted Lavelle components per your enterprise architecture." },
+      { title: "Central visibility", body: "Monitor connectivity and traffic behaviour across branches and cloud destinations." }] },
+    { kind: "checklist", eyebrow: "Outcomes", title: "What consistent cloud connectivity delivers", items: ["Consistent branch-to-cloud experience", "Simpler hybrid-cloud migration", "Reduced dependency on data-centre backhaul", "Central policy across physical and virtual environments", "Improved cloud application visibility", "Greater flexibility across cloud providers"] },
+    { kind: "platform", eyebrow: "Related products", title: "Products that deliver multi-cloud connectivity.", links: [
+      { title: "Cloud Connectivity", body: "Multi-cloud networking platform", href: "/products/cloud-connectivity" },
+      { title: "CloudPort Gateway", body: "Aggregation and cloud interconnect", href: "/products/cloudport-gateway" },
+      { title: "CloudStation Controller", body: "Central policy and orchestration", href: "/products/cloudstation-controller" }] },
+    { kind: "cta", title: "Ready to build a consistent multi-cloud network?", body: "Speak with a Lavelle Networks specialist about your cloud connectivity requirements and current architecture.", ctas: [{ label: "Discuss Your Cloud Architecture", href: "/contact/talk-to-expert" }, { label: "Explore Cloud Connectivity", href: "/products/cloud-connectivity" }] },
+  ],
+};
+
+const microsoft365: PageContent = {
+  slug: "microsoft-365-performance",
+  metaTitle: "Microsoft 365 Performance \u2014 SaaS Local Breakout",
+  metaDescription:
+    "Improve Microsoft 365, Teams and other SaaS application experiences by avoiding unnecessary data-centre backhauling with secure local breakout policies.",
+  sections: [
+    { kind: "hero", eyebrow: "Use Case \u00b7 SaaS Performance", title: "Give Microsoft 365 a more direct path to every user.", body: "Improve Microsoft 365, Teams and other SaaS application experiences by avoiding unnecessary data-centre backhauling and applying secure, application-specific local breakout policies at enterprise branches.", ctas: [{ label: "Assess Your SaaS Connectivity", href: "/contact/talk-to-expert" }, { label: "Explore Secure Internet Access", href: "/products/secure-internet" }] },
+    { kind: "capabilities", eyebrow: "The challenge", title: "What slows SaaS down today.", items: [
+      { title: "Data-centre hairpin", body: "Branch traffic is routed through headquarters or a central data centre before reaching Microsoft's network, adding latency." },
+      { title: "Central bandwidth pressure", body: "All branch SaaS traffic consumes central internet capacity unnecessarily." },
+      { title: "Inconsistent policies", body: "Applying application-specific breakout across distributed locations requires consistent policy management." },
+      { title: "Limited SaaS visibility", body: "IT teams lack per-branch visibility into SaaS application performance and usage." }] },
+    { kind: "table", eyebrow: "Traditional backhaul vs. local breakout", title: "Conceptual comparison \u2014 not a precise network diagram.", headers: ["Path", "Route", "Result"], rows: [
+      ["Traditional Path", "Branch User \u2192 WAN \u2192 HQ / Data Centre \u2192 Central Security \u2192 Internet \u2192 Microsoft 365", "Longer path, additional latency and central bandwidth consumption."],
+      ["Lavelle Path", "Branch User \u2192 ScaleAOn (App ID) \u2192 Policy Decision \u2192 Local Breakout \u2192 Microsoft 365", "Application-specific, policy-controlled direct access."]] },
+    { kind: "capabilities", eyebrow: "Capabilities", title: "How local breakout is applied.", items: [
+      { title: "Application identification", body: "Recognise approved SaaS traffic and apply a dedicated connectivity policy." },
+      { title: "Selective local breakout", body: "Break out Microsoft 365 traffic locally while routing other traffic per enterprise policy." },
+      { title: "Path-quality monitoring", body: "Evaluate available links using latency, jitter, packet loss and capacity." },
+      { title: "Centralised policy", body: "Apply the same SaaS-access policy across branches, regions or the full enterprise." },
+      { title: "SaaS visibility", body: "Understand application usage, branch behaviour and network performance centrally." },
+      { title: "Resilient connectivity", body: "Move traffic to a healthier available path when WAN conditions deteriorate." }] },
+    { kind: "checklist", eyebrow: "Outcomes", title: "What SaaS optimisation delivers", items: ["Lower latency for approved SaaS applications", "Better Microsoft Teams voice and video experience", "Reduced data-centre backhaul traffic", "Lower pressure on central internet gateways", "Consistent policies across distributed branches", "Improved troubleshooting visibility"] },
+    { kind: "platform", eyebrow: "Related products", title: "Products that improve SaaS performance.", links: [
+      { title: "ScaleAOn SD-WAN", body: "Application-aware WAN platform", href: "/products/sd-wan" },
+      { title: "CloudPort Edge", body: "Branch connectivity with local breakout", href: "/products/cloudport-edge" },
+      { title: "Secure Internet Access", body: "Policy-controlled web and SaaS access", href: "/products/secure-internet" }] },
+    { kind: "cta", title: "Ready to move forward?", body: "Talk to a Lavelle Networks specialist about your network requirements.", ctas: [{ label: "Assess Your SaaS Connectivity", href: "/contact/talk-to-expert" }, { label: "Explore Secure Internet Access", href: "/products/secure-internet" }] },
+  ],
+};
+
+const networkMonitoring: Omit<PageContent, "slug"> = {
+  metaTitle: "Enterprise Network Monitoring \u2014 Central Operations",
+  metaDescription:
+    "Manage and monitor branches, links, applications and network events through a central platform designed for distributed enterprise environments.",
+  sections: [
+    { kind: "hero", eyebrow: "Use Case \u00b7 Network Operations", title: "See the enterprise network as one operating system.", body: "Manage and monitor branches, links, applications and network events through a central platform designed for distributed enterprise environments.", ctas: [{ label: "See the Operations Platform", href: "/contact/talk-to-expert" }, { label: "Explore CloudStation Insights", href: "/products/cloudstation-insights" }] },
+    { kind: "challenge", eyebrow: "The challenge", title: "Fragmented infrastructure creates fragmented operations.", intro: "Traditional enterprise networks often separate MPLS, internet, branch routing, monitoring and security operations. This forces IT teams to use multiple tools, coordinate several providers and troubleshoot without an end-to-end view.", bullets: ["Separate tools for separate network domains", "Limited end-to-end accountability", "Inconsistent branch configurations", "Slow change windows", "Difficult root-cause identification"] },
+    { kind: "capabilities", eyebrow: "Platform capabilities", title: "Everything needed to operate a distributed enterprise network from a single pane of glass.", items: [
+      { title: "Single management console", body: "One consolidated view of distributed network locations and connections." },
+      { title: "Granular branch and link visibility", body: "Inspect utilisation, throughput and health for individual locations and WAN links." },
+      { title: "Network-flow analysis", body: "Understand network behaviour by user, endpoint and application." },
+      { title: "Real-time alerts", body: "Configure thresholds for faults, events and network conditions." },
+      { title: "Centralised upgrades", body: "Coordinate network changes and software upgrades without visiting every branch." },
+      { title: "External integrations", body: "Support integration with enterprise monitoring and automation tools through approved APIs." },
+      { title: "Historical analysis", body: "Use retained operational data to investigate trends and recurring performance issues." },
+      { title: "AI-assisted operations", body: "Connect network telemetry with ipDesk AI Ops for anomaly investigation and event correlation." }] },
+    { kind: "checklist", eyebrow: "Outcomes", title: "What centralised operations delivers", items: ["Faster issue isolation across distributed sites", "Lower mean time to resolution", "Consistent enterprise policies", "Reduced operational fragmentation", "Better capacity planning", "Central visibility across branches and links"] },
+    { kind: "platform", eyebrow: "Related products", title: "Products that centralise operations.", links: [
+      { title: "CloudStation Insights", body: "Analytics and network intelligence platform", href: "/products/cloudstation-insights" },
+      { title: "CloudStation Controller", body: "Central orchestration and monitoring", href: "/products/cloudstation-controller" },
+      { title: "ipDesk AI Ops", body: "AI-powered network operations", href: "/products/ai-operations" }] },
+    { kind: "cta", title: "Ready to unify your network operations?", body: "Speak with a Lavelle Networks specialist to see how centralised monitoring can reduce operational complexity across your enterprise.", ctas: [{ label: "See the Operations Platform", href: "/contact/talk-to-expert" }, { label: "Talk to an Expert", href: "/contact/talk-to-expert" }] },
+  ],
+};
+
 export const useCasePages: PageContent[] = [
   hybridWan,
   applicationAvailability,
   { slug: "branch-transformation", ...branchTransformation },
   { slug: "hybrid-workforce", ...hybridWorkforce },
+  { slug: "multi-cloud", ...multiCloud },
+  { slug: "multi-cloud-connectivity", ...multiCloud },
+  microsoft365,
+  { slug: "enterprise-network-monitoring", ...networkMonitoring },
+  { slug: "network-monitoring", ...networkMonitoring },
 ];
