@@ -1,4 +1,5 @@
 import type { PageContent } from "./types";
+import { branchTransformation, hybridWorkforce } from "./shared";
 
 export const solutionPages: PageContent[] = [
   {
@@ -158,4 +159,6 @@ export const solutionPages: PageContent[] = [
       },
     ],
   },
+  { slug: "branch-transformation", ...branchTransformation },
+  { slug: "hybrid-workforce", ...hybridWorkforce },
 ];

@@ -457,6 +457,48 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
         </section>
       );
 
+    case "people":
+      return (
+        <section className={`${light} py-24`}>
+          <div className="container-x">
+            <div className="max-w-3xl">
+              <Eyebrow text={section.eyebrow} />
+              <Title text={section.title} />
+              {section.intro && (
+                <Reveal delay={160}>
+                  <p className="mt-4 text-[17px] leading-relaxed text-navy-500">
+                    {section.intro}
+                  </p>
+                </Reveal>
+              )}
+            </div>
+            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {section.items.map((m, i) => (
+                <Reveal key={m.name + i} delay={(i % 3) * 70}>
+                  <div className="h-full card p-6">
+                    {m.category && (
+                      <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-blue">
+                        {m.category}
+                      </span>
+                    )}
+                    <h3 className="mt-3 text-[14px] font-semibold leading-[20px] text-navy">
+                      {m.name}
+                    </h3>
+                    <div className="text-[12px] text-brand-blue">{m.role}</div>
+                    <p className="mt-3 text-[12px] leading-relaxed text-navy-500">{m.bio}</p>
+                    {m.note && (
+                      <span className="mt-4 inline-block rounded-full bg-mist-100 px-2.5 py-1 text-[10px] font-medium text-navy-500">
+                        {m.note}
+                      </span>
+                    )}
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+
     case "cta":
       return (
         <section className="relative overflow-hidden bg-navy py-24 text-white">

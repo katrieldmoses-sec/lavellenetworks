@@ -1,4 +1,5 @@
 import type { PageContent } from "./types";
+import { branchTransformation, hybridWorkforce } from "./shared";
 
 const hybridWan: PageContent = {
   slug: "hybrid-wan",
@@ -168,4 +169,6 @@ const applicationAvailability: PageContent = {
 export const useCasePages: PageContent[] = [
   hybridWan,
   applicationAvailability,
+  { slug: "branch-transformation", ...branchTransformation },
+  { slug: "hybrid-workforce", ...hybridWorkforce },
 ];

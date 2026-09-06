@@ -17,6 +17,7 @@ export type Section =
   | { kind: "components"; eyebrow: string; title: string; intro?: string; items: { title: string; bullets: string[]; href: string; linkLabel?: string }[] }
   | { kind: "table"; eyebrow: string; title: string; headers: string[]; rows: string[][] }
   | { kind: "checklist"; eyebrow: string; title?: string; items: string[] }
+  | { kind: "people"; eyebrow: string; title: string; intro?: string; items: { category?: string; name: string; role: string; bio: string; note?: string }[] }
   | { kind: "cta"; title: string; body?: string; ctas?: Cta[] };
 
 export type PageContent = {
