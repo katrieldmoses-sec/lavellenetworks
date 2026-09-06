@@ -6,7 +6,11 @@ import type { Section } from "@/lib/content/types";
 function Eyebrow({ text, dark }: { text: string; dark?: boolean }) {
   return (
     <Reveal>
-      <span className={`kicker ${dark ? "text-brand-light" : "text-brand-blue"}`}>
+      <span
+        className={`block font-mono text-[12px] font-normal uppercase leading-[16px] tracking-[1.2px] ${
+          dark ? "text-brand-sky" : "text-[#4a6891]"
+        }`}
+      >
         {text}
       </span>
     </Reveal>
@@ -17,7 +21,7 @@ function Title({ text, dark }: { text: string; dark?: boolean }) {
   return (
     <Reveal delay={80}>
       <h2
-        className={`mt-4 font-serif text-[30px] font-semibold leading-[36px] tracking-[-0.01em] lg:text-[40px] lg:leading-[48px] ${
+        className={`mt-4 font-serif text-[28px] font-semibold leading-[32px] tracking-[-0.01em] lg:text-[36px] lg:leading-[40px] ${
           dark ? "text-white" : "text-navy"
         }`}
       >
@@ -31,7 +35,7 @@ function Buttons({ ctas, dark }: { ctas?: { label: string; href: string }[]; dar
   if (!ctas?.length) return null;
   return (
     <Reveal delay={240}>
-      <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+      <div className="mt-10 flex flex-col gap-3 sm:flex-row">
         {ctas.map((c, i) => (
           <a
             key={c.label}
@@ -64,19 +68,19 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
                 "radial-gradient(120% 80% at 15% 0%, rgba(0,120,212,0.20), transparent 55%)",
             }}
           />
-          <div className="container-x relative py-24 lg:py-28">
+          <div className="container-x relative py-28">
             <div className="max-w-3xl">
               <Reveal>
                 <span className="kicker text-brand-light">{section.eyebrow}</span>
               </Reveal>
               <Reveal delay={80}>
-                <h1 className="mt-5 font-serif text-[36px] font-semibold leading-[1.1] tracking-[-0.02em] md:text-[48px] lg:text-[56px]">
+                <h1 className="mt-6 font-serif text-[36px] font-semibold leading-[1.15] md:text-[48px] lg:text-[60px] lg:leading-[75px]">
                   {section.title}
                 </h1>
               </Reveal>
               {section.body && (
                 <Reveal delay={160}>
-                  <p className="mt-6 text-[18px] leading-[1.6] text-brand-sky">
+                  <p className="mt-6 text-[18px] leading-[29.25px] text-brand-sky">
                     {section.body}
                   </p>
                 </Reveal>
@@ -96,13 +100,13 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
               <Title text={section.title} />
               {section.intro && (
                 <Reveal delay={160}>
-                  <p className="mt-4 text-[17px] leading-relaxed text-navy-500">
+                  <p className="mt-4 text-[16px] leading-[26px] text-navy-500">
                     {section.intro}
                   </p>
                 </Reveal>
               )}
             </div>
-            <ul className="mt-12 grid gap-4 md:grid-cols-2">
+            <ul className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {section.bullets.map((b, i) => (
                 <Reveal key={b} delay={(i % 2) * 70}>
                   <li className="flex items-start gap-3 card p-5">
@@ -127,17 +131,17 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
               <Eyebrow text={section.eyebrow} />
               {section.title && <Title text={section.title} />}
             </div>
-            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {section.items.map((it, i) => (
                 <Reveal key={it.title} delay={(i % 3) * 70}>
                   <div className="h-full card p-6">
                     <span className="flex h-10 w-10 items-center justify-center rounded-card bg-mist-100 text-brand-blue">
                       <CircleCheck className="h-5 w-5" />
                     </span>
-                    <h3 className="mt-4 text-[14px] font-semibold leading-[20px] text-navy">
+                    <h3 className="mt-4 text-[16px] font-semibold leading-[24px] text-navy">
                       {it.title}
                     </h3>
-                    <p className="mt-2 text-[12px] leading-relaxed text-navy-500">
+                    <p className="mt-2 text-[14px] leading-[22.75px] text-navy-500">
                       {it.body}
                     </p>
                   </div>
@@ -157,17 +161,17 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
               <Eyebrow text={section.eyebrow} dark />
               <Title text={section.title} dark />
             </div>
-            <ol className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            <ol className="mt-12 grid gap-6 md:grid-cols-2">
               {section.steps.map((s, i) => (
                 <Reveal key={s.title} delay={(i % 4) * 80}>
-                  <li className="h-full rounded-card border border-[#1a3055] bg-[#112040] p-5">
-                    <span className="font-mono text-[12px] font-bold text-brand-light">
+                  <li className="h-full rounded-card border border-[#1a3055] bg-[#112040] p-6">
+                    <span className="font-mono text-[12px] font-bold leading-[16px] text-brand-light">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h3 className="mt-3 text-[13px] font-semibold leading-[18px] text-white">
+                    <h3 className="mt-4 text-[16px] font-semibold leading-[24px] text-white">
                       {s.title}
                     </h3>
-                    <p className="mt-2 text-[12px] leading-relaxed text-[#7fafd8]">
+                    <p className="mt-2 text-[14px] leading-[22.75px] text-[#7fafd8]">
                       {s.body}
                     </p>
                   </li>
@@ -186,14 +190,14 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
               <Eyebrow text={section.eyebrow} />
               <Title text={section.title} />
             </div>
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
               {section.items.map((it, i) => (
                 <Reveal key={it.title} delay={(i % 3) * 70}>
                   <div className="h-full card p-6">
-                    <h3 className="text-[14px] font-semibold leading-[20px] text-navy">
+                    <h3 className="text-[16px] font-semibold leading-[24px] text-navy">
                       {it.title}
                     </h3>
-                    <p className="mt-2 text-[12px] leading-relaxed text-navy-500">
+                    <p className="mt-2 text-[14px] leading-[22.75px] text-navy-500">
                       {it.body}
                     </p>
                   </div>
@@ -226,31 +230,60 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
         </section>
       );
 
-    case "platform":
+    case "platform": {
+      const pillars = section.variant === "pillars";
       return (
         <section className={`${light} py-24`}>
           <div className="container-x">
             <div className="max-w-3xl">
               <Eyebrow text={section.eyebrow} />
               <Title text={section.title} />
+              {section.intro && (
+                <Reveal delay={160}>
+                  <p className="mt-4 text-[16px] leading-[26px] text-navy-500">
+                    {section.intro}
+                  </p>
+                </Reveal>
+              )}
             </div>
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
+            <div className={`mt-12 grid md:grid-cols-3 ${pillars ? "gap-6" : "gap-5"}`}>
               {section.links.map((l, i) => (
                 <Reveal key={l.title} delay={(i % 3) * 70}>
                   <a
                     href={l.href}
-                    className="group flex h-full flex-col card p-6 transition-colors hover:border-brand-light/50"
+                    className={`group flex h-full flex-col card transition-colors hover:border-brand-light/50 ${
+                      pillars ? "p-7" : "p-5"
+                    }`}
                   >
-                    <h3 className="text-[14px] font-semibold leading-[20px] text-navy">
+                    {pillars && l.eyebrow && (
+                      <span className="block font-mono text-[12px] font-normal uppercase leading-[16px] tracking-[1.2px] text-[#4a6891]">
+                        {l.eyebrow}
+                      </span>
+                    )}
+                    <h3
+                      className={`font-semibold text-navy ${
+                        pillars
+                          ? "mt-3 font-serif text-[24px] leading-[30px]"
+                          : "text-[16px] leading-[24px]"
+                      }`}
+                    >
                       {l.title}
                     </h3>
-                    <p className="mt-2 flex-1 text-[12px] leading-relaxed text-navy-500">
+                    <p
+                      className={`text-navy-500 ${
+                        pillars
+                          ? "mt-4 flex-1 text-[14px] leading-[22.75px]"
+                          : "mt-2 text-[14px] leading-[22.75px]"
+                      }`}
+                    >
                       {l.body}
                     </p>
-                    <span className="mt-4 flex items-center gap-1.5 text-[12px] font-semibold text-brand-blue">
-                      Learn more
-                      <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                    </span>
+                    {pillars && (
+                      <span className="mt-6 flex items-center gap-1.5 text-[14px] font-semibold leading-[20px] text-brand-blue">
+                        Learn more
+                        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                      </span>
+                    )}
                   </a>
                 </Reveal>
               ))}
@@ -258,102 +291,7 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
           </div>
         </section>
       );
-
-    case "flow":
-      return (
-        <section className="relative overflow-hidden bg-navy py-24 text-white">
-          <GridBackground />
-          <div className="container-x relative">
-            <div className="max-w-3xl">
-              <Eyebrow text={section.eyebrow} dark />
-              <Title text={section.title} dark />
-              {section.intro && (
-                <Reveal delay={160}>
-                  <p className="mt-4 text-[17px] leading-relaxed text-brand-sky">
-                    {section.intro}
-                  </p>
-                </Reveal>
-              )}
-            </div>
-            <Reveal delay={200}>
-              <div className="mt-12 flex flex-col items-stretch gap-3 lg:flex-row lg:items-center">
-                {section.nodes.map((n, i) => (
-                  <div key={n.title} className="flex items-center gap-3 lg:flex-1">
-                    <div className="flex-1 rounded-card border border-[#1a3055] bg-[#112040] p-4 text-center">
-                      <div className="text-[13px] font-semibold text-white">{n.title}</div>
-                      <div className="mt-1 text-[11px] text-[#4a6891]">{n.sub}</div>
-                    </div>
-                    {i < section.nodes.length - 1 && (
-                      <ArrowRight className="h-4 w-4 shrink-0 text-brand-light/50" aria-hidden />
-                    )}
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </section>
-      );
-
-    case "deployment":
-      return (
-        <section className={`${light} py-24`}>
-          <div className="container-x">
-            <div className="max-w-3xl">
-              <Eyebrow text={section.eyebrow} />
-              <Title text={section.title} />
-              {section.intro && (
-                <Reveal delay={160}>
-                  <p className="mt-4 text-[17px] leading-relaxed text-navy-500">
-                    {section.intro}
-                  </p>
-                </Reveal>
-              )}
-            </div>
-            <div className="mt-12 grid gap-5 md:grid-cols-3">
-              {section.items.map((it, i) => (
-                <Reveal key={it.title} delay={(i % 3) * 70}>
-                  <div className="h-full card p-6">
-                    <h3 className="text-[14px] font-semibold leading-[20px] text-navy">
-                      {it.title}
-                    </h3>
-                    <p className="mt-2 text-[12px] leading-relaxed text-navy-500">
-                      {it.body}
-                    </p>
-                  </div>
-                </Reveal>
-              ))}
-            </div>
-            {section.note && (
-              <Reveal delay={200}>
-                <p className="mt-6 text-[12px] text-navy-500">{section.note}</p>
-              </Reveal>
-            )}
-          </div>
-        </section>
-      );
-
-    case "note":
-      return (
-        <section className={`${light} py-20`}>
-          <div className="container-x max-w-3xl">
-            <Eyebrow text={section.eyebrow} />
-            <Title text={section.title} />
-            <Reveal delay={160}>
-              <p className="mt-4 text-[15px] leading-relaxed text-navy-500">
-                {section.body}
-              </p>
-            </Reveal>
-            {section.cta && (
-              <Reveal delay={200}>
-                <a href={section.cta.href} className="btn-primary-blue mt-8">
-                  {section.cta.label}
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-              </Reveal>
-            )}
-          </div>
-        </section>
-      );
+    }
 
     case "components":
       return (
@@ -364,28 +302,24 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
               <Title text={section.title} />
               {section.intro && (
                 <Reveal delay={160}>
-                  <p className="mt-4 text-[17px] leading-relaxed text-navy-500">
-                    {section.intro}
-                  </p>
+                  <p className="mt-4 text-[16px] leading-[26px] text-navy-500">{section.intro}</p>
                 </Reveal>
               )}
             </div>
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
               {section.items.map((it, i) => (
                 <Reveal key={it.title} delay={(i % 2) * 70}>
                   <div className="group flex h-full flex-col card p-6">
-                    <h3 className="text-[14px] font-semibold leading-[20px] text-navy">
-                      {it.title}
-                    </h3>
+                    <h3 className="text-[16px] font-semibold leading-[24px] text-navy">{it.title}</h3>
                     <ul className="mt-4 flex-1 space-y-2">
                       {it.bullets.map((b) => (
-                        <li key={b} className="flex items-start gap-2 text-[12px] leading-[18px] text-navy-500">
-                          <CircleCheck className="mt-0.5 h-3.5 w-3.5 shrink-0 text-brand-azure" />
+                        <li key={b} className="flex items-start gap-2 text-[14px] leading-[22.75px] text-navy-500">
+                          <CircleCheck className="mt-1 h-4 w-4 shrink-0 text-brand-azure" />
                           {b}
                         </li>
                       ))}
                     </ul>
-                    <a href={it.href} className="mt-5 flex items-center gap-1.5 text-[12px] font-semibold text-brand-blue">
+                    <a href={it.href} className="mt-5 flex items-center gap-1.5 text-[14px] font-semibold leading-[20px] text-brand-blue">
                       {it.linkLabel ?? "View product"}
                       <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
                     </a>
@@ -411,7 +345,7 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
                   <thead>
                     <tr>
                       {section.headers.map((h) => (
-                        <th key={h} className="border-b border-[#e2eaf5] pb-3 font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-blue">
+                        <th key={h} className="border-b border-[#e2eaf5] pb-3 font-mono text-[12px] font-normal uppercase tracking-[1.2px] text-[#4a6891]">
                           {h}
                         </th>
                       ))}
@@ -421,7 +355,7 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
                     {section.rows.map((r, ri) => (
                       <tr key={ri}>
                         {r.map((c, ci) => (
-                          <td key={ci} className={`border-b border-[#e2eaf5] py-4 pr-6 text-[13px] leading-[19px] ${ci === 0 ? "font-semibold text-navy" : "text-navy-500"}`}>
+                          <td key={ci} className={`border-b border-[#e2eaf5] py-4 pr-6 text-[14px] leading-[22.75px] ${ci === 0 ? "font-semibold text-navy" : "text-navy-500"}`}>
                             {c}
                           </td>
                         ))}
@@ -448,7 +382,7 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
                 <Reveal key={it} delay={(i % 3) * 60}>
                   <li className="flex items-start gap-3 card p-5">
                     <CircleCheck className="mt-0.5 h-4 w-4 shrink-0 text-brand-azure" />
-                    <span className="text-[13px] leading-[19.5px] text-navy-500">{it}</span>
+                    <span className="text-[14px] leading-[22.75px] text-navy-500">{it}</span>
                   </li>
                 </Reveal>
               ))}
@@ -466,28 +400,24 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
               <Title text={section.title} />
               {section.intro && (
                 <Reveal delay={160}>
-                  <p className="mt-4 text-[17px] leading-relaxed text-navy-500">
-                    {section.intro}
-                  </p>
+                  <p className="mt-4 text-[16px] leading-[26px] text-navy-500">{section.intro}</p>
                 </Reveal>
               )}
             </div>
-            <div className="mt-12 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               {section.items.map((m, i) => (
                 <Reveal key={m.name + i} delay={(i % 3) * 70}>
                   <div className="h-full card p-6">
                     {m.category && (
-                      <span className="block font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-blue">
+                      <span className="block font-mono text-[12px] font-normal uppercase leading-[16px] tracking-[1.2px] text-[#4a6891]">
                         {m.category}
                       </span>
                     )}
-                    <h3 className="mt-3 text-[14px] font-semibold leading-[20px] text-navy">
-                      {m.name}
-                    </h3>
-                    <div className="text-[12px] text-brand-blue">{m.role}</div>
-                    <p className="mt-3 text-[12px] leading-relaxed text-navy-500">{m.bio}</p>
+                    <h3 className="mt-3 text-[16px] font-semibold leading-[24px] text-navy">{m.name}</h3>
+                    <div className="text-[14px] text-brand-blue">{m.role}</div>
+                    <p className="mt-3 text-[14px] leading-[22.75px] text-navy-500">{m.bio}</p>
                     {m.note && (
-                      <span className="mt-4 inline-block rounded-full bg-mist-100 px-2.5 py-1 text-[10px] font-medium text-navy-500">
+                      <span className="mt-4 inline-block rounded-full bg-mist-100 px-2.5 py-1 text-[12px] font-medium text-navy-500">
                         {m.note}
                       </span>
                     )}
@@ -495,6 +425,92 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
                 </Reveal>
               ))}
             </div>
+          </div>
+        </section>
+      );
+
+    case "flow":
+      return (
+        <section className="relative overflow-hidden bg-navy py-24 text-white">
+          <GridBackground />
+          <div className="container-x relative">
+            <div className="max-w-3xl">
+              <Eyebrow text={section.eyebrow} dark />
+              <Title text={section.title} dark />
+              {section.intro && (
+                <Reveal delay={160}>
+                  <p className="mt-4 text-[16px] leading-[26px] text-brand-sky">{section.intro}</p>
+                </Reveal>
+              )}
+            </div>
+            <Reveal delay={200}>
+              <div className="mt-12 flex flex-col items-stretch gap-3 lg:flex-row lg:items-center">
+                {section.nodes.map((n, i) => (
+                  <div key={n.title} className="flex items-center gap-3 lg:flex-1">
+                    <div className="flex-1 rounded-card border border-[#1a3055] bg-[#112040] p-5 text-center">
+                      <div className="text-[14px] font-semibold text-white">{n.title}</div>
+                      <div className="mt-1 text-[12px] text-[#4a6891]">{n.sub}</div>
+                    </div>
+                    {i < section.nodes.length - 1 && (
+                      <ArrowRight className="h-4 w-4 shrink-0 text-brand-light/50" aria-hidden />
+                    )}
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      );
+
+    case "deployment":
+      return (
+        <section className={`${light} py-24`}>
+          <div className="container-x">
+            <div className="max-w-3xl">
+              <Eyebrow text={section.eyebrow} />
+              <Title text={section.title} />
+              {section.intro && (
+                <Reveal delay={160}>
+                  <p className="mt-4 text-[16px] leading-[26px] text-navy-500">{section.intro}</p>
+                </Reveal>
+              )}
+            </div>
+            <div className="mt-12 grid gap-6 md:grid-cols-3">
+              {section.items.map((it, i) => (
+                <Reveal key={it.title} delay={(i % 3) * 70}>
+                  <div className="h-full card p-6">
+                    <h3 className="text-[16px] font-semibold leading-[24px] text-navy">{it.title}</h3>
+                    <p className="mt-2 text-[14px] leading-[22.75px] text-navy-500">{it.body}</p>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
+            {section.note && (
+              <Reveal delay={200}>
+                <p className="mt-6 text-[14px] text-navy-500">{section.note}</p>
+              </Reveal>
+            )}
+          </div>
+        </section>
+      );
+
+    case "note":
+      return (
+        <section className={`${light} py-24`}>
+          <div className="container-x max-w-3xl">
+            <Eyebrow text={section.eyebrow} />
+            <Title text={section.title} />
+            <Reveal delay={160}>
+              <p className="mt-4 text-[16px] leading-[26px] text-navy-500">{section.body}</p>
+            </Reveal>
+            {section.cta && (
+              <Reveal delay={200}>
+                <a href={section.cta.href} className="btn-primary-blue mt-8">
+                  {section.cta.label}
+                  <ArrowRight className="h-4 w-4" />
+                </a>
+              </Reveal>
+            )}
           </div>
         </section>
       );
@@ -513,20 +529,20 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
           />
           <div className="container-x relative text-center">
             <Reveal>
-              <h2 className="mx-auto max-w-3xl font-serif text-[30px] font-semibold leading-[1.15] lg:text-[40px]">
+              <h2 className="mx-auto max-w-4xl font-serif text-[32px] font-semibold leading-[1.1] lg:text-[48px] lg:leading-[48px]">
                 {section.title}
               </h2>
             </Reveal>
             {section.body && (
               <Reveal delay={120}>
-                <p className="mx-auto mt-5 max-w-2xl text-[17px] leading-relaxed text-brand-sky">
+                <p className="mx-auto mt-4 max-w-2xl text-[16px] leading-[26px] text-brand-sky">
                   {section.body}
                 </p>
               </Reveal>
             )}
             {section.ctas?.length ? (
               <Reveal delay={200}>
-                <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+                <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
                   {section.ctas.map((c, i) => (
                     <a
                       key={c.label}
@@ -543,6 +559,13 @@ export function SectionRenderer({ section, index }: { section: Section; index: n
           </div>
         </section>
       );
+    default: {
+      // Exhaustiveness guard: if a new section kind is added to the content
+      // model without a case here, this fails to compile rather than silently
+      // rendering nothing.
+      const _exhaustive: never = section;
+      return _exhaustive;
+    }
   }
 }
 

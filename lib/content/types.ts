@@ -8,7 +8,7 @@ export type Section =
   | { kind: "capabilities"; eyebrow: string; title: string; items: { title: string; body: string }[] }
   | { kind: "how"; eyebrow: string; title: string; steps: { title: string; body: string }[] }
   | { kind: "outcomes"; eyebrow: string; title: string; items: { title: string; body: string }[] }
-  | { kind: "platform"; eyebrow: string; title: string; links: { title: string; body: string; href: string }[] }
+  | { kind: "platform"; eyebrow: string; title: string; intro?: string; variant?: "compact" | "pillars"; links: { title: string; body: string; href: string; eyebrow?: string }[] }
   | { kind: "features"; eyebrow: string; title?: string; items: { title: string; body: string }[] }
   | { kind: "stats"; eyebrow: string; title?: string; items: { value: string; title: string; body: string }[] }
   | { kind: "flow"; eyebrow: string; title: string; intro?: string; nodes: { title: string; sub: string }[] }

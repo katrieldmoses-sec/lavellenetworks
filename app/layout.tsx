@@ -13,10 +13,12 @@ const jakarta = Plus_Jakarta_Sans({
   display: "swap",
 });
 
+// Loaded as a variable font with the optical-size axis so large display text
+// renders with the same glyph widths as the source design (static instances are
+// optimised for body text and render measurably wider at 60px+).
 const fraunces = Fraunces({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  axes: ["opsz"],
   variable: "--font-fraunces",
   display: "swap",
 });

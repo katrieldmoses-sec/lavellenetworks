@@ -33,12 +33,15 @@ export const solutionPages: PageContent[] = [
       },
       {
         kind: "platform",
+        variant: "pillars",
         eyebrow: "Lavelle Solution Architecture",
         title: "Three pillars. One integrated platform.",
+        intro:
+          "Lavelle's BFSI solution combines branch connectivity, cloud-native security, and compliance operations into a coherent platform — not disconnected point products.",
         links: [
-          { title: "ScaleAOn SD-WAN", body: "Lavelle's SD-WAN platform connects bank branches across hybrid WAN links — MPLS, broadband, LTE — with intelligent path selection and application-aware routing.", href: "/products/sd-wan" },
-          { title: "indusWall SASE", body: "Cloud-native security convergence for the financial enterprise, enforcing compliance controls without hairpinning traffic through a central data centre.", href: "/products/sase" },
-          { title: "CloudStation Insights", body: "Centralised network analytics and telemetry generating the audit trails, flow logs, and incident records required for PCI-DSS and RBI IT Framework audits.", href: "/products/cloudstation-insights" },
+          { eyebrow: "Branch Connectivity", title: "ScaleAOn SD-WAN", body: "Lavelle's SD-WAN platform connects bank branches across hybrid WAN links — MPLS, broadband, LTE — with intelligent path selection and application-aware routing. Branch teams operate on a consistent, policy-driven network regardless of the underlying link.", href: "/products/sd-wan" },
+          { eyebrow: "Secure Access", title: "indusWall SASE", body: "Cloud-native security convergence for the financial enterprise. indusWall delivers firewall, secure web gateway, ZTNA, and policy enforcement at branch and cloud edges — enforcing compliance controls without hairpinning traffic through a central data centre.", href: "/products/sase" },
+          { eyebrow: "Compliance Reporting & Audit", title: "CloudStation Insights", body: "Centralised network analytics and telemetry for compliance reporting. CloudStation Insights generates the audit trails, flow logs, and incident records required for PCI-DSS, RBI IT Framework audits, and internal risk management.", href: "/products/cloudstation-insights" },
         ],
       },
       {
