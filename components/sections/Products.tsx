@@ -19,6 +19,7 @@ const products: {
   desc: string;
   features: string[];
   cta: string;
+  href: string;
 }[] = [
   {
     brand: "ScaleAOn",
@@ -32,6 +33,7 @@ const products: {
       "Zero-touch provisioning",
     ],
     cta: "Explore ScaleAOn SD-WAN",
+    href: "/products/sd-wan",
   },
   {
     brand: "ScaleAOn",
@@ -45,6 +47,7 @@ const products: {
       "Zero-touch deployment",
     ],
     cta: "Explore ScaleAOn SD-Branch",
+    href: "/products/secure-branch",
   },
   {
     brand: "indusWall",
@@ -58,6 +61,7 @@ const products: {
       "Identity-aware policies",
     ],
     cta: "Explore indusWall SASE",
+    href: "/products/sase",
   },
   {
     brand: "ipDesk",
@@ -71,6 +75,7 @@ const products: {
       "Network health scoring",
     ],
     cta: "Explore ipDesk AI Ops",
+    href: "/products/ai-operations",
   },
 ];
 
@@ -87,7 +92,7 @@ export default function Products() {
           {products.map((p, i) => (
             <Reveal key={p.name} delay={(i % 2) * 90}>
               <a
-                href="#architecture"
+                href={p.href}
                 className="group flex h-full flex-col card p-7 transition-colors duration-200 hover:border-brand-light/50"
               >
                 <div className="flex items-start gap-4">

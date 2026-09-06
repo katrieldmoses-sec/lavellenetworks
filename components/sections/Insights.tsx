@@ -60,7 +60,7 @@ export default function Insights() {
           />
           <Reveal delay={160}>
             <a
-              href="#insights"
+              href="/resources/blogs"
               className="flex items-center gap-1.5 text-[14px] font-semibold text-brand-blue"
             >
               All resources
@@ -92,7 +92,7 @@ export default function Insights() {
           {shown.map((r, i) => (
             <Reveal key={r.title} delay={(i % 4) * 70}>
               <a
-                href="#insights"
+                href="/resources/blogs"
                 className="group flex h-full flex-col card p-5 transition-colors duration-200 hover:border-brand-light/50"
               >
                 <div className="flex items-center justify-between leading-[15px]">

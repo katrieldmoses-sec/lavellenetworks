@@ -1,51 +1,57 @@
 import { MapPin, Mail, Phone } from "./icons";
 
-const columns: { title: string; links: string[] }[] = [
+const columns: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Platform",
     links: [
-      "ScaleAOn SD-WAN",
-      "ScaleAOn SD-Branch",
-      "indusWall SASE",
-      "ipDesk AI Ops",
-      "ZTNA",
-      "Network Analytics",
+      { label: "ScaleAOn SD-WAN", href: "/products/sd-wan" },
+      { label: "ScaleAOn SD-Branch", href: "/products/secure-branch" },
+      { label: "indusWall SASE", href: "/products/sase" },
+      { label: "ipDesk AI Ops", href: "/products/ai-operations" },
+      { label: "ZTNA", href: "/products/ztna" },
+      { label: "Network Analytics", href: "/products/network-analytics" },
     ],
   },
   {
     title: "Solutions",
     links: [
-      "BFSI",
-      "Retail",
-      "Manufacturing",
-      "Government & PSU",
-      "Healthcare",
-      "Education",
+      { label: "BFSI", href: "/solutions/bfsi" },
+      { label: "Retail", href: "/solutions/retail" },
+      { label: "Manufacturing", href: "/solutions/manufacturing" },
+      { label: "Government & PSU", href: "/solutions/government" },
+      { label: "Healthcare", href: "/solutions/healthcare" },
+      { label: "Education", href: "/solutions/education" },
     ],
   },
   {
     title: "Resources",
     links: [
-      "Blogs & Insights",
-      "Case Studies",
-      "Whitepapers",
-      "Datasheets",
-      "Webinars",
-      "Documentation",
+      { label: "Blogs & Insights", href: "/resources/blogs" },
+      { label: "Case Studies", href: "/resources/case-studies" },
+      { label: "Whitepapers", href: "/resources/whitepapers" },
+      { label: "Datasheets", href: "/resources/datasheets" },
+      { label: "Webinars", href: "/resources/webinars" },
+      { label: "Documentation", href: "/resources/documentation" },
     ],
   },
   {
     title: "Company",
-    links: ["About Lavelle", "Leadership", "Careers", "News & Media", "Contact Us"],
+    links: [
+      { label: "About Lavelle", href: "/company/about" },
+      { label: "Leadership", href: "/company/leadership" },
+      { label: "Careers", href: "/company/careers" },
+      { label: "News & Media", href: "/company/news" },
+      { label: "Contact Us", href: "/company/contact" },
+    ],
   },
   {
     title: "Partners & Support",
     links: [
-      "Partner Programme",
-      "Partner With Us",
-      "Support Portal",
-      "Request Demo",
-      "Talk to Expert",
+      { label: "Partner Programme", href: "/partners" },
+      { label: "Partner With Us", href: "/contact/partner-with-us" },
+      { label: "Support Portal", href: "/contact/support" },
+      { label: "Request Demo", href: "/contact/request-demo" },
+      { label: "Talk to Expert", href: "/contact/talk-to-expert" },
     ],
   },
 ];
@@ -74,13 +80,13 @@ export default function Footer() {
           </div>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
             <a
-              href="#contact"
+              href="/contact/talk-to-expert"
               className="rounded-[4px] border border-navy-600 px-5 py-2 text-[13px] text-brand-sky transition-colors hover:border-brand-light hover:text-white"
             >
               Talk to an Expert
             </a>
             <a
-              href="#contact"
+              href="/contact/request-demo"
               className="rounded-[4px] bg-brand-azure px-5 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-brand-light"
             >
               Request Enterprise Demo
@@ -144,12 +150,12 @@ export default function Footer() {
                 </h3>
                 <ul className="mt-4 space-y-3">
                   {col.links.map((link) => (
-                    <li key={link}>
+                    <li key={link.label}>
                       <a
-                        href="#contact"
+                        href={link.href}
                         className="text-sm text-white/60 transition-colors hover:text-white"
                       >
-                        {link}
+                        {link.label}
                       </a>
                     </li>
                   ))}

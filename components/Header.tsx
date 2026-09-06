@@ -9,68 +9,60 @@ type NavGroup = { label: string; href: string; items: NavItem[] };
 const NAV: NavGroup[] = [
   {
     label: "Products",
-    href: "#platform",
+    href: "/products/sd-wan",
     items: [
-      { label: "ScaleAOn SD-WAN", href: "#platform", desc: "Enterprise WAN" },
-      {
-        label: "ScaleAOn SD-Branch",
-        href: "#platform",
-        desc: "Branch infrastructure",
-      },
-      { label: "indusWall SASE", href: "#platform", desc: "Network security" },
-      { label: "ipDesk AI Ops", href: "#platform", desc: "Network operations" },
-      { label: "ZTNA", href: "#architecture", desc: "Zero Trust access" },
-      {
-        label: "Network Analytics",
-        href: "#architecture",
-        desc: "Visibility & insight",
-      },
+      { label: "ScaleAOn SD-WAN", href: "/products/sd-wan", desc: "Enterprise WAN" },
+      { label: "ScaleAOn SD-Branch", href: "/products/secure-branch", desc: "Branch infrastructure" },
+      { label: "indusWall SASE", href: "/products/sase", desc: "Network security" },
+      { label: "ipDesk AI Ops", href: "/products/ai-operations", desc: "Network operations" },
+      { label: "ZTNA", href: "/products/ztna", desc: "Zero Trust access" },
+      { label: "Network Analytics", href: "/products/network-analytics", desc: "Visibility & insight" },
     ],
   },
   {
     label: "Solutions",
-    href: "#industries",
+    href: "/solutions/bfsi",
     items: [
-      { label: "BFSI", href: "#industries" },
-      { label: "Retail", href: "#industries" },
-      { label: "Manufacturing", href: "#industries" },
-      { label: "Government & PSU", href: "#industries" },
-      { label: "Healthcare", href: "#industries" },
-      { label: "Education", href: "#industries" },
+      { label: "BFSI", href: "/solutions/bfsi" },
+      { label: "Retail", href: "/solutions/retail" },
+      { label: "Manufacturing", href: "/solutions/manufacturing" },
+      { label: "Government & PSU", href: "/solutions/government" },
+      { label: "Healthcare", href: "/solutions/healthcare" },
+      { label: "Education", href: "/solutions/education" },
     ],
   },
   {
     label: "Resources",
-    href: "#insights",
+    href: "/resources/blogs",
     items: [
-      { label: "Blogs & Insights", href: "#insights" },
-      { label: "Case Studies", href: "#proven" },
-      { label: "Whitepapers", href: "#insights" },
-      { label: "Datasheets", href: "#insights" },
-      { label: "Webinars", href: "#insights" },
-      { label: "Documentation", href: "#insights" },
+      { label: "Blogs & Insights", href: "/resources/blogs" },
+      { label: "Case Studies", href: "/resources/case-studies" },
+      { label: "Whitepapers", href: "/resources/whitepapers" },
+      { label: "Datasheets", href: "/resources/datasheets" },
+      { label: "Webinars", href: "/resources/webinars" },
+      { label: "Documentation", href: "/resources/documentation" },
     ],
   },
   {
     label: "Company",
-    href: "#built-in-india",
+    href: "/company/about",
     items: [
-      { label: "About Lavelle", href: "#built-in-india" },
-      { label: "Leadership", href: "#investment" },
-      { label: "Careers", href: "#built-in-india" },
-      { label: "News & Media", href: "#recognition" },
-      { label: "Contact Us", href: "#contact" },
+      { label: "About Lavelle", href: "/company/about" },
+      { label: "Leadership", href: "/company/leadership" },
+      { label: "Careers", href: "/company/careers" },
+      { label: "News & Media", href: "/company/news" },
+      { label: "Contact Us", href: "/company/contact" },
     ],
   },
   {
     label: "Partners",
-    href: "#contact",
+    href: "/partners",
     items: [
-      { label: "Partner Programme", href: "#contact" },
-      { label: "Partner With Us", href: "#contact" },
-      { label: "Support Portal", href: "#contact" },
-      { label: "Request Demo", href: "#contact" },
-      { label: "Talk to Expert", href: "#contact" },
+      { label: "Partner Programme", href: "/partners" },
+      { label: "Partner With Us", href: "/contact/partner-with-us" },
+      { label: "Support Portal", href: "/contact/support" },
+      { label: "Request Demo", href: "/contact/request-demo" },
+      { label: "Talk to Expert", href: "/contact/talk-to-expert" },
     ],
   },
 ];
@@ -78,7 +70,7 @@ const NAV: NavGroup[] = [
 function Logo() {
   return (
     <a
-      href="#top"
+      href="/"
       className="flex shrink-0 items-center gap-2.5"
       aria-label="Lavelle Networks home"
     >
@@ -169,19 +161,19 @@ export default function Header() {
         {/* Desktop CTAs */}
         <div className="ml-auto hidden items-center gap-2 xl:flex">
           <a
-            href="#contact"
+            href="/contact/support"
             className="px-3 py-1.5 text-[13px] text-brand-sky transition-colors hover:text-white"
           >
             Support
           </a>
           <a
-            href="#contact"
+            href="/contact/talk-to-expert"
             className="rounded-[4px] border border-navy-600 px-4 py-1.5 text-[13px] text-brand-sky transition-colors hover:border-brand-light hover:text-white"
           >
             Talk to Expert
           </a>
           <a
-            href="#contact"
+            href="/contact/request-demo"
             className="rounded-[4px] bg-brand-azure px-5 py-2 text-[13px] font-semibold text-white transition-colors hover:bg-brand-light"
           >
             Request Demo
@@ -243,14 +235,14 @@ export default function Header() {
             ))}
             <div className="mt-6 flex flex-col gap-3">
               <a
-                href="#contact"
+                href="/contact/talk-to-expert"
                 onClick={() => setMobileOpen(false)}
                 className="rounded-[4px] border border-navy-600 px-4 py-2.5 text-center text-[13px] text-brand-sky"
               >
                 Talk to Expert
               </a>
               <a
-                href="#contact"
+                href="/contact/request-demo"
                 onClick={() => setMobileOpen(false)}
                 className="rounded-[4px] bg-brand-azure px-4 py-2.5 text-center text-[13px] font-semibold text-white"
               >

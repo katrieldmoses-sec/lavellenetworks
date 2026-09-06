@@ -37,11 +37,11 @@ export default function FinalCTA() {
           </Reveal>
           <Reveal delay={240}>
             <div className="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
-              <a href="#contact" className="btn-primary-blue">
+              <a href="/contact/request-demo" className="btn-primary-blue">
                 Request an Enterprise Demo
                 <ArrowRight className="h-4 w-4" />
               </a>
-              <a href="#contact" className="btn-outline-light">
+              <a href="/contact/request-demo" className="btn-outline-light">
                 Talk to a Network Expert
               </a>
             </div>

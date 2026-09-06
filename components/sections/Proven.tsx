@@ -34,7 +34,7 @@ export default function Proven() {
           />
           <Reveal delay={160}>
             <a
-              href="#insights"
+              href="/resources/blogs"
               className="flex items-center gap-1.5 text-[14px] font-semibold text-brand-blue"
             >
               All case studies

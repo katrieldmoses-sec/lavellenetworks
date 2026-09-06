@@ -143,11 +143,11 @@ export default function Hero() {
 
           <Reveal delay={240}>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <a href="#platform" className="btn-primary-blue">
+              <a href="/products/sd-wan" className="btn-primary-blue">
                 Explore the Platform
                 <ArrowRight className="h-4 w-4" />
               </a>
-              <a href="#contact" className="btn-outline-light">
+              <a href="/contact/request-demo" className="btn-outline-light">
                 Request an Enterprise Demo
               </a>
             </div>

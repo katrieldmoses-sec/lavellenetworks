@@ -18,9 +18,11 @@ const industries: {
   challenge: string;
   solution: string;
   outcome: string;
+  href: string;
 }[] = [
   {
     name: "BFSI",
+    href: "/solutions/bfsi",
     icon: Building2,
     challenge:
       "Branch uptime, secure connectivity, and regulatory operations across hundreds of locations.",
@@ -30,6 +32,7 @@ const industries: {
   },
   {
     name: "Retail",
+    href: "/solutions/retail",
     icon: ShoppingCart,
     challenge:
       "Rapid store deployment, POS application reliability, and centralised IT control across thousands of stores.",
@@ -39,6 +42,7 @@ const industries: {
   },
   {
     name: "Manufacturing",
+    href: "/solutions/manufacturing",
     icon: Factory,
     challenge:
       "Factory floor connectivity, OT network isolation, and operational visibility across plant locations.",
@@ -48,6 +52,7 @@ const industries: {
   },
   {
     name: "Healthcare",
+    href: "/solutions/healthcare",
     icon: Heart,
     challenge:
       "Clinical application performance, patient data security, and connectivity across hospitals and clinics.",
@@ -57,6 +62,7 @@ const industries: {
   },
   {
     name: "Government & PSU",
+    href: "/solutions/government",
     icon: Landmark,
     challenge:
       "Sovereign data controls, multi-agency connectivity, and compliance-driven network operations.",
@@ -66,6 +72,7 @@ const industries: {
   },
   {
     name: "Education",
+    href: "/solutions/education",
     icon: GraduationCap,
     challenge:
       "Campus and remote-learning connectivity, secure internet access, and network management at scale.",
@@ -115,7 +122,7 @@ export default function Industries() {
                 </div>
 
                 <a
-                  href="#contact"
+                  href={ind.href}
                   className="mt-4 flex items-center gap-1 text-[12px] font-semibold leading-[16px] text-brand-blue"
                 >
                   View {ind.name} solutions

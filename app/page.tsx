@@ -1,5 +1,3 @@
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import Hero from "@/components/sections/Hero";
 import Stats from "@/components/sections/Stats";
 import Products from "@/components/sections/Products";
@@ -17,8 +15,6 @@ import FinalCTA from "@/components/sections/FinalCTA";
 export default function Home() {
   return (
     <>
-      <Header />
-      <main>
         <Hero />
         <Stats />
         <Products />
@@ -32,8 +28,6 @@ export default function Home() {
         <BuiltInIndia />
         <Investment />
         <FinalCTA />
-      </main>
-      <Footer />
     </>
   );
 }

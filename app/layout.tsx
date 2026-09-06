@@ -3,6 +3,8 @@ import { headers } from "next/headers";
 import { Fraunces, Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { SITE_URL } from "@/lib/site";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -90,7 +92,11 @@ export default function RootLayout({
       lang="en"
       className={`${jakarta.variable} ${fraunces.variable} ${dmMono.variable}`}
     >
-      <body>{children}</body>
+      <body>
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }

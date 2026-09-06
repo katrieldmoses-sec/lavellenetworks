@@ -56,11 +56,11 @@ export default function Investment() {
 
         <Reveal delay={160}>
           <div className="mt-10 flex flex-col gap-3 sm:flex-row">
-            <a href="#contact" className="btn-primary-blue">
+            <a href="/contact/request-demo" className="btn-primary-blue">
               Talk to Leadership
               <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="#contact" className="btn-outline-dark">
+            <a href="/contact/request-demo" className="btn-outline-dark">
               Download Company Overview
             </a>
           </div>
