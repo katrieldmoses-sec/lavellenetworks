@@ -9,7 +9,15 @@ const FROM =
   process.env.CONTACT_FROM ??
   "Lavelle Networks <website@lavellenetworks.com>";
 
-const LIMITS = { name: 120, designation: 120, message: 4000 } as const;
+const LIMITS = {
+  name: 120,
+  email: 200,
+  designation: 120,
+  message: 4000,
+} as const;
+
+/** Deliberately permissive: one @, no spaces, a dot in the domain. */
+const EMAIL_RE = /^[^\s@]+@[^\s@.]+(\.[^\s@.]+)+$/;
 
 /** Small fixed-window rate limiter (per server instance). */
 const HITS = new Map<string, { count: number; resetAt: number }>();
@@ -63,6 +71,7 @@ export async function POST(request: Request) {
   }
 
   const name = clean(b.name, LIMITS.name);
+  const email = clean(b.email, LIMITS.email);
   const designation = clean(b.designation, LIMITS.designation);
   const message = clean(b.message, LIMITS.message);
   const topic = clean(b.topic, 60) || "Enquiry";
@@ -70,6 +79,13 @@ export async function POST(request: Request) {
   if (name.length < 2 || message.length < 10) {
     return NextResponse.json(
       { error: "Please provide your name and a short message." },
+      { status: 400 },
+    );
+  }
+
+  if (!EMAIL_RE.test(email)) {
+    return NextResponse.json(
+      { error: "Please provide a valid email address." },
       { status: 400 },
     );
   }
@@ -87,6 +103,7 @@ export async function POST(request: Request) {
     `New ${topic} enquiry from the Lavelle Networks website`,
     "",
     `Name:        ${name}`,
+    `Email:       ${email}`,
     `Designation: ${designation || "-"}`,
     "",
     "Message:",
@@ -103,6 +120,8 @@ export async function POST(request: Request) {
       body: JSON.stringify({
         from: FROM,
         to: [TO],
+        // Replying in the mail client goes straight back to the enquirer.
+        reply_to: email,
         subject: `[${topic}] ${name}${designation ? ` - ${designation}` : ""}`,
         text,
       }),

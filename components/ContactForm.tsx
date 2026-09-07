@@ -27,6 +27,7 @@ export default function ContactForm({ topic }: { topic: string }) {
         body: JSON.stringify({
           topic,
           name: data.get("name"),
+          email: data.get("email"),
           designation: data.get("designation"),
           message: data.get("message"),
           company_website: data.get("company_website"), // honeypot
@@ -93,16 +94,31 @@ export default function ContactForm({ topic }: { topic: string }) {
 
         <label className="block">
           <span className="block text-[13px] font-semibold text-navy">
-            Designation
+            Work Email <span className="text-brand-blue">*</span>
           </span>
           <input
-            name="designation"
-            maxLength={120}
-            autoComplete="organization-title"
+            name="email"
+            type="email"
+            required
+            maxLength={200}
+            autoComplete="email"
+            inputMode="email"
             className="mt-2 w-full rounded-[6px] border border-[#e2eaf5] bg-white px-3.5 py-2.5 text-[14px] text-navy outline-none transition-colors focus:border-brand-light"
           />
         </label>
       </div>
+
+      <label className="mt-5 block">
+        <span className="block text-[13px] font-semibold text-navy">
+          Designation
+        </span>
+        <input
+          name="designation"
+          maxLength={120}
+          autoComplete="organization-title"
+          className="mt-2 w-full rounded-[6px] border border-[#e2eaf5] bg-white px-3.5 py-2.5 text-[14px] text-navy outline-none transition-colors focus:border-brand-light"
+        />
+      </label>
 
       <label className="mt-5 block">
         <span className="block text-[13px] font-semibold text-navy">
