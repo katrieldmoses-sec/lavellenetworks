@@ -1,9 +1,6 @@
-import { Fragment } from "react";
-import SectionHeading from "../SectionHeading";
 import Reveal from "../Reveal";
 import GridBackground from "../GridBackground";
 import {
-  ArrowRight,
   Building2,
   Landmark,
   Users,
@@ -24,14 +21,14 @@ import {
 type Ico = import("lucide-react").LucideIcon;
 type Item = { label: string; icon: Ico };
 
-const columns: {
-  heading: string;
+const bands: {
+  label: string;
   badge?: string;
-  brand?: boolean;
+  active?: boolean;
   items: Item[];
 }[] = [
   {
-    heading: "Your Enterprise",
+    label: "Your Enterprise",
     items: [
       { label: "Branches", icon: Building2 },
       { label: "Headquarters", icon: Landmark },
@@ -42,9 +39,9 @@ const columns: {
     ],
   },
   {
-    heading: "Lavelle Platform",
+    label: "Lavelle Platform",
     badge: "Active Platform",
-    brand: true,
+    active: true,
     items: [
       { label: "ScaleAOn SD-WAN", icon: Network },
       { label: "ScaleAOn SD-Branch", icon: GitBranch },
@@ -56,7 +53,7 @@ const columns: {
     ],
   },
   {
-    heading: "Unified Control",
+    label: "Unified Control",
     items: [
       { label: "Orchestration", icon: Zap },
       { label: "Central Policy", icon: Lock },
@@ -67,7 +64,7 @@ const columns: {
     ],
   },
   {
-    heading: "Destinations",
+    label: "Destinations",
     items: [
       { label: "Private DC", icon: Server },
       { label: "Public Cloud", icon: Cloud },
@@ -93,63 +90,78 @@ export default function Architecture() {
             "radial-gradient(80% 60% at 50% 0%, rgba(0,98,177,0.22), transparent 60%)",
         }}
       />
-      <div className="container-x relative">
-        <SectionHeading
-          dark
-          size="md"
-          kicker="Platform Architecture"
-          title="One control plane. Every connection."
-          intro="From branches and remote users to cloud workloads and data centres — the Lavelle platform sits at the centre of every enterprise network decision."
-        />
 
-        <div className="mt-14 grid gap-4 lg:grid-cols-[1fr_auto_1.1fr_auto_1fr_auto_1fr] lg:items-start">
-          {columns.map((col, idx) => (
-            <Fragment key={col.heading}>
-              <Reveal
-                delay={idx * 90}
-                className={`h-full rounded-card border p-5 ${
-                  col.brand
-                    ? "border-brand-light/40 bg-brand-light/[0.06]"
-                    : "border-white/10 bg-white/[0.02]"
-                }`}
+      <div className="container-x relative">
+        {/* Centred heading with pill badge */}
+        <div className="mx-auto max-w-3xl text-center">
+          <Reveal>
+            <span className="inline-flex items-center gap-2.5 rounded-full border border-brand-light/30 px-5 py-2 font-mono text-[12px] font-normal uppercase leading-[16px] tracking-[1.2px] text-brand-light">
+              <span
+                className="h-1.5 w-1.5 rounded-full bg-brand-light"
+                aria-hidden
+              />
+              Platform Architecture
+            </span>
+          </Reveal>
+          <Reveal delay={80}>
+            <h2 className="mt-6 font-serif text-[32px] font-semibold leading-[1.12] tracking-[-0.01em] sm:text-[42px] lg:text-[52px]">
+              One control plane. Every connection.
+            </h2>
+          </Reveal>
+          <Reveal delay={160}>
+            <p className="mx-auto mt-5 max-w-2xl text-[16px] leading-[26px] text-brand-sky/80">
+              From branches and remote users to cloud workloads and data centres
+              — the Lavelle platform sits at the centre of every enterprise
+              network decision.
+            </p>
+          </Reveal>
+        </div>
+
+        {/* Stacked horizontal bands inside one container */}
+        <Reveal delay={200}>
+          <div className="mt-14 overflow-hidden rounded-[10px] border border-white/[0.09]">
+            {bands.map((band, i) => (
+              <div
+                key={band.label}
+                className={`px-6 py-6 sm:px-8 ${
+                  i > 0 ? "border-t border-white/[0.07]" : ""
+                } ${band.active ? "bg-brand-blue/[0.14]" : ""}`}
               >
-                <div className="mb-4 flex items-center justify-between">
-                  <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.14em] text-brand-sky">
-                    {col.heading}
+                <div className="flex items-center justify-between gap-4">
+                  <span className="font-mono text-[12px] font-normal uppercase leading-[16px] tracking-[1.2px] text-[#7fafd8]">
+                    {band.label}
                   </span>
-                  {col.badge && (
-                    <span className="rounded-full bg-brand-light/20 px-2 py-0.5 font-mono text-[8px] font-medium tracking-wider text-brand-light">
-                      {col.badge}
+                  {band.badge && (
+                    <span className="shrink-0 rounded-full border border-brand-light/40 px-3 py-1 text-[12px] text-brand-light">
+                      {band.badge}
                     </span>
                   )}
                 </div>
-                <ul className="space-y-2">
-                  {col.items.map((item) => (
-                    <li
-                      key={item.label}
-                      className={`flex items-center gap-2 rounded-md border px-3 py-2 text-[12px] leading-[16px] ${
-                        col.brand
-                          ? "border-[#1a3055] bg-[#112040] font-medium text-white"
-                          : "border-white/5 bg-white/[0.02] text-white/75"
-                      }`}
-                    >
-                      <item.icon className="h-4 w-4 shrink-0 text-brand-light" />
-                      {item.label}
+
+                <ul className="mt-4 flex flex-wrap gap-3">
+                  {band.items.map((item) => (
+                    <li key={item.label}>
+                      <span
+                        className={`inline-flex items-center gap-2.5 rounded-[6px] border px-4 py-2.5 text-[15px] ${
+                          band.active
+                            ? "border-brand-light/30 bg-brand-light/[0.08] text-white"
+                            : "border-white/10 bg-white/[0.03] text-white/90"
+                        }`}
+                      >
+                        <item.icon
+                          className={`h-4 w-4 shrink-0 ${
+                            band.active ? "text-brand-light" : "text-brand-sky"
+                          }`}
+                        />
+                        {item.label}
+                      </span>
                     </li>
                   ))}
                 </ul>
-              </Reveal>
-              {idx < columns.length - 1 && (
-                <div
-                  className="hidden items-center justify-center pt-16 text-brand-light/50 lg:flex"
-                  aria-hidden
-                >
-                  <ArrowRight className="h-5 w-5" />
-                </div>
-              )}
-            </Fragment>
-          ))}
-        </div>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   );

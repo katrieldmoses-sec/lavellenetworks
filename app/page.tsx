@@ -8,7 +8,6 @@ import Proven from "@/components/sections/Proven";
 import Timeline from "@/components/sections/Timeline";
 import Insights from "@/components/sections/Insights";
 import Recognition from "@/components/sections/Recognition";
-import BuiltInIndia from "@/components/sections/BuiltInIndia";
 import Investment from "@/components/sections/Investment";
 import FinalCTA from "@/components/sections/FinalCTA";
 
@@ -25,7 +24,6 @@ export default function Home() {
         <Timeline />
         <Insights />
         <Recognition />
-        <BuiltInIndia />
         <Investment />
         <FinalCTA />
     </>
