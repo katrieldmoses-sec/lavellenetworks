@@ -8,6 +8,8 @@ type NavGroup = { label: string; items: NavLink[] };
 type NavEntry = {
   label: string;
   href: string;
+  /** Panel width in px, measured from the source design. */
+  panelWidth: number;
   /** Grouped mega-menu (rendered in two columns) or a flat list. */
   groups?: NavGroup[];
   items?: NavLink[];
@@ -18,6 +20,7 @@ const NAV: NavEntry[] = [
   {
     label: "Products",
     href: "/products/sd-wan",
+    panelWidth: 680,
     groups: [
       {
         label: "Platform",
@@ -57,6 +60,7 @@ const NAV: NavEntry[] = [
   {
     label: "Solutions",
     href: "/solutions/bfsi",
+    panelWidth: 560,
     groups: [
       {
         label: "Use Cases",
@@ -88,6 +92,7 @@ const NAV: NavEntry[] = [
   {
     label: "Resources",
     href: "/resources/blogs",
+    panelWidth: 192,
     items: [
       { name: "Blogs & Insights", href: "/resources/blogs" },
       { name: "Case Studies", href: "/resources/case-studies" },
@@ -101,6 +106,7 @@ const NAV: NavEntry[] = [
   {
     label: "Company",
     href: "/company/about",
+    panelWidth: 192,
     items: [
       { name: "Our Story", href: "/company/about" },
       { name: "Leadership", href: "/company/leadership" },
@@ -112,6 +118,7 @@ const NAV: NavEntry[] = [
   {
     label: "Partners",
     href: "/partners",
+    panelWidth: 192,
     items: [
       { name: "Partner Programme", href: "/partners" },
       { name: "Partner Locator", href: "/partners/locator" },
@@ -171,78 +178,71 @@ export default function Header() {
             return (
               <div
                 key={entry.label}
-                className="static"
+                className="relative"
                 onMouseEnter={() => setOpenGroup(entry.label)}
               >
                 <a
                   href={entry.href}
-                  className={`flex items-center gap-1.5 rounded-t-[6px] px-4 py-4 text-[15px] font-medium transition-colors ${
+                  className={`flex items-center gap-1.5 rounded-t-[6px] px-3 py-2.5 text-[13px] font-medium transition-colors ${
                     open ? "bg-[#152744] text-white" : "text-brand-sky hover:text-white"
                   }`}
                   aria-expanded={open}
                 >
                   {entry.label}
                   <ChevronDown
-                    className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
+                    className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`}
                   />
                 </a>
 
-                {/* Always rendered so the links exist in the server HTML and
-                    remain crawlable; visibility is toggled with CSS. */}
+                {/* Anchored to this trigger. Always in the DOM so the links stay
+                    crawlable; visibility is toggled with CSS. */}
                 <div
-                  className={`absolute left-0 right-0 top-full z-50 transition-opacity duration-150 ${
+                  className={`absolute left-0 top-full z-50 rounded-[6px] border border-[#1a3055] bg-[#0f2040] p-3 shadow-2xl shadow-black/50 transition-opacity duration-150 ${
                     open
                       ? "visible opacity-100"
                       : "invisible opacity-0 pointer-events-none"
                   }`}
+                  style={{ width: entry.panelWidth }}
                   aria-hidden={!open}
                 >
-                    <div className="container-x">
-                      <div
-                        className={`pointer-events-auto rounded-[10px] border border-[#1f3357] bg-[#101f3a] p-8 shadow-2xl shadow-black/50 ${
-                          entry.groups ? "w-full" : "w-[320px]"
-                        }`}
-                      >
-                        {entry.groups ? (
-                          <div className="grid grid-cols-2 gap-x-16 gap-y-10">
-                            {entry.groups.map((g) => (
-                              <div key={g.label}>
-                                <span className="block font-mono text-[12px] font-normal uppercase leading-[16px] tracking-[1.2px] text-[#4a6891]">
-                                  {g.label}
-                                </span>
-                                <ul className="mt-5 space-y-4">
-                                  {g.items.map((it) => (
-                                    <li key={it.name}>
-                                      <a
-                                        href={it.href}
-                                        onClick={() => setOpenGroup(null)}
-                                        className="text-[16px] text-white/90 transition-colors hover:text-brand-light"
-                                      >
-                                        {it.name}
-                                      </a>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <ul className="space-y-4">
-                            {entry.items?.map((it) => (
+                  {entry.groups ? (
+                    <div className="grid grid-cols-2 gap-x-6 gap-y-7">
+                      {entry.groups.map((g) => (
+                        <div key={g.label}>
+                          <span className="block px-1 font-mono text-[10px] font-normal uppercase leading-[16px] tracking-[1px] text-[#4a6891]">
+                            {g.label}
+                          </span>
+                          <ul className="mt-2">
+                            {g.items.map((it) => (
                               <li key={it.name}>
                                 <a
                                   href={it.href}
                                   onClick={() => setOpenGroup(null)}
-                                  className="text-[16px] text-white/90 transition-colors hover:text-brand-light"
+                                  className="block rounded-[4px] px-1 py-1.5 text-[13px] leading-[19.5px] text-white/90 transition-colors hover:bg-white/5 hover:text-brand-light"
                                 >
                                   {it.name}
                                 </a>
                               </li>
                             ))}
                           </ul>
-                        )}
-                      </div>
+                        </div>
+                      ))}
                     </div>
+                  ) : (
+                    <ul>
+                      {entry.items?.map((it) => (
+                        <li key={it.name}>
+                          <a
+                            href={it.href}
+                            onClick={() => setOpenGroup(null)}
+                            className="block rounded-[4px] px-1 py-1.5 text-[13px] leading-[19.5px] text-white/90 transition-colors hover:bg-white/5 hover:text-brand-light"
+                          >
+                            {it.name}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
                 </div>
               </div>
             );
