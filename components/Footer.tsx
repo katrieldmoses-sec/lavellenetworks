@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { MapPin, Mail, Phone } from "./icons";
 
 const columns: { title: string; links: { label: string; href: string }[] }[] = [
@@ -94,14 +95,15 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.5fr_2fr]">
           {/* Brand column */}
           <div>
-            <div className="flex items-center gap-3">
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-light font-serif text-lg font-semibold text-navy">
-                L
-              </span>
-              <span className="font-serif text-[15px] font-semibold text-white">
-                Lavelle<span className="ml-1 text-brand-light">Networks</span>
-              </span>
-            </div>
+            {/* All-white lockup on the ink field. 40px tall keeps the mark at
+                36px, so the 20px gap below clears the required 1/2 X margin. */}
+            <Image
+              src="/brand/logo-white.png"
+              alt="Lavelle Networks"
+              width={1750}
+              height={378}
+              className="h-10 w-auto"
+            />
             <p className="mt-5 font-serif text-lg text-white">
               Connect. Control. Secure. Anywhere.
             </p>

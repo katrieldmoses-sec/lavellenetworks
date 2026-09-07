@@ -51,6 +51,16 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Lavelle Networks Pvt. Ltd." }],
   creator: "Lavelle Networks Pvt. Ltd.",
+  // Icon set and manifest per the brand identity kit, section 08.
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-32.png", type: "image/png", sizes: "32x32" },
+      { url: "/icon-16.png", type: "image/png", sizes: "16x16" },
+    ],
+    apple: [{ url: "/icon-180.png", sizes: "180x180" }],
+  },
+  manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
     locale: "en_IN",
@@ -59,12 +69,21 @@ export const metadata: Metadata = {
     title: "Lavelle Networks — Connect. Control. Secure.",
     description:
       "India's trusted enterprise networking platform. Unified SD-WAN, SD-Branch, SASE, and AI Ops for distributed enterprises.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Lavelle Networks — Accelerate Networks for the Digital Economy",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Lavelle Networks — Connect. Control. Secure.",
     description:
       "India's trusted enterprise networking platform. Unified SD-WAN, SD-Branch, SASE, and AI Ops.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -73,7 +92,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b1930",
+  // Brand blue, per the identity kit's head markup and manifest (section 08).
+  themeColor: "#0078D4",
   width: "device-width",
   initialScale: 1,
 };

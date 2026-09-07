@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import { ChevronDown, Menu, Close } from "./icons";
 
 type NavLink = { name: string; href: string };
@@ -115,22 +116,19 @@ const NAV: NavEntry[] = [
 
 function Logo() {
   return (
-    <a
-      href="/"
-      className="flex shrink-0 items-center gap-2.5"
-      aria-label="Lavelle Networks home"
-    >
-      <span className="flex h-7 w-7 items-center justify-center rounded-[4px] bg-brand-azure font-serif text-[12px] font-bold text-white">
-        L
-      </span>
-      <span className="leading-none">
-        <span className="block font-serif text-[14px] font-semibold tracking-[-0.35px] text-white">
-          Lavelle<span className="ml-1 text-brand-light">Networks</span>
-        </span>
-        <span className="mt-[3px] block font-mono text-[9px] uppercase tracking-[0.9px] text-[#4a6891]">
-          Est. 2015 · Bangalore
-        </span>
-      </span>
+    <a href="/" className="flex shrink-0 items-center" aria-label="Lavelle Networks home">
+      {/* All-white lockup, the identity kit's variant for ink and blue fields.
+          Rendered 28px tall: the mark is then 25px, so the 14px of header
+          padding above and below clears the required 1/2 X margin. Below the
+          kit's 280px tagline minimum, so the tagline-less lockup is used. */}
+      <Image
+        src="/brand/logo-white.png"
+        alt="Lavelle Networks"
+        width={1750}
+        height={378}
+        priority
+        className="h-7 w-auto"
+      />
     </a>
   );
 }
