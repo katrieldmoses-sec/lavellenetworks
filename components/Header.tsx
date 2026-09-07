@@ -3,66 +3,119 @@
 import { useEffect, useState } from "react";
 import { ChevronDown, Menu, Close } from "./icons";
 
-type NavItem = { label: string; href: string; desc?: string };
-type NavGroup = { label: string; href: string; items: NavItem[] };
+type NavLink = { name: string; href: string };
+type NavGroup = { label: string; items: NavLink[] };
+type NavEntry = {
+  label: string;
+  href: string;
+  /** Grouped mega-menu (rendered in two columns) or a flat list. */
+  groups?: NavGroup[];
+  items?: NavLink[];
+};
 
-const NAV: NavGroup[] = [
+/** Mirrors the navigation data in the source design exactly. */
+const NAV: NavEntry[] = [
   {
     label: "Products",
     href: "/products/sd-wan",
-    items: [
-      { label: "ScaleAOn SD-WAN", href: "/products/sd-wan", desc: "Enterprise WAN" },
-      { label: "ScaleAOn SD-Branch", href: "/products/secure-branch", desc: "Branch infrastructure" },
-      { label: "indusWall SASE", href: "/products/sase", desc: "Network security" },
-      { label: "ipDesk AI Ops", href: "/products/ai-operations", desc: "Network operations" },
-      { label: "ZTNA", href: "/products/ztna", desc: "Zero Trust access" },
-      { label: "Network Analytics", href: "/products/network-analytics", desc: "Visibility & insight" },
+    groups: [
+      {
+        label: "Platform",
+        items: [
+          { name: "ScaleAOn SD-WAN", href: "/products/sd-wan" },
+          { name: "ScaleAOn SD-Branch", href: "/products/secure-branch" },
+          { name: "indusWall SASE", href: "/products/sase" },
+          { name: "ipDesk AI Ops", href: "/products/ai-operations" },
+        ],
+      },
+      {
+        label: "SD-WAN Components",
+        items: [
+          { name: "CloudPort Edge", href: "/products/cloudport-edge" },
+          { name: "CloudPort Gateway", href: "/products/cloudport-gateway" },
+          { name: "CloudStation Controller", href: "/products/cloudstation-controller" },
+          { name: "CloudStation Insights", href: "/products/cloudstation-insights" },
+        ],
+      },
+      {
+        label: "Security & Access",
+        items: [
+          { name: "ZTNA", href: "/products/ztna" },
+          { name: "Secure Internet Access", href: "/products/secure-internet" },
+        ],
+      },
+      {
+        label: "Cloud & Intelligence",
+        items: [
+          { name: "Cloud Connectivity", href: "/products/cloud-connectivity" },
+          { name: "Network Analytics", href: "/products/network-analytics" },
+          { name: "Digital Experience", href: "/products/digital-experience" },
+        ],
+      },
     ],
   },
   {
     label: "Solutions",
     href: "/solutions/bfsi",
-    items: [
-      { label: "BFSI", href: "/solutions/bfsi" },
-      { label: "Retail", href: "/solutions/retail" },
-      { label: "Manufacturing", href: "/solutions/manufacturing" },
-      { label: "Government & PSU", href: "/solutions/government" },
-      { label: "Healthcare", href: "/solutions/healthcare" },
-      { label: "Education", href: "/solutions/education" },
+    groups: [
+      {
+        label: "Use Cases",
+        items: [
+          { name: "Hybrid WAN", href: "/use-cases/hybrid-wan" },
+          { name: "Microsoft 365 Performance", href: "/use-cases/microsoft-365-performance" },
+          { name: "Enterprise Network Monitoring", href: "/use-cases/enterprise-network-monitoring" },
+          { name: "Multi-cloud Connectivity", href: "/use-cases/multi-cloud-connectivity" },
+          { name: "Application Availability", href: "/use-cases/application-availability" },
+          { name: "Branch Transformation", href: "/use-cases/branch-transformation" },
+          { name: "Hybrid Workforce", href: "/use-cases/hybrid-workforce" },
+        ],
+      },
+      {
+        label: "Industries",
+        items: [
+          { name: "BFSI", href: "/solutions/bfsi" },
+          { name: "Retail", href: "/solutions/retail" },
+          { name: "Manufacturing", href: "/solutions/manufacturing" },
+          { name: "Logistics & Supply Chain", href: "/solutions/logistics" },
+          { name: "Information Technology", href: "/solutions/information-technology" },
+          { name: "Healthcare", href: "/solutions/healthcare" },
+          { name: "Education", href: "/solutions/education" },
+          { name: "Government & PSU", href: "/solutions/government" },
+        ],
+      },
     ],
   },
   {
     label: "Resources",
     href: "/resources/blogs",
     items: [
-      { label: "Blogs & Insights", href: "/resources/blogs" },
-      { label: "Case Studies", href: "/resources/case-studies" },
-      { label: "Whitepapers", href: "/resources/whitepapers" },
-      { label: "Datasheets", href: "/resources/datasheets" },
-      { label: "Webinars", href: "/resources/webinars" },
-      { label: "Documentation", href: "/resources/documentation" },
+      { name: "Blogs & Insights", href: "/resources/blogs" },
+      { name: "Case Studies", href: "/resources/case-studies" },
+      { name: "Whitepapers", href: "/resources/whitepapers" },
+      { name: "Datasheets", href: "/resources/datasheets" },
+      { name: "Webinars & Events", href: "/resources/webinars" },
+      { name: "Documentation", href: "/resources/documentation" },
+      { name: "News & Media", href: "/company/news" },
     ],
   },
   {
     label: "Company",
     href: "/company/about",
     items: [
-      { label: "About Lavelle", href: "/company/about" },
-      { label: "Leadership", href: "/company/leadership" },
-      { label: "Careers", href: "/company/careers" },
-      { label: "News & Media", href: "/company/news" },
-      { label: "Contact Us", href: "/company/contact" },
+      { name: "Our Story", href: "/company/about" },
+      { name: "Leadership", href: "/company/leadership" },
+      { name: "Careers", href: "/company/careers" },
+      { name: "Investors", href: "/company/investors" },
+      { name: "Contact", href: "/company/contact" },
     ],
   },
   {
     label: "Partners",
     href: "/partners",
     items: [
-      { label: "Partner Programme", href: "/partners" },
-      { label: "Partner With Us", href: "/contact/partner-with-us" },
-      { label: "Support Portal", href: "/contact/support" },
-      { label: "Request Demo", href: "/contact/request-demo" },
-      { label: "Talk to Expert", href: "/contact/talk-to-expert" },
+      { name: "Partner Programme", href: "/partners" },
+      { name: "Partner Locator", href: "/partners/locator" },
+      { name: "Partner With Us", href: "/contact/partner-with-us" },
     ],
   },
 ];
@@ -113,49 +166,87 @@ export default function Header() {
           aria-label="Main navigation"
           onMouseLeave={() => setOpenGroup(null)}
         >
-          {NAV.map((group) => (
-            <div
-              key={group.label}
-              className="relative"
-              onMouseEnter={() => setOpenGroup(group.label)}
-            >
-              <a
-                href={group.href}
-                className="flex items-center gap-1 px-3 py-2 text-[13px] font-medium text-brand-sky transition-colors hover:text-white"
-                aria-expanded={openGroup === group.label}
+          {NAV.map((entry) => {
+            const open = openGroup === entry.label;
+            return (
+              <div
+                key={entry.label}
+                className="static"
+                onMouseEnter={() => setOpenGroup(entry.label)}
               >
-                {group.label}
-                <ChevronDown
-                  className={`h-3.5 w-3.5 transition-transform ${
-                    openGroup === group.label ? "rotate-180" : ""
+                <a
+                  href={entry.href}
+                  className={`flex items-center gap-1.5 rounded-t-[6px] px-4 py-4 text-[15px] font-medium transition-colors ${
+                    open ? "bg-[#152744] text-white" : "text-brand-sky hover:text-white"
                   }`}
-                />
-              </a>
-              {openGroup === group.label && (
-                <div className="absolute left-0 top-full pt-2">
-                  <div className="w-60 rounded-[6px] border border-[#1a3055] bg-[#112040] p-2 shadow-2xl shadow-black/40">
-                    {group.items.map((item) => (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        onClick={() => setOpenGroup(null)}
-                        className="block rounded-[4px] px-3 py-2 transition-colors hover:bg-white/5"
+                  aria-expanded={open}
+                >
+                  {entry.label}
+                  <ChevronDown
+                    className={`h-4 w-4 transition-transform ${open ? "rotate-180" : ""}`}
+                  />
+                </a>
+
+                {/* Always rendered so the links exist in the server HTML and
+                    remain crawlable; visibility is toggled with CSS. */}
+                <div
+                  className={`absolute left-0 right-0 top-full z-50 transition-opacity duration-150 ${
+                    open
+                      ? "visible opacity-100"
+                      : "invisible opacity-0 pointer-events-none"
+                  }`}
+                  aria-hidden={!open}
+                >
+                    <div className="container-x">
+                      <div
+                        className={`pointer-events-auto rounded-[10px] border border-[#1f3357] bg-[#101f3a] p-8 shadow-2xl shadow-black/50 ${
+                          entry.groups ? "w-full" : "w-[320px]"
+                        }`}
                       >
-                        <span className="block text-[13px] font-medium text-white">
-                          {item.label}
-                        </span>
-                        {item.desc && (
-                          <span className="block text-[11px] text-[#4a6891]">
-                            {item.desc}
-                          </span>
+                        {entry.groups ? (
+                          <div className="grid grid-cols-2 gap-x-16 gap-y-10">
+                            {entry.groups.map((g) => (
+                              <div key={g.label}>
+                                <span className="block font-mono text-[12px] font-normal uppercase leading-[16px] tracking-[1.2px] text-[#4a6891]">
+                                  {g.label}
+                                </span>
+                                <ul className="mt-5 space-y-4">
+                                  {g.items.map((it) => (
+                                    <li key={it.name}>
+                                      <a
+                                        href={it.href}
+                                        onClick={() => setOpenGroup(null)}
+                                        className="text-[16px] text-white/90 transition-colors hover:text-brand-light"
+                                      >
+                                        {it.name}
+                                      </a>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            ))}
+                          </div>
+                        ) : (
+                          <ul className="space-y-4">
+                            {entry.items?.map((it) => (
+                              <li key={it.name}>
+                                <a
+                                  href={it.href}
+                                  onClick={() => setOpenGroup(null)}
+                                  className="text-[16px] text-white/90 transition-colors hover:text-brand-light"
+                                >
+                                  {it.name}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
                         )}
-                      </a>
-                    ))}
-                  </div>
+                      </div>
+                    </div>
                 </div>
-              )}
-            </div>
-          ))}
+              </div>
+            );
+          })}
         </nav>
 
         {/* Desktop CTAs */}
@@ -200,35 +291,61 @@ export default function Header() {
       {mobileOpen && (
         <div className="xl:hidden">
           <div className="max-h-[calc(100vh-56px)] overflow-y-auto border-t border-[#1a3055]/40 bg-navy px-6 pb-10 pt-4">
-            {NAV.map((group) => (
-              <div key={group.label} className="border-b border-[#1a3055]/40">
+            {NAV.map((entry) => (
+              <div key={entry.label} className="border-b border-white/10">
                 <button
                   type="button"
-                  className="flex w-full items-center justify-between py-4 text-left text-[15px] font-semibold text-white"
+                  className="flex w-full items-center justify-between py-4 text-left text-base font-semibold text-white"
                   onClick={() =>
-                    setMobileGroup((g) => (g === group.label ? null : group.label))
+                    setMobileGroup((g) => (g === entry.label ? null : entry.label))
                   }
-                  aria-expanded={mobileGroup === group.label}
+                  aria-expanded={mobileGroup === entry.label}
                 >
-                  {group.label}
+                  {entry.label}
                   <ChevronDown
                     className={`h-4 w-4 transition-transform ${
-                      mobileGroup === group.label ? "rotate-180" : ""
+                      mobileGroup === entry.label ? "rotate-180" : ""
                     }`}
                   />
                 </button>
-                {mobileGroup === group.label && (
-                  <div className="pb-3">
-                    {group.items.map((item) => (
-                      <a
-                        key={item.label}
-                        href={item.href}
-                        onClick={() => setMobileOpen(false)}
-                        className="block py-2 pl-3 text-[13px] text-brand-sky"
-                      >
-                        {item.label}
-                      </a>
-                    ))}
+                {mobileGroup === entry.label && (
+                  <div className="pb-4">
+                    {entry.groups
+                      ? entry.groups.map((g) => (
+                          <div key={g.label} className="mb-5 last:mb-0">
+                            <span className="block font-mono text-[11px] font-normal uppercase tracking-[1.2px] text-[#4a6891]">
+                              {g.label}
+                            </span>
+                            <ul className="mt-3 space-y-3">
+                              {g.items.map((it) => (
+                                <li key={it.name}>
+                                  <a
+                                    href={it.href}
+                                    onClick={() => setMobileOpen(false)}
+                                    className="block text-[15px] text-white/90"
+                                  >
+                                    {it.name}
+                                  </a>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ))
+                      : (
+                          <ul className="space-y-3">
+                            {entry.items?.map((it) => (
+                              <li key={it.name}>
+                                <a
+                                  href={it.href}
+                                  onClick={() => setMobileOpen(false)}
+                                  className="block text-[15px] text-white/90"
+                                >
+                                  {it.name}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
                   </div>
                 )}
               </div>

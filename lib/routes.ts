@@ -54,3 +54,25 @@ export const ALL_ROUTES: string[] = [
   "/partners",
   "/partners/locator",
 ];
+
+/**
+ * Alias routes that render identical content to another URL (the source design
+ * does the same). They must exist so every source URL resolves, but they are
+ * canonicalised to the primary URL and kept out of the sitemap so search
+ * engines don't treat them as duplicate content.
+ */
+export const CANONICAL_OF: Record<string, string> = {
+  "/use-cases/multi-cloud": "/use-cases/multi-cloud-connectivity",
+  "/use-cases/network-monitoring": "/use-cases/enterprise-network-monitoring",
+  "/solutions/branch-transformation": "/use-cases/branch-transformation",
+  "/solutions/hybrid-workforce": "/use-cases/hybrid-workforce",
+  "/resources/news": "/company/news",
+};
+
+/** Canonical path for any route (itself, unless it is an alias). */
+export function canonicalPath(path: string): string {
+  return CANONICAL_OF[path] ?? path;
+}
+
+/** Routes that belong in the sitemap (aliases excluded). */
+export const SITEMAP_ROUTES = ALL_ROUTES.filter((r) => !(r in CANONICAL_OF));

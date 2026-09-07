@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import { canonicalPath } from "@/lib/routes";
 import Sections from "@/components/page/Sections";
 import StubPage from "@/components/page/StubPage";
 import { resourcePages } from "@/lib/content/resources";
@@ -13,9 +14,15 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: Params): Metadata {
   const page = resourcePages.find((p) => p.slug === params.slug);
-  if (page) return { title: page.metaTitle, description: page.metaDescription };
+  const canonical = canonicalPath("/resources/" + params.slug);
+  if (page)
+    return {
+      title: page.metaTitle,
+      description: page.metaDescription,
+      alternates: { canonical },
+    };
   const stub = resourceStubs.find((p) => p.slug === params.slug);
-  return stub ? { title: stub.heading } : {};
+  return stub ? { title: stub.heading, alternates: { canonical } } : {};
 }
 
 export default function Route({ params }: Params) {
