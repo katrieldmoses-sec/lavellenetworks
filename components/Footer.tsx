@@ -28,10 +28,7 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "Blogs & Insights", href: "/resources/blogs" },
       { label: "Case Studies", href: "/resources/case-studies" },
-      { label: "Whitepapers", href: "/resources/whitepapers" },
       { label: "Datasheets", href: "/resources/datasheets" },
-      { label: "Webinars", href: "/resources/webinars" },
-      { label: "Documentation", href: "/resources/documentation" },
     ],
   },
   {
@@ -40,7 +37,6 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
       { label: "About Lavelle", href: "/company/about" },
       { label: "Leadership", href: "/company/leadership" },
       { label: "Careers", href: "/company/careers" },
-      { label: "News & Media", href: "/company/news" },
       { label: "Contact Us", href: "/company/contact" },
     ],
   },
@@ -49,7 +45,6 @@ const columns: { title: string; links: { label: string; href: string }[] }[] = [
     links: [
       { label: "Partner Programme", href: "/partners" },
       { label: "Partner With Us", href: "/contact/partner-with-us" },
-      { label: "Support Portal", href: "/contact/support" },
       { label: "Request Demo", href: "/contact/request-demo" },
       { label: "Talk to Expert", href: "/contact/talk-to-expert" },
     ],
@@ -123,10 +118,10 @@ export default function Footer() {
               <li className="flex items-center gap-2.5">
                 <Mail className="h-4 w-4 text-brand-sky" />
                 <a
-                  href="mailto:enterprise@lavellenetworks.com"
+                  href="mailto:sales@lavellenetworks.com"
                   className="transition-colors hover:text-white"
                 >
-                  enterprise@lavellenetworks.com
+                  sales@lavellenetworks.com
                 </a>
               </li>
               <li className="flex items-center gap-2.5">

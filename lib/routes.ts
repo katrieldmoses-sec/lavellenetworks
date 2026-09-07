@@ -37,19 +37,13 @@ export const ALL_ROUTES: string[] = [
   "/resources/blogs",
   "/resources/case-studies",
   "/resources/datasheets",
-  "/resources/documentation",
-  "/resources/news",
-  "/resources/webinars",
-  "/resources/whitepapers",
   "/company/about",
   "/company/careers",
   "/company/contact",
   "/company/investors",
   "/company/leadership",
-  "/company/news",
   "/contact/partner-with-us",
   "/contact/request-demo",
-  "/contact/support",
   "/contact/talk-to-expert",
   "/partners",
   "/partners/locator",
@@ -66,7 +60,6 @@ export const CANONICAL_OF: Record<string, string> = {
   "/use-cases/network-monitoring": "/use-cases/enterprise-network-monitoring",
   "/solutions/branch-transformation": "/use-cases/branch-transformation",
   "/solutions/hybrid-workforce": "/use-cases/hybrid-workforce",
-  "/resources/news": "/company/news",
 };
 
 /** Canonical path for any route (itself, unless it is an alias). */

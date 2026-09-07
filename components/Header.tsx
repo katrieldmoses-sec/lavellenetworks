@@ -96,11 +96,7 @@ const NAV: NavEntry[] = [
     items: [
       { name: "Blogs & Insights", href: "/resources/blogs" },
       { name: "Case Studies", href: "/resources/case-studies" },
-      { name: "Whitepapers", href: "/resources/whitepapers" },
       { name: "Datasheets", href: "/resources/datasheets" },
-      { name: "Webinars & Events", href: "/resources/webinars" },
-      { name: "Documentation", href: "/resources/documentation" },
-      { name: "News & Media", href: "/company/news" },
     ],
   },
   {
@@ -113,16 +109,6 @@ const NAV: NavEntry[] = [
       { name: "Careers", href: "/company/careers" },
       { name: "Investors", href: "/company/investors" },
       { name: "Contact", href: "/company/contact" },
-    ],
-  },
-  {
-    label: "Partners",
-    href: "/partners",
-    panelWidth: 192,
-    items: [
-      { name: "Partner Programme", href: "/partners" },
-      { name: "Partner Locator", href: "/partners/locator" },
-      { name: "Partner With Us", href: "/contact/partner-with-us" },
     ],
   },
 ];
@@ -251,12 +237,6 @@ export default function Header() {
 
         {/* Desktop CTAs */}
         <div className="ml-auto hidden items-center gap-2 xl:flex">
-          <a
-            href="/contact/support"
-            className="px-3 py-1.5 text-[13px] text-brand-sky transition-colors hover:text-white"
-          >
-            Support
-          </a>
           <a
             href="/contact/talk-to-expert"
             className="rounded-[4px] border border-navy-600 px-4 py-1.5 text-[13px] text-brand-sky transition-colors hover:border-brand-light hover:text-white"

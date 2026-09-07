@@ -289,7 +289,7 @@ export const productPages: PageContent[] = [
         body: "Stop reacting to network problems and start preventing them. ipDesk brings AI to every layer of enterprise network operations — from anomaly detection to automated resolution.",
         ctas: [
           { label: "Request a Demo", href: "/contact/request-demo" },
-          { label: "View Documentation", href: "/resources/documentation" },
+          { label: "Talk to an Expert", href: "/contact/talk-to-expert" },
         ],
       },
       {
@@ -408,7 +408,7 @@ export const productPages: PageContent[] = [
         body: "Talk to a Lavelle Networks specialist and see how ipDesk AI Ops fits your enterprise operations requirements.",
         ctas: [
           { label: "Request a Demo", href: "/contact/request-demo" },
-          { label: "View Documentation", href: "/resources/documentation" },
+          { label: "Talk to an Expert", href: "/contact/talk-to-expert" },
         ],
       },
     ],
@@ -674,7 +674,7 @@ export const productPages: PageContent[] = [
     metaTitle: "CloudStation Controller \u2014 ScaleAOn SD-WAN",
     metaDescription: "Central orchestration, policy, and control for the entire ScaleAOn network from a single management plane.",
     sections: [
-      { kind: "hero", eyebrow: "CloudStation Controller \u00b7 ScaleAOn SD-WAN", title: "Central orchestration, policy, and control for the entire ScaleAOn network.", body: "The CloudStation Controller provides intent-driven network policy, centralised orchestration across all edge and gateway devices, and a single management plane for every enterprise location \u2014 from a handful of branches to thousands of sites.", ctas: [{ label: "Request a Demo", href: "/contact/request-demo" }, { label: "View Documentation", href: "/resources/documentation" }] },
+      { kind: "hero", eyebrow: "CloudStation Controller \u00b7 ScaleAOn SD-WAN", title: "Central orchestration, policy, and control for the entire ScaleAOn network.", body: "The CloudStation Controller provides intent-driven network policy, centralised orchestration across all edge and gateway devices, and a single management plane for every enterprise location \u2014 from a handful of branches to thousands of sites.", ctas: [{ label: "Request a Demo", href: "/contact/request-demo" }, { label: "Talk to an Expert", href: "/contact/talk-to-expert" }] },
       { kind: "flow", eyebrow: "Platform Role", title: "The control and orchestration layer of the ScaleAOn platform.", intro: "The CloudStation Controller is the management brain of the ScaleAOn platform. Every CloudPort Edge and CloudPort Gateway device receives its configuration, policy, and operational directives from the controller \u2014 enabling centralised management of any number of enterprise locations from a single interface.", nodes: [{ title: "CloudStation Controller", sub: "Control plane" }, { title: "CloudPort Gateway", sub: "Aggregation layer" }, { title: "CloudPort Edge", sub: "Branch edge devices" }, { title: "Enterprise locations", sub: "Thousands of sites" }] },
       { kind: "capabilities", eyebrow: "Key Capabilities", title: "Orchestration capabilities for enterprise-scale networks.", items: [
         { title: "Intent-driven policies", body: "Express network intent through high-level policies. The controller automatically translates policies into device-level configuration across all locations \u2014 no per-device manual work required." },
