@@ -4,9 +4,10 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const TO = process.env.CONTACT_TO ?? "sales@lavellenetworks.com";
-/** Must be a domain verified with the email provider. */
+/** Must be an address on a domain verified with the email provider. */
 const FROM =
-  process.env.CONTACT_FROM ?? "Lavelle Website <onboarding@resend.dev>";
+  process.env.CONTACT_FROM ??
+  "Lavelle Networks <website@lavellenetworks.com>";
 
 const LIMITS = { name: 120, designation: 120, message: 4000 } as const;
 
