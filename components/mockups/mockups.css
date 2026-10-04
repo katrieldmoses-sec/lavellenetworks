@@ -1,0 +1,153 @@
+/* Shared styles for the homepage mockups (/mockups, /mockup/1-20).
+   Loaded only on those routes. */
+
+/* Film grain: static fractal noise, tiled. */
+.mk-grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 0 0.5  0 0 0 1.4 -0.2'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 240px 240px;
+}
+
+/* Paper grain for light grounds: ink speckle only. */
+.mk-paper-grain {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='1.1' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.125  0 0 0 0 0.118  0 0 0 0 0.114  0 0 0 0.9 -0.35'/></filter><rect width='100%25' height='100%25' filter='url(%23p)'/></svg>");
+  background-size: 200px 200px;
+}
+
+/* Marquee */
+@keyframes mk-marquee {
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.mk-marquee-track {
+  animation: mk-marquee linear infinite;
+}
+.mk-marquee:hover .mk-marquee-track {
+  animation-play-state: paused;
+}
+
+/* Slow rotation for orbit rings and circular text */
+@keyframes mk-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.mk-spin {
+  animation: mk-spin 40s linear infinite;
+}
+.mk-spin-slow {
+  animation: mk-spin 90s linear infinite;
+}
+.mk-spin-rev {
+  animation: mk-spin 60s linear infinite reverse;
+}
+
+/* Data flowing along connector lines */
+@keyframes mk-dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+.mk-flow {
+  stroke-dasharray: 3 9;
+  animation: mk-dash 1.4s linear infinite;
+}
+
+/* Gentle float for floating cards */
+@keyframes mk-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+.mk-float {
+  animation: mk-float 7s ease-in-out infinite;
+}
+.mk-float-b {
+  animation: mk-float 9s ease-in-out -3s infinite;
+}
+
+/* Packet travelling down a vertical rail */
+@keyframes mk-packet {
+  0% {
+    transform: translate3d(0, -100%, 0);
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate3d(0, 2400%, 0);
+    opacity: 0;
+  }
+}
+.mk-packet {
+  animation: mk-packet 2.6s cubic-bezier(.6, 0, .4, 1) infinite;
+}
+
+/* Blinking caret for console-style mockups */
+@keyframes mk-caret {
+  50% {
+    opacity: 0;
+  }
+}
+.mk-caret {
+  animation: mk-caret 1s steps(1) infinite;
+}
+
+/* Outline text (Gen 5) */
+/* Fill is cleared via text-fill-color so the stroke can still use the real
+   currentColor (setting color: transparent would make the stroke vanish). */
+.mk-outline {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1.5px currentColor;
+}
+.mk-outline * {
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hide scrollbars on horizontal tracks */
+.mk-noscroll {
+  scrollbar-width: none;
+}
+.mk-noscroll::-webkit-scrollbar {
+  display: none;
+}
+
+/* Ink scrollbar on mockup pages instead of the site's navy one */
+html:has(.mk-root)::-webkit-scrollbar-track {
+  background: #f3f2f2;
+}
+html:has(.mk-root)::-webkit-scrollbar-thumb {
+  background: #201e1d33;
+}
+html:has(.mk-root.mk-dark)::-webkit-scrollbar-track {
+  background: #201e1d;
+}
+html:has(.mk-root.mk-dark)::-webkit-scrollbar-thumb {
+  background: #ffffff26;
+}
+html:has(.mk-root) {
+  background: #f3f2f2;
+}
+html:has(.mk-root.mk-dark) {
+  background: #201e1d;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-marquee-track,
+  .mk-spin,
+  .mk-spin-slow,
+  .mk-spin-rev,
+  .mk-flow,
+  .mk-float,
+  .mk-float-b,
+  .mk-packet,
+  .mk-caret {
+    animation: none !important;
+  }
+}

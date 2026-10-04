@@ -1,64 +1,6 @@
 import Image from "next/image";
 import { MapPin, Mail, Phone } from "./icons";
-
-const columns: { title: string; links: { label: string; href: string }[] }[] = [
-  {
-    title: "Platform",
-    links: [
-      { label: "ScaleAOn SD-WAN", href: "/products/sd-wan" },
-      { label: "ScaleAOn SD-Branch", href: "/products/secure-branch" },
-      { label: "indusWall SASE", href: "/products/sase" },
-      { label: "ipDesk AI Ops", href: "/products/ai-operations" },
-      { label: "ZTNA", href: "/products/ztna" },
-      { label: "Network Analytics", href: "/products/network-analytics" },
-    ],
-  },
-  {
-    title: "Solutions",
-    links: [
-      { label: "BFSI", href: "/solutions/bfsi" },
-      { label: "Retail", href: "/solutions/retail" },
-      { label: "Manufacturing", href: "/solutions/manufacturing" },
-      { label: "Government & PSU", href: "/solutions/government" },
-      { label: "Healthcare", href: "/solutions/healthcare" },
-      { label: "Education", href: "/solutions/education" },
-    ],
-  },
-  {
-    title: "Resources",
-    links: [
-      { label: "Blogs & Insights", href: "/resources/blogs" },
-      { label: "Case Studies", href: "/resources/case-studies" },
-      { label: "Datasheets", href: "/resources/datasheets" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About Lavelle", href: "/company/about" },
-      { label: "Leadership", href: "/company/leadership" },
-      { label: "Careers", href: "/company/careers" },
-      { label: "Contact Us", href: "/company/contact" },
-    ],
-  },
-  {
-    title: "Partners & Support",
-    links: [
-      { label: "Partner Programme", href: "/partners" },
-      { label: "Partner With Us", href: "/contact/partner-with-us" },
-      { label: "Request Demo", href: "/contact/request-demo" },
-      { label: "Talk to Expert", href: "/contact/talk-to-expert" },
-    ],
-  },
-];
-
-const legal = [
-  "Privacy Policy",
-  "Terms of Use",
-  "Security",
-  "Cookie Preferences",
-  "Sitemap",
-];
+import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
 
 export default function Footer() {
   return (
@@ -140,7 +82,7 @@ export default function Footer() {
 
           {/* Link columns: 2-col on mobile, 5-col from md up */}
           <div className="grid grid-cols-2 gap-8 md:grid-cols-5">
-            {columns.map((col) => (
+            {FOOTER_COLUMNS.map((col) => (
               <div key={col.title}>
                 <h3 className="font-mono text-[11px] uppercase tracking-[0.16em] text-brand-sky">
                   {col.title}
@@ -172,7 +114,7 @@ export default function Footer() {
             </span>
           </div>
           <ul className="flex flex-wrap items-center gap-x-5 gap-y-2 text-xs text-white/50">
-            {legal.map((item) => (
+            {FOOTER_LEGAL.map((item) => (
               <li key={item}>
                 <a href="#contact" className="transition-colors hover:text-white">
                   {item}

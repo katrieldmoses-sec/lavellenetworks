@@ -31,6 +31,19 @@ const config: Config = {
           200: "#e2eaf5",
           300: "#c8d8ea",
         },
+        // Identity kit (section 09): one blue, one ink, two grounds, plus the
+        // interface ramp. Used by the homepage mockups.
+        lv: {
+          blue: "#0078D4",
+          100: "#E5F1FB",
+          200: "#C2DFF6",
+          300: "#8CC3EE",
+          500: "#0078D4",
+          600: "#0068B8",
+          700: "#005493",
+          ink: "#201E1D",
+          paper: "#F3F2F2",
+        },
         accent: {
           cyan: "#0891b2",
           violet: "#7c3aed",
@@ -41,6 +54,10 @@ const config: Config = {
         sans: ["var(--font-jakarta)", "system-ui", "sans-serif"],
         serif: ["var(--font-fraunces)", "Georgia", "serif"],
         mono: ["var(--font-dm-mono)", "ui-monospace", "monospace"],
+        // Per-mockup slots; each /mockup/N page binds these variables.
+        "m-display": ["var(--f-display)", "Archivo", "Helvetica", "sans-serif"],
+        "m-body": ["var(--f-body)", "Archivo", "Helvetica", "sans-serif"],
+        "m-mono": ["var(--f-mono)", "ui-monospace", "monospace"],
       },
       maxWidth: {
         container: "1280px",

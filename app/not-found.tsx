@@ -1,7 +1,11 @@
 import Link from "next/link";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 export default function NotFound() {
   return (
+    <>
+    <Header />
     <main className="grid min-h-screen place-items-center bg-navy px-6 text-center text-white">
       <div>
         <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-brand-light">
@@ -22,5 +26,7 @@ export default function NotFound() {
         </Link>
       </div>
     </main>
+    <Footer />
+    </>
   );
 }
