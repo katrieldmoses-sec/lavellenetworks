@@ -26,7 +26,7 @@ const GROUND: Record<string, string> = {
 export default function MockupsIndex() {
   return (
     <div className={`${archivo.variable} mk-root relative min-h-screen bg-lv-paper font-m-display text-lv-ink`}>
-      <div aria-hidden className="mk-paper-grain pointer-events-none fixed inset-0 opacity-40" />
+      <div aria-hidden className="mk-paper-grain pointer-events-none absolute inset-0 opacity-40" />
 
       <div className="relative mx-auto max-w-[1320px] px-6 pb-24 pt-10 lg:px-12">
         <header className="flex items-center justify-between border-b border-lv-ink/15 pb-8">
