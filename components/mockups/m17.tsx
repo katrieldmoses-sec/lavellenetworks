@@ -108,7 +108,7 @@ export default function M17() {
             WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.25) 30%, #000 70%)",
           }}
         >
-          <Globe dot="rgba(194,223,246,0.9)" dotSize={1.25} density={1.25} lon={80} lat={22} sway={14} frame={{ cx: 0.5, cy: 1.1, r: 0.42 }} />
+          <Globe dot="rgba(194,223,246,0.9)" dotSize={1.25} density={1.25} lon={80} lat={-30} sway={14} horizon={{ r: 0.42, top: 0.14 }} outline="rgba(140,195,238,0.45)" ocean="rgba(255,255,255,0.03)" />
         </div>
         <div className="absolute inset-x-0 bottom-6 z-10 flex justify-center">
           <span className="rounded-full border border-white/15 bg-lv-ink/60 px-4 py-2 text-[12px] text-white/70 backdrop-blur">
@@ -196,7 +196,7 @@ export default function M17() {
                   >
                     {tall && (
                       <div className="absolute inset-x-0 bottom-0 h-1/2 opacity-60">
-                        <Globe dot="rgba(255,255,255,0.85)" dotSize={1} density={1.8} lon={78} lat={-20} sway={10} frame={{ cx: 0.5, cy: 1.2, r: 0.6 }} />
+                        <Globe dot="rgba(255,255,255,0.85)" dotSize={1} density={1.8} lon={78} lat={-30} sway={10} horizon={{ r: 0.6, top: 0.25 }} outline="rgba(255,255,255,0.55)" />
                       </div>
                     )}
                     {tall && <Grain opacity={0.25} />}
@@ -492,7 +492,7 @@ export default function M17() {
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0 h-[46vh]">
-          <Globe dot="rgba(194,223,246,0.9)" dotSize={1.25} density={1.25} arcs="#0078D4" marker="#FFFFFF" lon={80} lat={22} sway={14} frame={{ cx: 0.5, cy: 1.15, r: 0.42 }} />
+          <Globe dot="rgba(194,223,246,0.9)" dotSize={1.25} density={1.25} arcs="#0078D4" marker="#FFFFFF" lon={80} lat={-30} sway={14} horizon={{ r: 0.42, top: 0.12 }} outline="rgba(140,195,238,0.45)" ocean="rgba(255,255,255,0.03)" />
         </div>
       </section>
 

@@ -135,16 +135,22 @@ export function isLand(lat: number, lon: number): boolean {
 }
 
 /**
- * Evenly spaced land points. `step` is the latitude spacing in degrees;
- * longitude spacing widens toward the poles so dots stay roughly equidistant.
+ * Evenly spread land points on a Fibonacci sphere. Unlike a lat/lon grid this
+ * has no rows, so tilted views and horizon crops show no rings or moiré.
+ * `step` is the approximate spacing between neighbouring dots, in degrees.
  */
-export function landPoints(step = 2, minLat = -58): [number, number][] {
+export function landPoints(step = 2, minLat = -60): [number, number][] {
+  const s = (step * Math.PI) / 180;
+  const n = Math.round((4 * Math.PI) / (s * s));
+  const golden = Math.PI * (3 - Math.sqrt(5));
   const pts: [number, number][] = [];
-  for (let lat = 90 - step / 2; lat > minLat; lat -= step) {
-    const lonStep = step / Math.max(0.15, Math.cos((lat * Math.PI) / 180));
-    for (let lon = -180 + lonStep / 2; lon < 180; lon += lonStep) {
-      if (isLand(lat, lon)) pts.push([lat, lon]);
-    }
+  for (let i = 0; i < n; i++) {
+    const z = 1 - (2 * (i + 0.5)) / n;
+    const lat = (Math.asin(z) * 180) / Math.PI;
+    if (lat < minLat) continue;
+    let lon = ((i * golden * 180) / Math.PI) % 360;
+    if (lon > 180) lon -= 360;
+    if (isLand(lat, lon)) pts.push([lat, lon]);
   }
   return pts;
 }

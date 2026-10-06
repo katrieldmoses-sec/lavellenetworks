@@ -89,7 +89,7 @@ export default function M08() {
         <div className="relative mx-auto min-h-[640px] max-w-[1400px] overflow-hidden rounded-[22px] text-white lg:h-[calc(100svh-100px)]">
           <GrainField tone="dusk" grain={0.32} className="absolute inset-0">
             <div className="absolute inset-x-0 bottom-0 aspect-[2.2/1]">
-              <Globe dot="rgba(255,255,255,0.85)" dotSize={1.25} density={1.35} lon={80} lat={-48} sway={10} frame={{ cx: 0.42, cy: 1.9, r: 0.62 }} />
+              <Globe dot="rgba(255,255,255,0.85)" dotSize={1.25} density={1.35} lon={80} lat={-30} sway={10} horizon={{ r: 0.5, top: 0.3, cx: 0.42 }} outline="rgba(255,255,255,0.7)" ocean="rgba(0,84,147,0.3)" />
             </div>
           </GrainField>
           {/* giant serif word */}

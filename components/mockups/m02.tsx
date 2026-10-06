@@ -623,7 +623,7 @@ export default function M02() {
           </Reveal>
         </div>
         <div className="relative mt-16 h-[320px] lg:h-[420px]">
-          <Globe dot="#8CC3EE" dotSize={1.1} density={1.8} arcs="#0078D4" marker="#C2DFF6" lon={80} lat={22} sway={18} frame={{ cx: 0.5, cy: 1.05, r: 0.36 }} />
+          <Globe dot="#8CC3EE" dotSize={1.1} density={1.8} arcs="#0078D4" marker="#C2DFF6" lon={80} lat={-30} sway={18} horizon={{ r: 0.36, top: 0.1 }} outline="rgba(140,195,238,0.45)" ocean="rgba(255,255,255,0.03)" />
         </div>
       </section>
 

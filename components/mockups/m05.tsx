@@ -538,7 +538,7 @@ export default function M05() {
               </a>
             </div>
             <div className="relative mx-auto mt-14 h-[280px] max-w-[900px] lg:h-[360px]">
-              <Globe dot="#005493" dotSize={1.15} density={1.6} arcs="#0078D4" marker="#0078D4" lon={78} lat={22} sway={16} frame={{ cx: 0.5, cy: 1.08, r: 0.42 }} />
+              <Globe dot="#005493" dotSize={1.15} density={1.6} arcs="#0078D4" marker="#0078D4" lon={78} lat={-30} sway={16} horizon={{ r: 0.4, top: 0.1 }} outline="rgba(0,84,147,0.3)" ocean="rgba(255,255,255,0.5)" />
             </div>
           </section>
         </div>

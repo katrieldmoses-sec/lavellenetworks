@@ -88,7 +88,7 @@ export default function M07() {
             </div>
 
             <div className="relative h-[300px] overflow-hidden rounded-[14px] bg-[#2a2826] sm:h-[340px]">
-              <Globe dot="rgba(255,255,255,0.42)" dotSize={1} density={1.7} lon={78} lat={18} speed={3} frame={{ cx: 0.5, cy: 0.85, r: 0.5 }} />
+              <Globe dot="rgba(255,255,255,0.6)" dotSize={1.1} density={1.6} lon={78} lat={-30} speed={3} horizon={{ r: 0.45, top: 0.3 }} outline="rgba(255,255,255,0.18)" />
               <div className="absolute inset-0 bg-gradient-to-t from-lv-ink/70 via-transparent to-lv-ink/30" />
               <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
                 <span className="text-[12px] text-lv-300">

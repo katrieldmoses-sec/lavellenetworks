@@ -108,7 +108,7 @@ export default function M13() {
       <section className="relative z-10 overflow-hidden">
         {/* flat horizon: a solid curve, no glow */}
         <div className="absolute inset-x-0 bottom-0 h-[34%]">
-          <Globe dot="rgba(140,195,238,0.7)" dotSize={1.1} density={1.4} lon={80} lat={-50} sway={10} frame={{ cx: 0.5, cy: 2.3, r: 0.62 }} />
+          <Globe dot="rgba(140,195,238,0.9)" dotSize={1.2} density={1.4} arcs="#0078D4" marker="#C2DFF6" lon={80} lat={-30} sway={10} horizon={{ r: 0.5, top: 0.15 }} outline="rgba(140,195,238,0.45)" ocean="rgba(255,255,255,0.03)" />
         </div>
         <div aria-hidden className="absolute inset-x-0 bottom-0 h-px bg-white/10" />
         <div className="relative mx-auto max-w-4xl px-6 pb-[34vh] pt-24 text-center lg:pt-32">
@@ -537,7 +537,7 @@ export default function M13() {
           </div>
         </div>
         <div className="absolute inset-x-0 bottom-0 h-[42%]">
-          <Globe dot="rgba(140,195,238,0.7)" dotSize={1.1} density={1.5} arcs="#0078D4" marker="#C2DFF6" lon={80} lat={-30} sway={10} frame={{ cx: 0.5, cy: 1.75, r: 0.55 }} />
+          <Globe dot="rgba(140,195,238,0.7)" dotSize={1.1} density={1.5} arcs="#0078D4" marker="#C2DFF6" lon={80} lat={-30} sway={10} horizon={{ r: 0.45, top: 0.12 }} outline="rgba(140,195,238,0.45)" ocean="rgba(255,255,255,0.03)" />
         </div>
       </section>
 

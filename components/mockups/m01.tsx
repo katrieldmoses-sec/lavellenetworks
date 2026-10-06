@@ -93,10 +93,7 @@ export default function M01() {
         {/* ----------------------------------------------------------- hero */}
         <section className="relative">
           <GrainField tone="sky" grain={0.28} className="min-h-[calc(100svh-84px)] rounded-[28px] lg:rounded-[36px]">
-            <div
-              className="absolute inset-x-0 bottom-0 h-[46%]"
-              style={{ maskImage: "linear-gradient(to bottom, transparent, #000 45%)", WebkitMaskImage: "linear-gradient(to bottom, transparent, #000 45%)" }}
-            >
+            <div className="absolute inset-x-0 bottom-0 h-[46%]">
               <Globe
                 dot="#005493"
                 dotSize={1.2}
@@ -104,9 +101,11 @@ export default function M01() {
                 arcs="#0078D4"
                 marker="#0078D4"
                 lon={80}
-                lat={24}
+                lat={-30}
                 sway={16}
-                frame={{ cx: 0.5, cy: 0.99, r: 0.27 }}
+                horizon={{ r: 0.34, top: 0.12 }}
+                outline="rgba(0,84,147,0.35)"
+                ocean="rgba(255,255,255,0.35)"
               />
             </div>
             <div className="relative mx-auto flex max-w-4xl flex-col items-center px-6 pb-56 pt-16 text-center lg:pb-72 lg:pt-24">
@@ -622,11 +621,8 @@ export default function M01() {
         {/* ------------------------------------------------------ final cta */}
         <section>
           <GrainField tone="deep" grain={0.3} className="rounded-[28px] px-6 py-24 text-center text-white lg:rounded-[36px] lg:py-36">
-            <div
-              className="absolute inset-x-0 bottom-0 h-1/2 opacity-60"
-              style={{ maskImage: "linear-gradient(to bottom, transparent, #000 70%)", WebkitMaskImage: "linear-gradient(to bottom, transparent, #000 70%)" }}
-            >
-              <Globe dot="#8CC3EE" dotSize={1} density={2} speed={2} lon={78} lat={24} frame={{ cx: 0.5, cy: 1.02, r: 0.3 }} />
+            <div className="absolute inset-x-0 bottom-0 h-1/2">
+              <Globe dot="#8CC3EE" dotSize={1.15} density={1.6} arcs="#8CC3EE" marker="#FFFFFF" speed={2} lon={78} lat={-30} horizon={{ r: 0.34, top: 0.38 }} outline="rgba(140,195,238,0.45)" ocean="rgba(255,255,255,0.03)" />
             </div>
             <div className="relative mx-auto max-w-3xl">
               <Kicker light>{FINAL_CTA.kicker}</Kicker>

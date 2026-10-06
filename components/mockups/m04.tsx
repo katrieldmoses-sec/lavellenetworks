@@ -667,8 +667,8 @@ export default function M04() {
       {/* ========================================================== final cta */}
       <section className="mx-auto max-w-[1280px] px-6 pb-24">
         <GrainField tone="blue" grain={0.3} className="rounded-[44px] px-6 py-20 text-center text-white lg:py-28">
-          <div className="absolute inset-0 opacity-50">
-            <Globe dot="rgba(255,255,255,0.8)" dotSize={1} density={1.8} lon={78} lat={20} speed={3} frame={{ cx: 0.5, cy: 1.25, r: 0.42 }} />
+          <div className="absolute inset-0 opacity-80">
+            <Globe dot="rgba(255,255,255,0.85)" dotSize={1} density={1.8} lon={78} lat={-30} speed={3} horizon={{ r: 0.42, top: 0.58 }} outline="rgba(255,255,255,0.6)" />
           </div>
           <Sparkle className="mk-float absolute left-[12%] top-[22%] text-white" size={26} />
           <Sparkle className="mk-float-b absolute right-[14%] top-[30%] text-white" size={16} />

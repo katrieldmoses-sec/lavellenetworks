@@ -45,12 +45,21 @@ function Orbit({
   duration,
   reverse = false,
   chip,
+  offset = 0,
+  still = false,
+  compact = false,
 }: {
   items: { label: string; icon: React.ComponentType<{ className?: string }> }[];
   radius: number;
   duration: number;
   reverse?: boolean;
   chip: string;
+  /** Starting angle, as a fraction of a turn. */
+  offset?: number;
+  /** Hold chips in place (dense diagrams); only the globe moves. */
+  still?: boolean;
+  /** Smaller chips for dense rings. */
+  compact?: boolean;
 }) {
   return (
     <div
@@ -58,19 +67,23 @@ function Orbit({
       style={{ width: `${radius * 2}%`, height: `${radius * 2}%`, transform: "translate(-50%,-50%)" }}
     >
       <div
-        className="mk-spin absolute inset-0"
+        className={`absolute inset-0 ${still ? "" : "mk-spin"}`}
         style={{ animationDuration: `${duration}s`, animationDirection: reverse ? "reverse" : "normal" }}
       >
         {items.map((it, i) => {
-          const a = (i / items.length) * Math.PI * 2;
+          const a = (i / items.length + offset) * Math.PI * 2;
           return (
             <div key={it.label} className="absolute" style={{ left: `${(50 + Math.cos(a) * 50).toFixed(3)}%`, top: `${(50 + Math.sin(a) * 50).toFixed(3)}%` }}>
               <div
-                className="mk-spin"
+                className={still ? "" : "mk-spin"}
                 style={{ animationDuration: `${duration}s`, animationDirection: reverse ? "normal" : "reverse" }}
               >
-                <span className={`flex -translate-x-1/2 -translate-y-1/2 items-center gap-1.5 whitespace-nowrap rounded-full px-3 py-1.5 text-[12px] font-medium ${chip}`}>
-                  <it.icon className="h-3.5 w-3.5" />
+                <span
+                  className={`flex -translate-x-1/2 -translate-y-1/2 items-center whitespace-nowrap rounded-full font-medium ${
+                    compact ? "gap-1 px-2.5 py-1 text-[11px]" : "gap-1.5 px-3 py-1.5 text-[12px]"
+                  } ${chip}`}
+                >
+                  <it.icon className={compact ? "h-3 w-3" : "h-3.5 w-3.5"} />
                   {it.label}
                 </span>
               </div>
@@ -122,9 +135,9 @@ export default function M20() {
               <div className="absolute inset-[30%]">
                 <Globe dot="rgba(255,255,255,0.95)" dotSize={1.1} density={1.6} arcs="#C2DFF6" marker="#FFFFFF" lon={78} lat={18} speed={4} />
               </div>
-              <Orbit items={HERO.diagram.platform.map((p) => ({ label: `${p.brand} ${p.name}`, icon: p.icon }))} radius={27} duration={60} chip="bg-white text-lv-ink" />
-              <Orbit items={HERO.diagram.sources} radius={38} duration={90} reverse chip="bg-white/15 text-white backdrop-blur" />
-              <Orbit items={HERO.diagram.destinations} radius={48} duration={120} chip="bg-lv-ink/40 text-white backdrop-blur" />
+              <Orbit items={HERO.diagram.platform.map((p) => ({ label: `${p.brand} ${p.name}`, icon: p.icon }))} radius={27} duration={120} chip="bg-white text-lv-ink" />
+              <Orbit items={HERO.diagram.sources} radius={38} duration={120} offset={1 / 8} chip="bg-white/15 text-white backdrop-blur" />
+              <Orbit items={HERO.diagram.destinations} radius={48} duration={120} offset={1 / 16} chip="bg-lv-ink/40 text-white backdrop-blur" />
             </div>
           </div>
           <div className="relative flex min-h-[calc(100svh-96px)] flex-col justify-end p-6 lg:p-12">
@@ -248,14 +261,14 @@ export default function M20() {
             </ul>
           </div>
           <Reveal variant="scale" className="relative mx-auto aspect-square w-full max-w-[640px] text-lv-ink/15">
-            <div className="absolute inset-[34%] overflow-hidden rounded-full">
+            <div className="absolute inset-[37%] overflow-hidden rounded-full">
               <GrainField tone="blue" grain={0.3} className="h-full w-full rounded-full">
                 <Globe dot="rgba(255,255,255,0.95)" dotSize={0.9} density={2} lon={78} lat={18} speed={5} />
               </GrainField>
             </div>
-            <Orbit items={ARCHITECTURE.bands[1].items} radius={24} duration={70} chip="bg-lv-blue text-white" />
-            <Orbit items={ARCHITECTURE.bands[2].items} radius={33} duration={100} reverse chip="bg-white text-lv-ink shadow-sm" />
-            <Orbit items={[...ARCHITECTURE.bands[0].items, ...ARCHITECTURE.bands[3].items]} radius={46} duration={140} chip="bg-lv-ink text-white" />
+            <Orbit still compact items={ARCHITECTURE.bands[1].items} radius={25} duration={120} offset={0.0143} chip="bg-lv-blue text-white" />
+            <Orbit still compact items={ARCHITECTURE.bands[2].items} radius={37} duration={120} offset={0.1542} chip="bg-white text-lv-ink shadow-sm" />
+            <Orbit still compact items={[...ARCHITECTURE.bands[0].items, ...ARCHITECTURE.bands[3].items]} radius={49} duration={120} offset={0.0545} chip="bg-lv-ink text-white" />
           </Reveal>
         </div>
       </section>

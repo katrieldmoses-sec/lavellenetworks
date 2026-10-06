@@ -61,7 +61,7 @@ export default function M06() {
           {/* earth curvature */}
           {/* Aspect-locked so the curve sits at the same height at every width */}
           <div className="absolute inset-x-0 bottom-0 aspect-[2.6/1]">
-            <Globe dot="rgba(255,255,255,0.9)" dotSize={1.2} density={1.4} lon={80} lat={-52} sway={12} frame={{ cx: 0.5, cy: 2.15, r: 0.72 }} />
+            <Globe dot="rgba(255,255,255,0.9)" dotSize={1.2} density={1.4} lon={80} lat={-30} sway={12} horizon={{ r: 0.55, top: 0.2 }} outline="rgba(255,255,255,0.7)" ocean="rgba(0,84,147,0.32)" />
           </div>
           <div className="absolute inset-x-0 bottom-0 h-[34%] bg-gradient-to-t from-lv-700/70 to-transparent" />
 
@@ -187,8 +187,8 @@ export default function M06() {
                 {big ? (
                   <a href={p.href} className="group relative block h-full min-h-[420px] overflow-hidden rounded-[6px]">
                     <GrainField tone={i === 1 ? "blue" : "deep"} grain={0.3} className="absolute inset-0">
-                      <div className="absolute inset-0 opacity-50">
-                        <Globe dot="rgba(255,255,255,0.75)" dotSize={1} density={1.8} lon={i === 1 ? 78 : 10} lat={20} speed={2} frame={{ cx: 0.78, cy: 1.15, r: 0.38 }} />
+                      <div className="absolute inset-0 opacity-80">
+                        <Globe dot="rgba(255,255,255,0.75)" dotSize={1} density={1.8} lon={i === 1 ? 78 : 10} lat={-30} speed={2} horizon={{ r: 0.38, top: 0.45, cx: 0.78 }} outline="rgba(255,255,255,0.5)" />
                       </div>
                     </GrainField>
                     <div className="relative flex h-full min-h-[420px] flex-col p-8 text-white">
@@ -541,7 +541,7 @@ export default function M06() {
         >
           <Grain opacity={0.3} />
           <div className="absolute inset-x-0 bottom-0 aspect-[3.2/1]">
-            <Globe dot="rgba(255,255,255,0.9)" dotSize={1.2} density={1.4} lon={80} lat={-52} sway={12} frame={{ cx: 0.5, cy: 2.5, r: 0.68 }} />
+            <Globe dot="rgba(255,255,255,0.9)" dotSize={1.2} density={1.4} lon={80} lat={-30} sway={12} horizon={{ r: 0.5, top: 0.25 }} outline="rgba(255,255,255,0.7)" ocean="rgba(0,84,147,0.32)" />
           </div>
           <div className="relative">
             <span className="text-[12px] font-medium uppercase tracking-[0.06em] text-white/85">{FINAL_CTA.kicker}</span>
