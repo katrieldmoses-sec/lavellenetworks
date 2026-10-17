@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Archivo } from "next/font/google";
 import { ArrowUpRight } from "lucide-react";
 import { MOCKUPS } from "@/components/mockups/registry";
+import { SIGNAL_SERIES } from "@/components/mockups/signal/series";
 import "@/components/mockups/mockups.css";
 
 const archivo = Archivo({
@@ -64,6 +65,45 @@ export default function MockupsIndex() {
           </div>
         </section>
 
+        {/* Signal series: the shortlisted direction, developed five ways */}
+        <section className="mb-20">
+          <div className="flex flex-wrap items-end justify-between gap-4 border-b border-lv-ink/15 pb-5">
+            <h2 className="text-[28px] font-extrabold tracking-[-0.02em]" style={{ fontStretch: "112%" }}>
+              Signal <span className="text-lv-blue">series</span>
+            </h2>
+            <p className="max-w-md text-[13px] text-lv-ink/60">
+              Mockup 20&apos;s structure and hero, developed with the best of Bloom (01), Solara (06) and Atlas (05).
+            </p>
+          </div>
+          <ol className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+            {SIGNAL_SERIES.map((m) => (
+              <li key={m.n}>
+                <a
+                  href={`/mockup/signal-${m.n}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative flex h-full min-h-[240px] flex-col overflow-hidden rounded-[14px] p-5 text-white"
+                  style={{ background: "radial-gradient(120% 90% at 85% 10%, #8CC3EE 0%, #0078D4 38%, #005493 100%)" }}
+                >
+                  <span aria-hidden className="mk-grain pointer-events-none absolute inset-0 opacity-25 mix-blend-overlay" />
+                  <svg aria-hidden viewBox="0 0 200 200" className="mk-spin-slow pointer-events-none absolute -right-14 -top-14 h-48 w-48 text-white/25 transition-colors duration-500 group-hover:text-white/50">
+                    <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" />
+                    <circle cx="100" cy="100" r="68" fill="none" stroke="currentColor" strokeDasharray="2 6" />
+                    <circle cx="100" cy="100" r="40" fill="none" stroke="currentColor" />
+                  </svg>
+                  <div className="relative flex items-start justify-between">
+                    <span className="text-[13px] font-semibold uppercase tracking-[0.08em] text-white/80">Signal-{m.n}</span>
+                    <ArrowUpRight className="h-5 w-5 text-white/70 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+                  </div>
+                  <h3 className="relative mt-auto pt-10 text-[19px] font-bold leading-tight">{m.name}</h3>
+                  <p className="relative mt-2 text-[12px] leading-[1.5] text-white/80">{m.idea}</p>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <h2 className="mb-5 text-[13px] font-semibold uppercase tracking-[0.06em] text-lv-ink/50">All twenty directions</h2>
         <ol className="grid gap-px overflow-hidden rounded-[2px] border border-lv-ink/15 bg-lv-ink/15 sm:grid-cols-2 lg:grid-cols-4">
           {MOCKUPS.map((m) => (
             <li key={m.n} className="bg-lv-paper">

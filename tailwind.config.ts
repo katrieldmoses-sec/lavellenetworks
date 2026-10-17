@@ -58,6 +58,7 @@ const config: Config = {
         "m-display": ["var(--f-display)", "Archivo", "Helvetica", "sans-serif"],
         "m-body": ["var(--f-body)", "Archivo", "Helvetica", "sans-serif"],
         "m-mono": ["var(--f-mono)", "ui-monospace", "monospace"],
+        "m-accent": ["var(--f-accent)", "Archivo", "Helvetica", "sans-serif"],
       },
       maxWidth: {
         container: "1280px",

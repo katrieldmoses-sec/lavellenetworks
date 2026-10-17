@@ -5,13 +5,17 @@
  *
  *   node scripts/check-mockup-copy.mjs [baseUrl] [n ...]
  *
- * baseUrl defaults to http://localhost:3999. With no numbers, checks 1-20.
+ * baseUrl defaults to http://localhost:3999. With no pages named, checks
+ * 1-20 and signal-1..5.
  */
 import { readFileSync } from "node:fs";
 
-const base = process.argv[2] && !/^\d+$/.test(process.argv[2]) ? process.argv[2] : "http://localhost:3999";
-const nums = process.argv.slice(2).filter((a) => /^\d+$/.test(a)).map(Number);
-const pages = nums.length ? nums : Array.from({ length: 20 }, (_, i) => i + 1);
+const isPage = (a) => /^(\d+|signal-\d+)$/.test(a);
+const base = process.argv[2] && !isPage(process.argv[2]) ? process.argv[2] : "http://localhost:3999";
+const picked = process.argv.slice(2).filter(isPage);
+const pages = picked.length
+  ? picked
+  : [...Array.from({ length: 20 }, (_, i) => String(i + 1)), ...Array.from({ length: 5 }, (_, i) => `signal-${i + 1}`)];
 
 const IGNORE = new Set(["lucide-react", "en-IN"]);
 

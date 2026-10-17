@@ -151,3 +151,88 @@ html:has(.mk-root.mk-dark) {
     animation: none !important;
   }
 }
+
+/* ---------------------------------------------------------- Signal series */
+
+/* A short dash that travels round an orbit ring: data in transit. */
+@keyframes mk-ring-packet {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.mk-ring-packet {
+  stroke-dasharray: 2.2 97.8;
+  animation: mk-ring-packet 9s linear infinite;
+}
+
+/* Footer sign-off: words rise out of a mask once in view. */
+.mk-signoff-word {
+  transform: translate3d(0, 105%, 0);
+  transition: transform 1100ms cubic-bezier(0.2, 0.75, 0.1, 1);
+}
+.mk-signoff[data-on] .mk-signoff-word {
+  transform: none;
+}
+
+/* Hero: an underline that passes from word to word. */
+@keyframes mk-word-line {
+  0%,
+  4% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  14%,
+  28% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  29% {
+    transform-origin: right;
+  }
+  38%,
+  100% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+}
+.mk-word-line {
+  animation: mk-word-line 7.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  transform: scaleX(0);
+}
+
+/* Radar sweep: one flat line turning with a faint trailing wedge. */
+.mk-sweep {
+  background: conic-gradient(from 0deg, rgba(255, 255, 255, 0) 0deg, rgba(255, 255, 255, 0.07) 34deg, rgba(255, 255, 255, 0) 35deg);
+  animation: mk-spin 9s linear infinite;
+}
+
+/* Pointer parallax driven by --mx / --my (set in JS). */
+.mk-tilt {
+  transform: perspective(1400px) rotateX(calc(var(--my, 0) * -7deg)) rotateY(calc(var(--mx, 0) * 9deg));
+  transform-style: preserve-3d;
+}
+.mk-drift {
+  transform: translate3d(calc(var(--mx, 0) * -14px), calc(var(--my, 0) * -10px), 0);
+}
+.mk-drift-far {
+  transform: translate3d(calc(var(--mx, 0) * 26px), calc(var(--my, 0) * 18px), 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-ring-packet,
+  .mk-word-line,
+  .mk-sweep {
+    animation: none !important;
+  }
+  .mk-ring-packet {
+    stroke-dasharray: none;
+    opacity: 0;
+  }
+  .mk-signoff-word {
+    transform: none;
+    transition: none;
+  }
+}
