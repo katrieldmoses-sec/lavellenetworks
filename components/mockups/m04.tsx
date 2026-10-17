@@ -24,9 +24,9 @@ import {
   CHROME,
 } from "@/lib/content/home";
 import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
-import Globe from "./kit/Globe";
-import { Reveal, SplitWords, Count, DrawPath } from "./kit/Motion";
-import { Lockup, Mark, NavMenu, MobileNav, GrainField, Sparkle } from "./kit/Brand";
+import Globe from "@/components/kit/Globe";
+import { Reveal, SplitWords, Count, DrawPath } from "@/components/kit/Motion";
+import { Lockup, Mark, NavMenu, MobileNav, GrainField, Sparkle } from "@/components/kit/Brand";
 
 const D = "font-m-display";
 

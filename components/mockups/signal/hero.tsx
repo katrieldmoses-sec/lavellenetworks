@@ -18,9 +18,9 @@
  */
 import { MapPin } from "lucide-react";
 import { HERO, STATS } from "@/lib/content/home";
-import Globe from "../kit/Globe";
-import { Reveal, SplitWords, Count, Marquee, useStickyProgress } from "../kit/Motion";
-import { GrainField, Grain } from "../kit/Brand";
+import Globe from "@/components/kit/Globe";
+import { Reveal, SplitWords, Count, Marquee, useStickyProgress } from "@/components/kit/Motion";
+import { GrainField, Grain } from "@/components/kit/Brand";
 import { Kicker, Orbit, Btn, XCAPS, usePointerVars } from "./parts";
 
 export type HeroPersona = "bloom" | "sky" | "atlas" | "radar" | "scroll";

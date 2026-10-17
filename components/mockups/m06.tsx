@@ -25,9 +25,9 @@ import {
   CHROME,
 } from "@/lib/content/home";
 import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
-import Globe from "./kit/Globe";
-import { Reveal, SplitWords, Count, useStickyProgress } from "./kit/Motion";
-import { Lockup, NavMenu, MobileNav, Grain, GrainField } from "./kit/Brand";
+import Globe from "@/components/kit/Globe";
+import { Reveal, SplitWords, Count, useStickyProgress } from "@/components/kit/Motion";
+import { Lockup, NavMenu, MobileNav, Grain, GrainField } from "@/components/kit/Brand";
 
 function Slash({ children, light = false }: { children: React.ReactNode; light?: boolean }) {
   return <span className={`text-[12px] font-medium uppercase tracking-[0.04em] ${light ? "text-white/80" : "text-lv-ink/70"}`}>/ {children}</span>;

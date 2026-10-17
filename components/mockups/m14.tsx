@@ -25,9 +25,9 @@ import {
   CHROME,
 } from "@/lib/content/home";
 import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
-import Globe from "./kit/Globe";
-import { Reveal, SplitWords, Count, useInView } from "./kit/Motion";
-import { Lockup, NavMenu, MobileNav } from "./kit/Brand";
+import Globe from "@/components/kit/Globe";
+import { Reveal, SplitWords, Count, useInView } from "@/components/kit/Motion";
+import { Lockup, NavMenu, MobileNav } from "@/components/kit/Brand";
 
 const M = "font-m-mono";
 const OFFSET = "shadow-[6px_6px_0_0_#201E1D]";

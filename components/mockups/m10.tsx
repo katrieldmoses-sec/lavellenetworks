@@ -23,9 +23,9 @@ import {
   CHROME,
 } from "@/lib/content/home";
 import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
-import Globe from "./kit/Globe";
-import { Reveal, SplitWords, Count } from "./kit/Motion";
-import { Lockup, NavMenu, MobileNav, Grain } from "./kit/Brand";
+import Globe from "@/components/kit/Globe";
+import { Reveal, SplitWords, Count } from "@/components/kit/Motion";
+import { Lockup, NavMenu, MobileNav, Grain } from "@/components/kit/Brand";
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-lv-300">{children}</span>;

@@ -26,9 +26,9 @@ import {
   CHROME,
 } from "@/lib/content/home";
 import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
-import Globe from "./kit/Globe";
-import { Reveal, SplitWords, Count, useStickyProgress } from "./kit/Motion";
-import { Lockup, Mark, NavMenu, MobileNav, Grain, GrainField } from "./kit/Brand";
+import Globe from "@/components/kit/Globe";
+import { Reveal, SplitWords, Count, useStickyProgress } from "@/components/kit/Motion";
+import { Lockup, Mark, NavMenu, MobileNav, Grain, GrainField } from "@/components/kit/Brand";
 
 /** A node on the thread: the section's anchor point. */
 function Node({ n, active = false }: { n: number; active?: boolean }) {

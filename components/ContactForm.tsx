@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { ArrowRight } from "./icons";
+import { ArrowRight } from "lucide-react";
 
 type Status =
   | { kind: "idle" }
@@ -56,17 +56,17 @@ export default function ContactForm({ topic }: { topic: string }) {
 
   if (status.kind === "sent") {
     return (
-      <div className="card p-8 text-center">
-        <h3 className="text-[18px] font-semibold text-navy">
+      <div className="rounded-[24px] bg-white p-10 text-center shadow-[0_40px_80px_-50px_rgba(0,84,147,0.6)] ring-1 ring-lv-ink/5">
+        <h3 className="text-[22px] font-semibold tracking-[-0.02em]">
           Thanks — your message is on its way.
         </h3>
-        <p className="mt-2 text-[14px] leading-[22.75px] text-navy-500">
+        <p className="mt-2 text-[15px] leading-[1.6] text-lv-ink/65">
           Our team will get back to you shortly.
         </p>
         <button
           type="button"
           onClick={() => setStatus({ kind: "idle" })}
-          className="mt-6 text-[14px] font-semibold text-brand-blue"
+          className="mt-6 text-[14px] font-medium text-lv-blue"
         >
           Send another message
         </button>
@@ -77,24 +77,24 @@ export default function ContactForm({ topic }: { topic: string }) {
   const sending = status.kind === "sending";
 
   return (
-    <form onSubmit={onSubmit} className="card p-8" noValidate>
+    <form onSubmit={onSubmit} className="rounded-[24px] bg-white p-7 shadow-[0_40px_80px_-50px_rgba(0,84,147,0.6)] ring-1 ring-lv-ink/5 sm:p-10" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
         <label className="block">
-          <span className="block text-[13px] font-semibold text-navy">
-            Name <span className="text-brand-blue">*</span>
+          <span className="block text-[13px] font-medium text-lv-ink/75">
+            Name <span className="text-lv-blue">*</span>
           </span>
           <input
             name="name"
             required
             maxLength={120}
             autoComplete="name"
-            className="mt-2 w-full rounded-[6px] border border-[#e2eaf5] bg-white px-3.5 py-2.5 text-[14px] text-navy outline-none transition-colors focus:border-brand-light"
+            className="mt-2 w-full rounded-[12px] border border-lv-ink/15 bg-white px-4 py-3 text-[15px] text-lv-ink outline-none transition-[border-color,box-shadow] focus:border-lv-blue focus:shadow-[0_0_0_3px_rgba(0,120,212,0.15)]"
           />
         </label>
 
         <label className="block">
-          <span className="block text-[13px] font-semibold text-navy">
-            Work Email <span className="text-brand-blue">*</span>
+          <span className="block text-[13px] font-medium text-lv-ink/75">
+            Work Email <span className="text-lv-blue">*</span>
           </span>
           <input
             name="email"
@@ -103,33 +103,33 @@ export default function ContactForm({ topic }: { topic: string }) {
             maxLength={200}
             autoComplete="email"
             inputMode="email"
-            className="mt-2 w-full rounded-[6px] border border-[#e2eaf5] bg-white px-3.5 py-2.5 text-[14px] text-navy outline-none transition-colors focus:border-brand-light"
+            className="mt-2 w-full rounded-[12px] border border-lv-ink/15 bg-white px-4 py-3 text-[15px] text-lv-ink outline-none transition-[border-color,box-shadow] focus:border-lv-blue focus:shadow-[0_0_0_3px_rgba(0,120,212,0.15)]"
           />
         </label>
       </div>
 
       <label className="mt-5 block">
-        <span className="block text-[13px] font-semibold text-navy">
+        <span className="block text-[13px] font-medium text-lv-ink/75">
           Designation
         </span>
         <input
           name="designation"
           maxLength={120}
           autoComplete="organization-title"
-          className="mt-2 w-full rounded-[6px] border border-[#e2eaf5] bg-white px-3.5 py-2.5 text-[14px] text-navy outline-none transition-colors focus:border-brand-light"
+          className="mt-2 w-full rounded-[12px] border border-lv-ink/15 bg-white px-4 py-3 text-[15px] text-lv-ink outline-none transition-[border-color,box-shadow] focus:border-lv-blue focus:shadow-[0_0_0_3px_rgba(0,120,212,0.15)]"
         />
       </label>
 
       <label className="mt-5 block">
-        <span className="block text-[13px] font-semibold text-navy">
-          Message <span className="text-brand-blue">*</span>
+        <span className="block text-[13px] font-medium text-lv-ink/75">
+          Message <span className="text-lv-blue">*</span>
         </span>
         <textarea
           name="message"
           required
           rows={6}
           maxLength={4000}
-          className="mt-2 w-full resize-y rounded-[6px] border border-[#e2eaf5] bg-white px-3.5 py-2.5 text-[14px] leading-[22px] text-navy outline-none transition-colors focus:border-brand-light"
+          className="mt-2 w-full resize-y rounded-[12px] border border-lv-ink/15 bg-white px-4 py-3 text-[15px] text-lv-ink outline-none transition-[border-color,box-shadow] focus:border-lv-blue focus:shadow-[0_0_0_3px_rgba(0,120,212,0.15)] leading-[1.6]"
         />
       </label>
 
@@ -142,7 +142,7 @@ export default function ContactForm({ topic }: { topic: string }) {
       </div>
 
       {status.kind === "error" && (
-        <p className="mt-5 rounded-[6px] border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-red-700">
+        <p role="alert" className="mt-5 rounded-[12px] border border-lv-ink/15 bg-lv-paper px-4 py-3 text-[13px] text-lv-ink/80">
           {status.message}
           {status.mailtoFallback && (
             <>
@@ -163,13 +163,13 @@ export default function ContactForm({ topic }: { topic: string }) {
       <button
         type="submit"
         disabled={sending}
-        className="btn-primary-blue mt-6 disabled:cursor-not-allowed disabled:opacity-60"
+        className="group mt-7 inline-flex items-center justify-center gap-2 rounded-[10px] bg-lv-blue px-6 py-3.5 text-[14px] font-medium text-white transition-colors hover:bg-lv-600 disabled:cursor-not-allowed disabled:opacity-60"
       >
         {sending ? "Sending…" : "Send Message"}
-        {!sending && <ArrowRight className="h-4 w-4" />}
+        {!sending && <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />}
       </button>
 
-      <p className="mt-4 text-[12px] text-navy-500">
+      <p className="mt-4 text-[12px] text-lv-ink/55">
         Your message goes straight to our sales team at {SALES_EMAIL}.
       </p>
     </form>

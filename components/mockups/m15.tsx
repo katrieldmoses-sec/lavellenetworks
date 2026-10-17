@@ -24,9 +24,9 @@ import {
   CHROME,
 } from "@/lib/content/home";
 import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
-import Globe from "./kit/Globe";
-import { Reveal, SplitWords, Count, Marquee } from "./kit/Motion";
-import { Lockup, NavMenu, MobileNav, GrainField } from "./kit/Brand";
+import Globe from "@/components/kit/Globe";
+import { Reveal, SplitWords, Count, Marquee } from "@/components/kit/Motion";
+import { Lockup, NavMenu, MobileNav, GrainField } from "@/components/kit/Brand";
 
 /** Rotating circular text around an arrow. */
 function Seal({ text, href, dark = false, size = 132 }: { text: string; href: string; dark?: boolean; size?: number }) {

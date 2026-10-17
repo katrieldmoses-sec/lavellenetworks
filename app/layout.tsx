@@ -1,32 +1,15 @@
 import type { Metadata, Viewport } from "next";
 import { headers } from "next/headers";
-import { Fraunces, Plus_Jakarta_Sans, DM_Mono } from "next/font/google";
+import { Inter, Archivo } from "next/font/google";
 import "./globals.css";
+import "@/components/kit/kit.css";
 import { SITE_URL } from "@/lib/site";
 
-const jakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
-  variable: "--font-jakarta",
-  display: "swap",
-});
-
-// Loaded as a variable font with the optical-size axis so large display text
-// renders with the same glyph widths as the source design (static instances are
-// optimised for body text and render measurably wider at 60px+).
-const fraunces = Fraunces({
-  subsets: ["latin"],
-  axes: ["opsz"],
-  variable: "--font-fraunces",
-  display: "swap",
-});
-
-const dmMono = DM_Mono({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-dm-mono",
-  display: "swap",
-});
+// Signal type system (design.md §3): Inter for everything, Archivo (width
+// axis) for the single accent-caps heading. Self-hosted by next/font so the
+// CSP's font-src 'self' holds. Bound to the --f-* slots the kit reads.
+const inter = Inter({ subsets: ["latin"], variable: "--f-display", display: "swap" });
+const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--f-accent", display: "swap" });
 
 
 export const metadata: Metadata = {
@@ -110,7 +93,8 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${jakarta.variable} ${fraunces.variable} ${dmMono.variable}`}
+      className={`${inter.variable} ${archivo.variable}`}
+      style={{ "--f-body": "var(--f-display)" } as React.CSSProperties}
     >
       <body>{children}</body>
     </html>

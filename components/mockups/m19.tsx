@@ -25,9 +25,9 @@ import {
   CHROME,
 } from "@/lib/content/home";
 import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
-import Globe from "./kit/Globe";
-import { Reveal, Count, DrawPath } from "./kit/Motion";
-import { Lockup, NavMenu, MobileNav, Grain } from "./kit/Brand";
+import Globe from "@/components/kit/Globe";
+import { Reveal, Count, DrawPath } from "@/components/kit/Motion";
+import { Lockup, NavMenu, MobileNav, Grain } from "@/components/kit/Brand";
 
 const CN = "font-m-display uppercase [font-stretch:62%] font-bold";
 const CN_M = "font-m-display uppercase [font-stretch:75%] font-semibold";

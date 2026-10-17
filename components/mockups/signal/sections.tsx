@@ -27,9 +27,9 @@ import {
   FINAL_CTA,
   HERO,
 } from "@/lib/content/home";
-import Globe from "../kit/Globe";
-import { Reveal, SplitWords, Count, useStickyProgress } from "../kit/Motion";
-import { GrainField, Grain } from "../kit/Brand";
+import Globe from "@/components/kit/Globe";
+import { Reveal, SplitWords, Count, useStickyProgress } from "@/components/kit/Motion";
+import { GrainField, Grain } from "@/components/kit/Brand";
 import { Kicker, TwoTone, H2, Btn, Orbit, XCAPS } from "./parts";
 
 const WRAP = "mx-auto max-w-[1320px] px-6";

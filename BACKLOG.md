@@ -5,27 +5,20 @@ Open items, in rough priority order.
 ## Content
 
 - **Footer phone number.** Still the placeholder `+91 80 4567 8900`
-  (`components/Footer.tsx`). Needs the real switchboard number; update both the
-  display text and the `tel:` href.
+  (`CHROME.footerBrand` in `lib/content/home.ts`). Needs the real switchboard
+  number; update both `phone` and `phoneHref`.
 
-## Identity kit — deliberately not applied
+## Identity kit — status
 
-The asset overhaul (logos, favicons, manifest, OG card) is done. Two parts of
-`assets/Lavelle Identity Kit.dc.html` were left alone because applying them
-would change the design, which was explicitly out of scope. Both are one-session
-jobs if we decide to do them.
+Adopted with the Signal redesign (see `design.md`): the full colour palette
+(ink, paper, the Blue 100–700 ramp; `lv-700` for blue body text) and the
+logo, icon and OG assets.
 
-- **Typography (kit section 10).** The kit specifies Archivo throughout —
-  800 headings, 600 labels, 400 body, fallback `Archivo, Helvetica, sans-serif`.
-  The site currently uses Plus Jakarta Sans (body), Fraunces (display) and
-  DM Mono (labels), matched to the Figma source. Switching would re-flow every
-  page and undo the measured line-break fidelity work.
-
-- **Colour palette (kit section 09).** Brand blue `#0078D4` already matches
-  `brand.azure`. Not adopted: Ink `#201E1D` for body text (site uses navy
-  `#0b1930`), Paper `#F3F2F2` for page ground, and the Blue 100–700 interface
-  ramp. Note the kit's own warning — brand blue on white is 3.6:1, so
-  Blue 700 `#005493` is the correct token for paragraph-size blue text.
+- **Typography (kit section 10).** Partly adopted. The kit specifies Archivo
+  throughout; Signal sets everything in Inter and uses Archivo (expanded) for
+  the one accent heading. Switching body and headings to Archivo is a
+  font-variable change in `app/layout.tsx` if the brand owner wants strict
+  kit compliance.
 
 ## Notes
 

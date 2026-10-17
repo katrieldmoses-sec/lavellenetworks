@@ -22,9 +22,9 @@ import {
   CHROME,
 } from "@/lib/content/home";
 import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
-import Globe from "./kit/Globe";
-import { Reveal, SplitWords, Count, Marquee, useScrollProgress } from "./kit/Motion";
-import { Lockup, NavMenu, MobileNav, Grain, GrainField } from "./kit/Brand";
+import Globe from "@/components/kit/Globe";
+import { Reveal, SplitWords, Count, Marquee, useScrollProgress } from "@/components/kit/Motion";
+import { Lockup, NavMenu, MobileNav, Grain, GrainField } from "@/components/kit/Brand";
 
 const D = "font-m-display";
 

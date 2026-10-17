@@ -9,8 +9,8 @@ import { useEffect, useRef, type ComponentType, type ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
 import { CHROME } from "@/lib/content/home";
 import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
-import { SplitWords } from "../kit/Motion";
-import { Lockup, NavMenu, MobileNav, GrainField } from "../kit/Brand";
+import { SplitWords } from "@/components/kit/Motion";
+import { Lockup, NavMenu, MobileNav, GrainField } from "@/components/kit/Brand";
 
 export type Ico = ComponentType<{ className?: string }>;
 
