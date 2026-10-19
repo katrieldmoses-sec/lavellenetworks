@@ -27,8 +27,8 @@ export function generateMetadata({ params }: Params): Metadata {
 
 export default function Route({ params }: Params) {
   const page = useCasePages.find((p) => p.slug === params.slug);
-  if (page) return <Sections sections={page.sections} />;
+  if (page) return <Sections sections={page.sections} scene={`/use-cases/${params.slug}`} />;
   const stub = noStubs.find((p) => p.slug === params.slug);
-  if (stub) return <StubPage heading={stub.heading} />;
+  if (stub) return <StubPage heading={stub.heading} scene={`/use-cases/${params.slug}`} />;
   notFound();
 }

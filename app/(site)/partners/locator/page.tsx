@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function PartnerLocatorRoute() {
-  return <StubPage heading="Find a Lavelle Partner" />;
+  return <StubPage heading="Find a Lavelle Partner" scene="/partners/locator" />;
 }

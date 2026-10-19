@@ -11,6 +11,7 @@ import Globe from "@/components/kit/Globe";
 import { Reveal, SplitWords } from "@/components/kit/Motion";
 import { GrainField, Grain } from "@/components/kit/Brand";
 import { Kicker, TwoTone, Btn, Orbit, OrbitLines, WRAP } from "@/components/site/ui";
+import { HeroScene, hasHeroScene } from "@/components/site/heroes";
 
 /* ------------------------------------------------------------------ parts */
 
@@ -106,13 +107,17 @@ export function PageHero({
   body,
   ctas,
   compact = false,
+  scene,
 }: {
   eyebrow?: string;
   title: string;
   body?: string;
   ctas?: Cta[];
   compact?: boolean;
+  /** Route path; picks the page's scene (components/site/heroes). */
+  scene?: string;
 }) {
+  const hasScene = hasHeroScene(scene);
   return (
     <section className="px-3 pb-3 sm:px-5">
       <GrainField
@@ -120,8 +125,20 @@ export function PageHero({
         grain={0.32}
         className={`mx-auto max-w-[1400px] rounded-[24px] text-white ${compact ? "min-h-[52vh]" : "min-h-[min(68vh,680px)]"}`}
       >
-        <HeroSystem />
+        {!hasScene && <HeroSystem />}
         <div className={`relative flex flex-col justify-end p-6 lg:p-12 ${compact ? "min-h-[52vh]" : "min-h-[min(68vh,680px)]"}`}>
+          {hasScene && (
+            <div
+              className={`mb-8 mt-2 flex justify-center lg:absolute lg:right-[4%] lg:top-1/2 lg:m-0 lg:block lg:-translate-y-1/2 ${
+                compact ? "lg:w-[min(36%,460px,42vh)]" : "lg:w-[min(38%,520px,56vh)]"
+              }`}
+            >
+              {/* Below lg the stage keeps its desktop proportions and is zoomed down. */}
+              <div className="w-[440px] [zoom:0.6] sm:[zoom:0.8] lg:w-full lg:[zoom:1]">
+                <HeroScene path={scene} />
+              </div>
+            </div>
+          )}
           <div className="max-w-[720px] lg:max-w-[min(56%,760px)]">
             {eyebrow && (
               <Reveal>
@@ -146,10 +163,10 @@ export function PageHero({
 
 /* --------------------------------------------------------------- sections */
 
-export function SectionRenderer({ section, ground }: { section: Section; ground: "white" | "paper" }) {
+export function SectionRenderer({ section, ground, scene }: { section: Section; ground: "white" | "paper"; scene?: string }) {
   switch (section.kind) {
     case "hero":
-      return <PageHero eyebrow={section.eyebrow} title={section.title} body={section.body} ctas={section.ctas} />;
+      return <PageHero eyebrow={section.eyebrow} title={section.title} body={section.body} ctas={section.ctas} scene={scene} />;
 
     case "challenge":
       return (
@@ -560,13 +577,13 @@ export function SectionRenderer({ section, ground }: { section: Section; ground:
 const PANELS = new Set<Section["kind"]>(["hero", "how", "deployment", "cta", "stats"]);
 
 /** Renders a page's sections; light sections alternate white and paper. */
-export default function Sections({ sections }: { sections: Section[] }) {
+export default function Sections({ sections, scene }: { sections: Section[]; scene?: string }) {
   let light = 0;
   return (
     <>
       {sections.map((s, i) => {
         const ground = PANELS.has(s.kind) ? "white" : light++ % 2 === 0 ? "white" : "paper";
-        return <SectionRenderer key={i} section={s} ground={ground} />;
+        return <SectionRenderer key={i} section={s} ground={ground} scene={scene} />;
       })}
     </>
   );

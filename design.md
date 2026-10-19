@@ -128,6 +128,51 @@ lv-300`) with the planet rising from the bottom edge.
 | **Roadmap** | Bars clip-reveal left to right, staggered 90ms. Placeholder years use a dashed `lv-100` bar. |
 | **Sign-off** | The footer ends with the brand line at 118px. Its words rise out of a mask as the footer arrives. |
 
+### Page-hero scenes
+
+Each inner page's hero shows a scene that pictures what the page is about,
+in place of the shared orbit system. Scenes live in
+`components/site/heroes/` (`kit.tsx` primitives, `network.tsx`, `places.tsx`,
+`company.tsx`) and are chosen by route path in `index.tsx`. A page with no
+entry falls back to the orbit rings and earth.
+
+**Rules.** Decoration only: `aria-hidden`, no copy, icons only (lucide, 1.8
+stroke). Flat white and the Blue ramp on the hero's blue grain: white chips
+for the subject, `white/15` glass for supporting nodes, an ink chip for the
+one exception (a failure, a threat, a root cause). Hairline wires at 1.2px
+(`non-scaling-stroke`); packets are short white dashes. No glow, no shadows
+beyond the chip's soft drop, no gradients beyond the field itself.
+
+**Stage.** A square: an SVG layer (viewBox 0–100) for wires, an HTML layer
+for chips at percentage coordinates. On `lg+` it sits to the right of the
+copy, vertically centred, `min(38%, 520px, 56vh)` wide (compact heroes
+`min(36%, 460px, 42vh)`). Below `lg` it sits above the headline at a fixed
+440px, zoomed to 0.6 (0.8 from `sm`).
+
+| Scene | Pictures | Pages |
+|---|---|---|
+| Paths | Branch → three transports (internet, MPLS, LTE) → DC and cloud; the active path moves in turn | SD-WAN; Hybrid WAN (two transports) |
+| Shield | Users and devices → inspection ring → apps; a threat stops at the ring | SASE, Secure Internet |
+| Zero trust | User → identity, key, posture gates verifying in turn → its own micro-perimeter app | ZTNA |
+| Branch | One box (router, Wi-Fi, security, compute), devices wired in, uplink to cloud | Secure Branch, Branch Transformation |
+| Failover | Primary and secondary paths swap; heartbeat never breaks | Application Availability |
+| Telemetry | Live line, health gauge, bars or the earth | CloudStation Insights, Network Analytics, Network Monitoring |
+| AI Ops | Signal with an anomaly; the graph traced to its root cause | AI Operations |
+| Experience | Direct path to the app, faded backhaul, experience gauge | Digital Experience, Microsoft 365 |
+| Edge | The appliance with live port lights; uplinks above, devices below | CloudPort Edge |
+| Hub | Many edges converge on the gateway, out to DC and cloud | CloudPort Gateway |
+| Controller | Policy waves from the controller to every device | CloudStation Controller |
+| Multi-cloud | Three clouds meshed through one fabric to the enterprise | Cloud Connectivity, Multi-Cloud pages |
+| Anywhere | Home, office, café, travel around the earth through one edge | Hybrid Workforce |
+| India | Subcontinent dot field (1° coastline mask, **no political boundaries**) with sector sites wired to a hub; logistics drives a route | Sector solutions, Partner Locator, Contact |
+| Story, Team, Careers, Investors | Earth with the four pillars; people round the mark; a climbing path; growth panels | Company pages |
+| Library | A fanned stack of articles, stories or sheets | Resources |
+| Platform, Conversation, Ecosystem | Modules round a live console; a live line to a specialist; overlapping partner circles | Contact forms, Partners |
+
+Scene motion (packets, pulses, phases, draws, bars, gates, gauges) is CSS in
+`components/kit/kit.css` and stops under reduced motion, leaving a complete
+still picture.
+
 ---
 
 ## 6. Motion
@@ -179,7 +224,7 @@ rendered by `components/page/Sections.tsx`:
 
 | Section kind | Signal treatment |
 |---|---|
-| `hero` | Blue grain card in the inset frame. Orbit rings and earth to the right (decoration only), kicker, display h1, body, CTAs |
+| `hero` | Blue grain card in the inset frame. The page's scene to the right (§5, Page-hero scenes; decoration only), kicker, display h1, body, CTAs |
 | `challenge` | Two-tone heading; numbered cards with an alert well |
 | `capabilities` / `features` | White cards on paper with icon wells and index numerals |
 | `how` | Deep grain panel; numbered step cards on glass |
@@ -195,7 +240,7 @@ rendered by `components/page/Sections.tsx`:
 | `people` | Cards with a grain band, role in blue, note pill |
 | `cta` | The horizon panel |
 
-Placeholder pages (stubs) use a compact blue grain hero. The 404 uses the
+Placeholder pages (stubs) use a compact blue grain hero with their scene. The 404 uses the
 same with the globe.
 
 ---

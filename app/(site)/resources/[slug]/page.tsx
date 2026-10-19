@@ -27,8 +27,8 @@ export function generateMetadata({ params }: Params): Metadata {
 
 export default function Route({ params }: Params) {
   const page = resourcePages.find((p) => p.slug === params.slug);
-  if (page) return <Sections sections={page.sections} />;
+  if (page) return <Sections sections={page.sections} scene={`/resources/${params.slug}`} />;
   const stub = resourceStubs.find((p) => p.slug === params.slug);
-  if (stub) return <StubPage heading={stub.heading} />;
+  if (stub) return <StubPage heading={stub.heading} scene={`/resources/${params.slug}`} />;
   notFound();
 }

@@ -2,16 +2,6 @@
 
 Open items, in rough priority order.
 
-## Design
-
-- **Page-specific heroes.** Every inner page currently shares one hero
-  treatment (blue grain card, orbit rings, earth). Each page's hero should
-  instead depict what that page is about (e.g. SD-WAN paths for
-  `/products/sd-wan`, the branch for SD-Branch, policy/security for SASE,
-  telemetry for analytics, the sector for each solution page). Scheduled for
-  the next run, after review with the growth architect. Hero lives in
-  `PageHero` in `components/page/Sections.tsx`; copy stays as is.
-
 ## Content
 
 - **Footer phone number.** Still the placeholder `+91 80 4567 8900`

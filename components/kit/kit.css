@@ -216,3 +216,210 @@
     transition: none;
   }
 }
+
+/* ------------------------------------------------- page-hero scenes */
+
+/* Packets on a wire: a short dash travelling a pathLength=100 path. */
+@keyframes mk-wire-move {
+  from {
+    stroke-dashoffset: 100;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.mk-wire {
+  stroke-dasharray: 3 97;
+  animation: mk-wire-move 2.8s linear infinite;
+}
+
+/* A flat ring that expands and fades (signal, pulse) — no glow. */
+@keyframes mk-pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.55);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.9);
+    opacity: 0;
+  }
+}
+.mk-pulse-ring {
+  animation: mk-pulse-ring 3s cubic-bezier(0.2, 0.7, 0.2, 1) infinite;
+}
+
+/* Three-phase emphasis: an element is "on" for a third of the cycle. */
+@keyframes mk-third {
+  0%,
+  30% {
+    opacity: 1;
+  }
+  36%,
+  94% {
+    opacity: 0.14;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.mk-third {
+  animation: mk-third 9s ease-in-out infinite;
+}
+
+/* Two-phase: on for the first half (a) or the second half (b). */
+@keyframes mk-half-a {
+  0%,
+  44% {
+    opacity: 1;
+  }
+  50%,
+  94% {
+    opacity: 0.12;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes mk-half-b {
+  0%,
+  44% {
+    opacity: 0;
+  }
+  50%,
+  94% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.mk-half-a {
+  animation: mk-half-a 8s ease-in-out infinite;
+}
+.mk-half-b {
+  animation: mk-half-b 8s ease-in-out infinite;
+}
+
+/* A line that draws, holds, then clears (charts, routes). */
+@keyframes mk-draw-loop {
+  0% {
+    stroke-dashoffset: 1;
+  }
+  45%,
+  80% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -1;
+  }
+}
+.mk-draw-loop {
+  stroke-dasharray: 1;
+  animation: mk-draw-loop 6s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+/* Bars that rise and settle. */
+@keyframes mk-bar {
+  0%,
+  100% {
+    transform: scaleY(0.25);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
+.mk-bar {
+  transform-origin: bottom;
+  animation: mk-bar 3.6s ease-in-out infinite;
+}
+
+/* Status lights and ticks. */
+@keyframes mk-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.mk-blink {
+  animation: mk-blink 1.6s steps(2, jump-none) infinite;
+}
+
+/* Gate that turns from glass to solid as it verifies. */
+@keyframes mk-gate {
+  0%,
+  8% {
+    background-color: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+  }
+  16%,
+  70% {
+    background-color: #ffffff;
+    color: #0078d4;
+  }
+  80%,
+  100% {
+    background-color: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+  }
+}
+.mk-gate {
+  animation: mk-gate 6s ease-in-out infinite;
+}
+
+/* Gauge arc that fills and eases back. */
+@keyframes mk-gauge {
+  0% {
+    stroke-dashoffset: 100;
+  }
+  50%,
+  75% {
+    stroke-dashoffset: var(--to, 18);
+  }
+  100% {
+    stroke-dashoffset: 100;
+  }
+}
+.mk-gauge {
+  stroke-dasharray: 100;
+  animation: mk-gauge 7s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+.mk-static-only {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mk-motion-only {
+    display: none;
+  }
+  .mk-static-only {
+    display: block;
+  }
+  .mk-wire,
+  .mk-pulse-ring {
+    animation: none !important;
+    opacity: 0;
+  }
+  .mk-third,
+  .mk-half-a,
+  .mk-blink,
+  .mk-bar,
+  .mk-gate {
+    animation: none !important;
+  }
+  .mk-half-b {
+    animation: none !important;
+    opacity: 0;
+  }
+  .mk-draw-loop {
+    animation: none !important;
+    stroke-dashoffset: 0;
+  }
+  .mk-gauge {
+    animation: none !important;
+    stroke-dashoffset: var(--to, 18);
+  }
+}

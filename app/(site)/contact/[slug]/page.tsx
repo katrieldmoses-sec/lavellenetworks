@@ -53,7 +53,7 @@ export default function ContactRoute({ params }: Params) {
   if (form) {
     return (
       <>
-        <PageHero eyebrow={form.eyebrow} title={form.title} body={form.body} compact />
+        <PageHero eyebrow={form.eyebrow} title={form.title} body={form.body} compact scene={`/contact/${params.slug}`} />
         <section className="bg-lv-paper px-6 py-16 lg:py-24">
           <div className="mx-auto max-w-2xl">
             <ContactForm topic={form.topic} />
@@ -64,6 +64,6 @@ export default function ContactRoute({ params }: Params) {
   }
 
   const stub = contactStubs.find((p) => p.slug === params.slug);
-  if (stub) return <StubPage heading={stub.heading} />;
+  if (stub) return <StubPage heading={stub.heading} scene={`/contact/${params.slug}`} />;
   notFound();
 }
