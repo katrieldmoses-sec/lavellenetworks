@@ -5,8 +5,8 @@
  * lib/content/types.ts has a Signal treatment here. Copy comes only from the
  * section data; components add decoration (numerals, rings, arrows) only.
  */
-import { ArrowRight, ArrowUpRight, Check } from "lucide-react";
-import type { Cta, Section } from "@/lib/content/types";
+import { ArrowRight, ArrowUpRight, Check, ChevronDown } from "lucide-react";
+import type { BioBlock, Cta, Section } from "@/lib/content/types";
 import Globe from "@/components/kit/Globe";
 import { Reveal, SplitWords } from "@/components/kit/Motion";
 import { GrainField, Grain } from "@/components/kit/Brand";
@@ -18,6 +18,29 @@ import { HeroScene, hasHeroScene } from "@/components/site/heroes";
 const pad = (i: number) => String(i + 1).padStart(2, "0");
 
 /** Column count that never leaves an orphan: pairs and quads go two-up. */
+/** "Thompson P. Gnanam" -> "TG": first and last name initials. */
+const initials = (name: string) => {
+  const w = name.split(/\s+/).filter(Boolean);
+  return (w[0][0] + (w.length > 1 ? w[w.length - 1][0] : "")).toUpperCase();
+};
+
+/** One block of a person's profile: a paragraph, or a short dotted list. */
+function Bio({ block }: { block: BioBlock }) {
+  if (typeof block === "string") return <p>{block}</p>;
+  return (
+    <div>
+      {block.title && <div className="mb-1.5 text-[12px] font-semibold uppercase tracking-[0.06em] text-lv-ink/50">{block.title}</div>}
+      <ul className="space-y-1.5">
+        {block.list.map((li, k) => (
+          <li key={k} className="relative pl-3.5 before:absolute before:left-0 before:top-[0.62em] before:h-1 before:w-1 before:rounded-full before:bg-lv-blue/60">
+            {li}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 const cols = (n: number) => (n === 2 || n === 4 ? "md:grid-cols-2" : "md:grid-cols-2 lg:grid-cols-3");
 
 function Head({
@@ -437,7 +460,11 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
         <Light ground={ground}>
           <Head eyebrow={section.eyebrow} title={section.title} intro={section.intro} />
           <div className={`mt-14 grid gap-3 ${cols(section.items.length)}`}>
-            {section.items.map((m, i) => (
+            {section.items.map((m, i) => {
+              const [lead, ...more] = Array.isArray(m.bio) ? m.bio : [m.bio];
+              // When some cards have portraits, the rest get a same-sized monogram tile so the row lines up.
+              const portraits = section.items.some((x) => x.photo);
+              return (
               <Reveal key={m.name + i} delay={(i % 3) * 80}>
                 <div className="flex h-full flex-col overflow-hidden rounded-[20px] border border-lv-ink/10 bg-white">
                   {m.photo ? (
@@ -446,6 +473,15 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
                       {/* eslint-disable-next-line @next/next/no-img-element -- static portrait, sized by CSS */}
                       <img src={m.photo} alt={`Portrait of ${m.name}`} loading="lazy" decoding="async" className="h-full w-full object-cover object-[50%_22%] grayscale" />
                     </div>
+                  ) : portraits ? (
+                    <GrainField tone="deep" grain={0.3} className="aspect-[4/3] sm:aspect-[16/10]">
+                      <div className="absolute -bottom-24 -right-16 h-72 w-72 text-white/20">
+                        <OrbitLines className="mk-spin-slow h-full w-full" />
+                      </div>
+                      <span aria-hidden className="absolute inset-0 grid place-items-center text-[56px] font-semibold tracking-[-0.03em] text-white/85">
+                        {initials(m.name)}
+                      </span>
+                    </GrainField>
                   ) : (
                     <GrainField tone={i % 3 === 1 ? "deep" : i % 3 === 2 ? "sky" : "blue"} grain={0.3} className="h-20">
                       <div className="absolute -bottom-20 -right-10 h-48 w-48 text-white/25">
@@ -458,9 +494,21 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
                     <h3 className="mt-1.5 text-[19px] font-semibold tracking-[-0.015em]">{m.name}</h3>
                     <div className="mt-0.5 text-[14px] font-medium text-lv-700">{m.role}</div>
                     <div className="mt-3 flex-1 space-y-3 text-[14px] leading-[1.6] text-lv-ink/65">
-                      {(Array.isArray(m.bio) ? m.bio : [m.bio]).map((para) => (
-                        <p key={para.slice(0, 32)}>{para}</p>
-                      ))}
+                      <Bio block={lead} />
+                      {more.length > 0 && (
+                        <details className="group/more">
+                          <summary className="inline-flex cursor-pointer list-none items-center gap-1 text-[13px] font-medium text-lv-blue [&::-webkit-details-marker]:hidden">
+                            <span className="group-open/more:hidden">Full profile</span>
+                            <span className="hidden group-open/more:inline">Show less</span>
+                            <ChevronDown className="h-3.5 w-3.5 transition-transform group-open/more:rotate-180" />
+                          </summary>
+                          <div className="mt-3 space-y-3">
+                            {more.map((b, k) => (
+                              <Bio key={k} block={b} />
+                            ))}
+                          </div>
+                        </details>
+                      )}
                     </div>
                     {(m.note || m.href) && (
                       <div className="mt-5 flex flex-wrap items-center gap-2">
@@ -482,7 +530,8 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
                   </div>
                 </div>
               </Reveal>
-            ))}
+              );
+            })}
           </div>
         </Light>
       );

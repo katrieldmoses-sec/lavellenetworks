@@ -17,12 +17,13 @@ template pages, Our Story, Leadership, ten-year panel. Still open:
   indusWall.
 - **Awards and PR carousel** for Our Story (best recognitions of the last 5+
   years). The homepage Recognition section still shows placeholders.
-- **Leadership photos.** Founders done (photos and LinkedIn descriptions
-  from "leadership from LI.docx"). Still need headshots for the other eight
-  (Netaji Patil, Nishant Verma, Sax Krishna, Thompson P. Gnanam, Naganand
-  Doraswamy, Vipul Arora, Pradipt Kapoor, Abhishek Maheshwari); their cards
-  keep the grain band until then. Add `photo:` in `lib/content/company.ts`.
-  Titles follow the leadership note.
+- **Leadership photos.** Profiles, titles and portraits now follow
+  "Lavelle_Leadership_Profiles.docx". Still missing: headshots for Sax
+  Krishna and Pradipt Kapoor (their cards show a monogram tile), a description
+  for Pradipt Kapoor (the leadership note's summary stands in), and
+  higher-resolution photos of Nishant Verma and Thompson P. Gnanam (supplied
+  at 200px, so they look soft on large screens). Save to
+  `public/leadership/<name>.jpg` and add `photo:` in `lib/content/company.ts`.
 - **Blogs:** re-cast 3–5 of the best pieces from the last ten years for 2026.
 - **Datasheets:** updated, downloadable datasheets for every product line.
 - **Final technical review** of the product pages once the above lands.

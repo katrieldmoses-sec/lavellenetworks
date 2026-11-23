@@ -17,7 +17,7 @@ export type Section =
   | { kind: "components"; eyebrow: string; title: string; intro?: string; items: { title: string; bullets: string[]; href: string; linkLabel?: string }[] }
   | { kind: "table"; eyebrow: string; title: string; headers: string[]; rows: string[][] }
   | { kind: "checklist"; eyebrow: string; title?: string; items: string[] }
-  | { kind: "people"; eyebrow: string; title: string; intro?: string; items: { category?: string; name: string; role: string; bio: string | string[]; note?: string; href?: string; photo?: string }[] }
+  | { kind: "people"; eyebrow: string; title: string; intro?: string; items: Person[] }
   | { kind: "cta"; title: string; body?: string; ctas?: Cta[] };
 
 export type PageContent = {
@@ -31,3 +31,20 @@ export type PageContent = {
 
 /** A page that exists in the source but is only a placeholder heading. */
 export type StubPage = { slug: string; heading: string };
+
+/** A block of a person's profile: a paragraph, or a short list with an optional heading. */
+export type BioBlock = string | { title?: string; list: string[] };
+
+/**
+ * A card on a people section. The first bio block is always shown; any
+ * further blocks sit behind a "Full profile" disclosure.
+ */
+export type Person = {
+  category?: string;
+  name: string;
+  role: string;
+  bio: string | BioBlock[];
+  note?: string;
+  href?: string;
+  photo?: string;
+};

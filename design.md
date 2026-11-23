@@ -249,7 +249,7 @@ rendered by `components/page/Sections.tsx`:
 | `note` | Paper panel: heading left, body and action right |
 | `table` | White rounded table; first column emphasised; row hover |
 | `checklist` | Pill cards with check wells |
-| `people` | Cards with a grain band, role in blue, note pill and an optional LinkedIn pill (opens in a new tab) |
+| `people` | Cards with a monochrome portrait (or a grain band; a monogram tile when siblings have portraits), role in blue, the first bio block with the rest behind a native "Full profile" disclosure (paragraphs or dotted lists), note pill and an optional LinkedIn pill (opens in a new tab) |
 | `cta` | The horizon panel |
 
 Placeholder pages (stubs) use a compact blue grain hero with their scene. The 404 uses the

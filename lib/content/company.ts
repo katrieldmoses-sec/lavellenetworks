@@ -98,18 +98,18 @@ export const companyPages: PageContent[] = [
         title: "Experienced leadership. Decade of execution.",
         body: "Lavelle Networks is led by its founders and an experienced leadership team with deep roots in enterprise networking, telecom and technology services. Built from Bangalore, the leadership has spent a decade shaping how Indian enterprises approach connectivity, security, and network operations.",
       },
+      // Profiles, titles and portraits from "Lavelle_Leadership_Profiles.docx" (Nov 2026).
       {
         kind: "people",
         eyebrow: "Founders",
         title: "The founders who built Lavelle",
         intro:
-          "Shyamal Kumar and Drritiman Boraah are Lavelle’s two executive directors, providing continuity between the Board and the operating organisation across technology, customers and execution.",
+          "Shyamal Kumar and Drritiman Boraah founded Lavelle Networks in 2015 and both serve on its Board, providing continuity between the Board and the operating organisation across technology, customers and execution.",
         items: [
           {
             category: "Founder",
             name: "Shyamal Kumar",
-            role: "Founder, Managing Director & CEO",
-            // LinkedIn profile description, as supplied ("leadership from LI.docx").
+            role: "Founder & Chairman",
             bio: [
               "I am the Founder of Lavelle Networks, where I guide long‑term strategy, product direction, and value creation. Over the last two decades, I have built and scaled enterprise and service‑provider networking platforms deployed at national and global scale—across data centers, distributed enterprises, and carrier networks.",
               "My career includes leadership roles in foundational networking platforms such as the Juniper MX series, early wireless broadband systems including the Telsima WiMAX portfolio, and the industry’s first virtual services switch at Inkra Networks, designed for zero‑downtime upgrades through a modular architecture.",
@@ -124,12 +124,41 @@ export const companyPages: PageContent[] = [
           {
             category: "Co-founder",
             name: "Drritiman Boraah",
-            role: "Co-founder & Executive Director",
-            // LinkedIn profile description, as supplied ("leadership from LI.docx").
+            role: "Co-Founder & Board Member",
             bio: [
               "I am passionate about building businesses that thrive on trust, innovation, and customer success. As Co-Founder and Board Member at Lavelle Networks, I transformed a bold vision into reality—creating India’s first Software Defined Networking company and scaling it into a market leader.",
               "From zero to scale, I built Lavelle Networks’ sales and customer operations from the ground up. My approach combines strategic foresight with hands-on execution—whether it’s shaping board-level decisions, negotiating win-win deals, or resolving complex field challenges. I believe in empowering people and fostering relationships that last, making every engagement a success story.",
               "Today, Lavelle Networks powers mission-critical networks for leading enterprises across banking, insurance, e-commerce, manufacturing, and government sectors. My role spans driving revenue growth, building high-performance teams, and ensuring customer delight at every touchpoint.",
+              {
+                title: "Co-Founder & Chief Sales Officer, Board Member · 2015 – Present",
+                list: [
+                  "Spearheaded the creation of the company’s sales and customer success engine from scratch, enabling rapid market penetration and multi-million-dollar revenues.",
+                  "Built and scaled pre-sales, support, and customer success organizations, ensuring seamless delivery and long-term client relationships.",
+                  "Negotiated strategic contracts with Fortune 500 enterprises and government institutions, delivering outcomes that balance business growth and customer value.",
+                  "Represented Lavelle Networks at industry forums, influencing SD-WAN adoption and shaping networking trends in India.",
+                  "Key contributor to board-level decisions on strategy, partnerships, and growth initiatives.",
+                ],
+              },
+              {
+                title: "Previous roles",
+                list: [
+                  "Senior leadership roles in customer engineering and operations at Lavelle Networks.",
+                  "Prior experience in global technology companies (Versa Networks, Juniper Networks, Nokia Siemens Networks, Motorola Solutions, Sasken, Lucent Technologies) with expertise in quality assurance and product testing.",
+                ],
+              },
+              {
+                title: "Skills & strengths",
+                list: [
+                  "Strategic Sales Leadership",
+                  "Customer Success & Operations",
+                  "Board-Level Decision Making",
+                  "Contract Negotiation & Deal Structuring",
+                  "Team Building & People Leadership",
+                  "Enterprise Networking & SD-WAN Expertise",
+                ],
+              },
+              { title: "Education", list: ["Bachelor of Engineering, Instrumentation — Dibrugarh University"] },
+              "Business builder, relationship architect, and fitness enthusiast. When not driving growth, I enjoy exploring the world with my family.",
             ],
             photo: "/leadership/drritiman-boraah.jpg",
             note: "Board since 2022",
@@ -148,21 +177,77 @@ export const companyPages: PageContent[] = [
             category: "Government, PSU Banking & Strategic Business",
             name: "Netaji Patil",
             role: "Executive Vice President",
-            bio: "Netaji Patil has more than 23 years of experience across telecom, SD-WAN, enterprise networking, managed services, government and public-sector markets. At Lavelle he leads government, PSU banking, BFSI and enterprise business growth — sales, bid management, partnerships, delivery coordination and market expansion.",
+            bio: [
+              "Telecom Business Transformation Leader with 23+ years of experience driving growth, market expansion, and digital infrastructure transformation across Telecom, SD-WAN, Enterprise Networking, Managed Services, and Government ecosystems.",
+              "Proven track record of building and scaling Government, PSU Banking, Enterprise, and Strategic Partnership businesses while leading sales, product strategy, bid management, delivery, and market expansion initiatives.",
+              {
+                title: "Key highlights",
+                list: [
+                  "Managed ₹100+ Cr business portfolio across Telecom and Enterprise Networking domains",
+                  "Contributed to 30,000+ SD-WAN deployments across Government, Banking, and Enterprise customers",
+                  "Created SD-WAN opportunities exceeding USD 100 Million across ~50,000 locations",
+                  "Achieved ~34% market share in the Government PSU Banking segment",
+                  "Strategic leadership in large-scale Government and Digital Infrastructure initiatives including PSU Banking and Department of Posts opportunities",
+                ],
+              },
+              "Core expertise includes SD-WAN, SASE, Enterprise Networking, Government Business, Public Procurement, Strategic Alliances, Telecom Partnerships, Network Transformation, Managed Services, Product GTM, and Business Growth Strategy.",
+              "Passionate about helping organizations accelerate digital transformation through innovative networking, secure connectivity, ecosystem partnerships, and scalable business models.",
+            ],
+            photo: "/leadership/netaji-patil.jpg",
             href: "https://www.linkedin.com/in/netaji-patil-the-sales-leader/",
           },
           {
             category: "Customer Operations, Support & Network Delivery",
             name: "Nishant Verma",
             role: "Director, Customer Success",
-            bio: "Nishant Verma is responsible for the operating lifecycle of Lavelle’s deployed customer base: customer success, technical support, network and project delivery, telecom coordination, and hardware supply chain and deployment operations. He joined Lavelle in a feasibility, access-strategy and partnerships role, giving him a strong grounding in telecom connectivity, last-mile feasibility and delivery execution.",
+            // The profile doc lists areas of expertise only; the summary paragraph is from the leadership note.
+            bio: [
+              "Nishant Verma is responsible for the operating lifecycle of Lavelle’s deployed customer base: customer success, technical support, network and project delivery, telecom coordination, and hardware supply chain and deployment operations. He joined Lavelle in a feasibility, access-strategy and partnerships role, giving him a strong grounding in telecom connectivity, last-mile feasibility and delivery execution.",
+              {
+                title: "Expertise",
+                list: [
+                  "Service Assurance",
+                  "Partner Management",
+                  "Channel Management",
+                  "SD-WAN",
+                  "Network Operations",
+                  "Customer Support",
+                  "Service Delivery",
+                  "ISP Services",
+                  "Enterprise Connectivity",
+                  "Project Management",
+                  "SSO",
+                ],
+              },
+            ],
+            photo: "/leadership/nishant-verma.jpg",
             href: "https://www.linkedin.com/in/nishant-verma-8bbb5a10/",
           },
           {
             category: "Operations",
             name: "Sax Krishna",
             role: "Chief Operating Officer",
-            bio: "Sax Krishna brings more than 28 years of global experience across technology, IT services, BPO, business transformation, growth and M&A. His earlier leadership roles include Global COO and Chief Growth Officer at 3i Infotech, and senior positions at TEOCO, Atos, Aditya Birla Minacs, Mahindra Satyam and HCL. At Lavelle he leads business operations, delivery effectiveness and operating discipline.",
+            bio: [
+              "Enhancing enterprise value through vision, strategy, and flawless execution. Over 28 years of experience in IT, BPO & Technology domain across North America, Europe, India & APAC with repeated success in business transformation, built on assiduous identification & capitalization of market opportunities.",
+              "Ability to combine long-range strategic planning and tactical execution to create differentiated value propositions, launch new businesses and drive exponential and sustainable growth.",
+              "A consummate leader, with experience in managing cross functional teams across geographies with goal congruence and collaboration to deepen relationships with customers leading to high margin repeat business.",
+              "Experienced in M&A deal structuring including building of investment thesis, assessing & valuating companies & negotiating complex contract framework.",
+              "Whether starting a business of Methodology Based IT services from zero to $25M or growing a BPO book of business across multiple verticals from $2M to $100M in 4 years or Transforming a book of $200M business from –ve EBITDA to double digit +ve EBITDA – the body of work includes building successful books of business by creating differentiating solutions to address real world market gaps and building leadership teams to deliver highly profitable services in the Technology space.",
+              {
+                title: "Skills",
+                list: [
+                  "Global Strategic Planning",
+                  "Business Development",
+                  "Sales Effectiveness Transformation",
+                  "Global Service Delivery",
+                  "Business Process Consulting",
+                  "Team Building and Leadership Development",
+                  "Outsourcing / Right Shoring",
+                  "Process Innovation / Improvement",
+                  "M&A Deal Structuring",
+                ],
+              },
+            ],
             href: "https://www.linkedin.com/in/saxkrishna/",
           },
         ],
@@ -172,26 +257,32 @@ export const companyPages: PageContent[] = [
         eyebrow: "Board of Directors",
         title: "The Board",
         intro:
-          "Alongside the executive directors, Shyamal Kumar (Managing Director & CEO) and Drritiman Boraah (Executive Director), Lavelle’s Board includes nominee directors from its investors.",
+          "Alongside the founders, Shyamal Kumar (Founder & Chairman) and Drritiman Boraah (Co-Founder & Board Member), Lavelle’s Board includes nominee directors from its investors.",
         items: [
           {
             category: "Ideaspring Capital",
             name: "Naganand Doraswamy",
             role: "Nominee Director",
-            bio: "Founder and Managing Partner of Ideaspring Capital, an early-stage investment firm focused on technology-product and deep-technology companies. Before becoming an investor, he co-founded SPAN Infotech and Lexar Networks and worked with Nortel Networks and Bay Networks.",
+            bio: "Naganand is a technologist at heart, entrepreneur by choice and investor by profession. After exiting his most recent start-up, he founded Ideaspring Capital to fund and actively support product innovation start-ups. He enjoys working with entrepreneurs who have the vision and passion to build products for the global markets. Naganand is very well networked and respected in the start-up ecosystem and he actively participates in various organizations focusing on Entrepreneurship and Innovation. Naganand has co-authored a book on “IPSec” published by Prentice Hall.",
+            photo: "/leadership/naganand-doraswamy.jpg",
             note: "Board since 2017",
           },
           {
             category: "YourNest Venture Capital",
             name: "Vipul Arora",
             role: "Nominee Director",
-            bio: "Principal, Investment Management at YourNest Venture Capital, working across portfolio management, governance, transaction structuring and valuations.",
+            bio: [
+              "With over a decade of experience in venture capital and financial advisory, I am committed to empowering startups to achieve sustainable growth through meticulous portfolio management and strategic value creation. As a Principal at YourNest Venture Capital, I focus on aligning investments with long-term goals, leveraging my expertise in portfolio oversight, team leadership, and fostering founder enablement to build impactful businesses. I thrive in collaborative environments, bringing forward innovative solutions and a shared vision for success.",
+              "At YourNest, I’ve successfully led multiple exits, ensuring efficient deal structuring and expediting liquidity events. By building and managing a high-performing investment management team, I’ve contributed to scaling portfolio companies from Seed to Series-B funding rounds. My focus on compliance, governance, and data-driven decision-making has enabled our team to deliver sustainable value for stakeholders while driving operational excellence across the portfolio.",
+            ],
+            photo: "/leadership/vipul-arora.jpg",
             note: "Board since 2022",
           },
           {
             category: "Bharti Airtel",
             name: "Pradipt Kapoor",
             role: "Nominee Director",
+            // No description or portrait in the profile doc; this summary is from the leadership note.
             bio: "Chief Digital & Information Officer at Bharti Airtel and CEO of Xtelify. His background includes senior global product-engineering roles at A.P. Moller–Maersk and SITA.",
             note: "Board since 2023",
           },
@@ -199,7 +290,19 @@ export const companyPages: PageContent[] = [
             category: "Indus Towers",
             name: "Abhishek Maheshwari",
             role: "Nominee Director",
-            bio: "CFO and Key Managerial Personnel of Indus Towers. He joined the Lavelle Board while CFO of Airtel’s B2B business, bringing more than two decades of experience across finance, strategy, planning, compliance, investor relations, taxation and controls.",
+            bio: [
+              "21 years of experience in various facets of finance ranging from Business Partnering, Commercials, Strategy formulation, Business Modeling, Budgeting, Planning, Reporting, Investor relationship, Consolidation, Taxation, Merger & Acquisition, ICOFR & Compliance, Partnering with Government and strategic vendors.",
+              {
+                list: [
+                  "Proficient in Financial Reporting, Budgeting & Forecasting, Analytical Report Writing, Financial Modeling, Performance Review & Analysis.",
+                  "Exposure to designing internal controls, quality audit checks & streamlining accounting systems.",
+                  "Well conversant with US GAAP, I GAAP and IFRS standards of accounting.",
+                  "Exposure of IFRS transition for Bharti Airtel Limited from I GAAP.",
+                ],
+              },
+              "Specialties: Planning and Reporting and developing business Models.",
+            ],
+            photo: "/leadership/abhishek-maheshwari.jpg",
             note: "Board since 2024",
           },
         ],
@@ -215,7 +318,33 @@ export const companyPages: PageContent[] = [
             category: "Strategy & Growth",
             name: "Thompson P. Gnanam",
             role: "Strategy & Growth Advisor",
-            bio: "A technology and business-transformation leader across IT services, telecom, cloud, digital infrastructure, BPO, managed services and public-sector technology. As Managing Director and Global CEO of 3i Infotech, he led its transformation towards cloud, digital, automation, AI, edge computing and platform-led services. His earlier experience includes Conneqt Business Solutions, Lebara, Tata Business Support Services, Hexaware and HP India.",
+            bio: [
+              {
+                title: "Summary of experience",
+                list: [
+                  "Digital Business Unit — Business Strategy, BU P/L, Digital Customer Experience, Digital Process Automation, Digital Process Excellence, Data Science and Analytics, Digital Business Process Services, SS Transformation",
+                  "P/L of Telecom MVNO techno-functional and commercial global operations, GIC, GBS, Digital Sales and Marketing, and Media & Entertainment end-to-end operations management for Live TV and on-demand movies",
+                  "Global Sales, Marketing & Strategic Alliances for BPO, Integrated IT & BPO, Cloud-based Platform Services and Business Process as a Service business of US$25 million plus",
+                  "Profit and loss accountability of a US$150 million commercial enterprise & public sector IT hardware infrastructure / solutions business",
+                  "Institutional selling of software solutions and services to global / national accounts and large SMBs",
+                  "Industrial automation and Coding Marking Solution business — P/L management and entire 360° responsibility for the South India region",
+                  "Consumer direct and indirect channel management in the PC business",
+                  "BPO / ITO: business development and transition, service delivery and operational excellence, business transformation and cost center management",
+                  "Telecom customer experience management: call center operations, retail stores P/L, back-end operations, service quality assurance, customer retention and value-added sales through relationship management",
+                  "Global SSC operating transformation models",
+                ],
+              },
+              {
+                title: "Key accomplishments",
+                list: [
+                  "Credited with the turnaround of the East business region of HP India by creating 50% revenue growth in PSG products and services sales",
+                  "Increased the Enterprise and SMB customer revenue of the subscriber base of Vodafone TN by 20% and reduced churn to less than 1.5% through virtual customer relationship management service differentiation (IT + BPO integrated service through a partner)",
+                  "Increased sales contribution of the Vodafone stores from 27% to 40% and achieved 30% YoY growth in revenue; store profitability at EBITA level has been >95% and at EBIT level 85%",
+                  "Won the first cloud-based, pay-per-use pan-Asian IT + BPO integrated deal of US$7 million in the end-to-end HR outsourcing space for Hexaware, from a leading Singapore-based logistics company",
+                ],
+              },
+            ],
+            photo: "/leadership/thompson-p-gnanam.jpg",
             href: "https://www.linkedin.com/in/thompson-p-gnanam-b2845814/",
           },
         ],
