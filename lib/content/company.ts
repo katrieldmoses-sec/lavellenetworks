@@ -109,14 +109,28 @@ export const companyPages: PageContent[] = [
             category: "Founder",
             name: "Shyamal Kumar",
             role: "Founder, Managing Director & CEO",
-            bio: "Shyamal Kumar founded Lavelle Networks in 2015 and leads the company’s long-term strategy, product direction and investor relationships. A data-networking product leader, he has worked across enterprise, data-centre, wireless-broadband and service-provider networks — contributing to platforms including the Juniper MX product family and the Telsima WiMAX portfolio, with roles at Juniper Networks, Versa Networks, Inkra Networks, Riverstone Networks and Tata Elxsi. He is a graduate of BITS Pilani.",
+            // LinkedIn profile description, as supplied ("leadership from LI.docx").
+            bio: [
+              "I am the Founder of Lavelle Networks, where I guide long‑term strategy, product direction, and value creation. Over the last two decades, I have built and scaled enterprise and service‑provider networking platforms deployed at national and global scale—across data centers, distributed enterprises, and carrier networks.",
+              "My career includes leadership roles in foundational networking platforms such as the Juniper MX series, early wireless broadband systems including the Telsima WiMAX portfolio, and the industry’s first virtual services switch at Inkra Networks, designed for zero‑downtime upgrades through a modular architecture.",
+              "At Lavelle Networks, I led the creation and scale‑out of the ScaleAOn SD‑WAN platform, which now powers some of India’s most complex and mission‑critical communication networks across financial services, education, e‑commerce, logistics, and large citizen‑services deployments. These environments demand reliability, operational discipline, and performance at scale—far beyond proof‑of‑concept innovation.",
+              "My experience spans building world‑class technology platforms, assembling senior leadership teams across engineering, product, sales, and operations, and working closely with enterprise customers and ecosystem partners through long, high‑accountability deployment cycles. Industry recognition—including Entrepreneur of the Year 2022 and Top 25 Software CEOs in Asia (2020)—reflects this blend of technology depth and sustained execution.",
+              "As Chairman, my focus is on governance, strategic clarity, and long‑range decision‑making—ensuring Lavelle Networks continues to invest ahead of the curve, operate with discipline, and build durable enterprise value over the coming decade.",
+            ],
+            photo: "/leadership/shyamal-kumar.jpg",
             note: "Board since 2015",
           },
           {
             category: "Co-founder",
             name: "Drritiman Boraah",
             role: "Co-founder & Executive Director",
-            bio: "Drritiman Boraah leads sales, strategic partnerships and major customer relationships, connecting customer requirements to business execution. He has more than two decades of telecom and networking experience, including roles at Lucent Technologies, Motorola, Nokia Siemens Networks, Juniper Networks and Versa Networks. At Lavelle he first built the customer engineering, support and customer-success teams before moving into sales and strategic growth.",
+            // LinkedIn profile description, as supplied ("leadership from LI.docx").
+            bio: [
+              "I am passionate about building businesses that thrive on trust, innovation, and customer success. As Co-Founder and Board Member at Lavelle Networks, I transformed a bold vision into reality—creating India’s first Software Defined Networking company and scaling it into a market leader.",
+              "From zero to scale, I built Lavelle Networks’ sales and customer operations from the ground up. My approach combines strategic foresight with hands-on execution—whether it’s shaping board-level decisions, negotiating win-win deals, or resolving complex field challenges. I believe in empowering people and fostering relationships that last, making every engagement a success story.",
+              "Today, Lavelle Networks powers mission-critical networks for leading enterprises across banking, insurance, e-commerce, manufacturing, and government sectors. My role spans driving revenue growth, building high-performance teams, and ensuring customer delight at every touchpoint.",
+            ],
+            photo: "/leadership/drritiman-boraah.jpg",
             note: "Board since 2022",
             href: "https://www.linkedin.com/in/drritiman-boraah-a861606/",
           },

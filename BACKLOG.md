@@ -17,10 +17,14 @@ template pages, Our Story, Leadership, ten-year panel. Still open:
   indusWall.
 - **Awards and PR carousel** for Our Story (best recognitions of the last 5+
   years). The homepage Recognition section still shows placeholders.
-- **Leadership photos and LinkedIn descriptions.** LinkedIn profiles need a
-  sign-in, so the bios come from the leadership note (public-safe parts
-  only). Need headshots for all ten people, Shyamal Kumar's and Drritiman
-  Boraah's LinkedIn "About" text, and Shyamal's profile URL.
+- **Leadership photos.** Founders done (photos and LinkedIn descriptions
+  from "leadership from LI.docx"). Still need headshots for the other eight
+  (Netaji Patil, Nishant Verma, Sax Krishna, Thompson P. Gnanam, Naganand
+  Doraswamy, Vipul Arora, Pradipt Kapoor, Abhishek Maheshwari); their cards
+  keep the grain band until then. Add `photo:` in `lib/content/company.ts`.
+  Shyamal Kumar's LinkedIn URL is still missing.
+- **Shyamal Kumar's title.** The card says "Founder, Managing Director &
+  CEO" (leadership note); his LinkedIn text says "As Chairman". Confirm.
 - **Board:** Abhishek Maheshwari is listed as a nominee director (statutory
   list as of 1 September 2026); update when the Airtel nominee change
   completes.

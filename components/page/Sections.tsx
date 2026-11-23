@@ -436,20 +436,32 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
       return (
         <Light ground={ground}>
           <Head eyebrow={section.eyebrow} title={section.title} intro={section.intro} />
-          <div className="mt-14 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
+          <div className={`mt-14 grid gap-3 ${cols(section.items.length)}`}>
             {section.items.map((m, i) => (
               <Reveal key={m.name + i} delay={(i % 3) * 80}>
                 <div className="flex h-full flex-col overflow-hidden rounded-[20px] border border-lv-ink/10 bg-white">
-                  <GrainField tone={i % 3 === 1 ? "deep" : i % 3 === 2 ? "sky" : "blue"} grain={0.3} className="h-20">
-                    <div className="absolute -bottom-20 -right-10 h-48 w-48 text-white/25">
-                      <OrbitLines className="mk-spin-slow h-full w-full" />
+                  {m.photo ? (
+                    // Portraits in monochrome so mixed sources sit together on the brand palette.
+                    <div className="relative aspect-[4/3] overflow-hidden bg-lv-ink sm:aspect-[16/10]">
+                      {/* eslint-disable-next-line @next/next/no-img-element -- static portrait, sized by CSS */}
+                      <img src={m.photo} alt={`Portrait of ${m.name}`} loading="lazy" decoding="async" className="h-full w-full object-cover object-[50%_22%] grayscale" />
                     </div>
-                  </GrainField>
+                  ) : (
+                    <GrainField tone={i % 3 === 1 ? "deep" : i % 3 === 2 ? "sky" : "blue"} grain={0.3} className="h-20">
+                      <div className="absolute -bottom-20 -right-10 h-48 w-48 text-white/25">
+                        <OrbitLines className="mk-spin-slow h-full w-full" />
+                      </div>
+                    </GrainField>
+                  )}
                   <div className="flex flex-1 flex-col p-6">
                     {m.category && <span className="text-[12px] font-medium text-lv-ink/50">{m.category}</span>}
                     <h3 className="mt-1.5 text-[19px] font-semibold tracking-[-0.015em]">{m.name}</h3>
                     <div className="mt-0.5 text-[14px] font-medium text-lv-700">{m.role}</div>
-                    <p className="mt-3 flex-1 text-[14px] leading-[1.6] text-lv-ink/65">{m.bio}</p>
+                    <div className="mt-3 flex-1 space-y-3 text-[14px] leading-[1.6] text-lv-ink/65">
+                      {(Array.isArray(m.bio) ? m.bio : [m.bio]).map((para) => (
+                        <p key={para.slice(0, 32)}>{para}</p>
+                      ))}
+                    </div>
                     {(m.note || m.href) && (
                       <div className="mt-5 flex flex-wrap items-center gap-2">
                         {m.note && <span className="w-fit rounded-full bg-lv-paper px-3 py-1 text-[12px] font-medium text-lv-ink/60">{m.note}</span>}
