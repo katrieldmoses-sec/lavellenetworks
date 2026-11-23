@@ -119,6 +119,7 @@ export const companyPages: PageContent[] = [
             ],
             photo: "/leadership/shyamal-kumar.jpg",
             note: "Board since 2015",
+            href: "https://www.linkedin.com/in/shyamalk/",
           },
           {
             category: "Co-founder",
