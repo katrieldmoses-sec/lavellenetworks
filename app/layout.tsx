@@ -19,12 +19,11 @@ export const metadata: Metadata = {
     template: "%s · Lavelle Networks",
   },
   description:
-    "Lavelle Networks connects, controls, and secures distributed enterprises through a unified platform for SD-WAN, SD-Branch, SASE, and AI-powered network operations.",
+    "Lavelle Networks connects, controls, and secures distributed enterprises through a unified platform for SD-WAN, SD-Branch, and SASE.",
   keywords: [
     "SD-WAN",
     "SD-Branch",
     "SASE",
-    "AI Ops",
     "Enterprise networking",
     "Zero Trust",
     "ZTNA",
@@ -49,7 +48,7 @@ export const metadata: Metadata = {
     siteName: "Lavelle Networks",
     title: "Lavelle Networks — Connect. Control. Secure.",
     description:
-      "India's trusted enterprise networking platform. Unified SD-WAN, SD-Branch, SASE, and AI Ops for distributed enterprises.",
+      "India's trusted enterprise networking platform. Unified SD-WAN, SD-Branch, and SASE for distributed enterprises.",
     images: [
       {
         url: "/og-image.png",
@@ -63,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Lavelle Networks — Connect. Control. Secure.",
     description:
-      "India's trusted enterprise networking platform. Unified SD-WAN, SD-Branch, SASE, and AI Ops.",
+      "India's trusted enterprise networking platform. Unified SD-WAN, SD-Branch, and SASE.",
     images: ["/og-image.png"],
   },
   robots: {

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { canonicalPath } from "@/lib/routes";
+import { canonicalPath, DRAFT_ROUTES } from "@/lib/routes";
 import Sections from "@/components/page/Sections";
 import StubPage from "@/components/page/StubPage";
 import { productPages, productStubs } from "@/lib/content/products";
@@ -19,6 +19,7 @@ export function generateMetadata({ params }: Params): Metadata {
       title: page.metaTitle,
       description: page.metaDescription,
       alternates: { canonical },
+      ...(DRAFT_ROUTES.has(canonical) && { robots: { index: false, follow: true } }),
     };
   const stub = productStubs.find((p) => p.slug === params.slug);
   return stub ? { title: stub.heading, alternates: { canonical } } : {};

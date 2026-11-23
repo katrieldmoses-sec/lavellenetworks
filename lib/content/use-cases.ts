@@ -237,13 +237,11 @@ const networkMonitoring: Omit<PageContent, "slug"> = {
       { title: "Real-time alerts", body: "Configure thresholds for faults, events and network conditions." },
       { title: "Centralised upgrades", body: "Coordinate network changes and software upgrades without visiting every branch." },
       { title: "External integrations", body: "Support integration with enterprise monitoring and automation tools through approved APIs." },
-      { title: "Historical analysis", body: "Use retained operational data to investigate trends and recurring performance issues." },
-      { title: "AI-assisted operations", body: "Connect network telemetry with ipDesk AI Ops for anomaly investigation and event correlation." }] },
+      { title: "Historical analysis", body: "Use retained operational data to investigate trends and recurring performance issues." }] },
     { kind: "checklist", eyebrow: "Outcomes", title: "What centralised operations delivers", items: ["Faster issue isolation across distributed sites", "Lower mean time to resolution", "Consistent enterprise policies", "Reduced operational fragmentation", "Better capacity planning", "Central visibility across branches and links"] },
     { kind: "platform", eyebrow: "Related products", title: "Products that centralise operations.", links: [
       { title: "CloudStation Insights", body: "Analytics and network intelligence platform", href: "/products/cloudstation-insights" },
-      { title: "CloudStation Controller", body: "Central orchestration and monitoring", href: "/products/cloudstation-controller" },
-      { title: "ipDesk AI Ops", body: "AI-powered network operations", href: "/products/ai-operations" }] },
+      { title: "CloudStation Controller", body: "Central orchestration and monitoring", href: "/products/cloudstation-controller" }] },
     { kind: "cta", title: "Ready to unify your network operations?", body: "Speak with a Lavelle Networks specialist to see how centralised monitoring can reduce operational complexity across your enterprise.", ctas: [{ label: "See the Operations Platform", href: "/contact/talk-to-expert" }, { label: "Talk to an Expert", href: "/contact/talk-to-expert" }] },
   ],
 };

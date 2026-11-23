@@ -29,13 +29,17 @@ function literals(file) {
     const s = m[1];
     if (!s.trim() || IGNORE.has(s)) continue;
     if (s.startsWith("/") || s.startsWith("tel:") || s.startsWith("@/") || s.startsWith("./")) continue;
+    if (/\.(png|jpe?g|svg|webp)$/.test(s)) continue; // image file names
     out.push(s);
   }
   return out;
 }
 
+// The live homepage renders lib/content/home.ts; the mockups render the frozen
+// copy in components/mockups/content (see the note at the top of each file).
 const home = literals("lib/content/home.ts");
-const footer = literals("lib/content/footer.ts");
+const mockHome = literals("components/mockups/content/home.ts");
+const footer = literals("components/mockups/content/footer.ts");
 const nav = literals("lib/content/nav.ts");
 
 // Strings the components derive from the module.
@@ -48,7 +52,7 @@ const derived = [
   ),
 ];
 
-const required = [...new Set([...home, ...footer, ...nav, ...derived])];
+const required = [...new Set([...mockHome, ...footer, ...nav, ...derived])];
 
 function textOf(html) {
   return html
@@ -56,6 +60,8 @@ function textOf(html) {
     .replace(/<style[\s\S]*?<\/style>/gi, " ")
     // React separates adjacent text nodes with empty comments
     .replace(/<!--[\s\S]*?-->/g, "")
+    // image alt text counts as copy (customer logos)
+    .replace(/<img\b[^>]*\balt="([^"]*)"[^>]*>/gi, " $1 ")
     .replace(/<[^>]+>/g, " ")
     .replace(/&amp;/g, "&")
     .replace(/&#x27;|&#39;|&apos;/g, "'")

@@ -17,7 +17,7 @@
  *           the rings turn with the scroll.
  */
 import { MapPin } from "lucide-react";
-import { HERO, STATS } from "@/lib/content/home";
+import { HERO, STATS } from "@/components/mockups/content/home";
 import Globe from "@/components/kit/Globe";
 import { Reveal, SplitWords, Count, Marquee, useStickyProgress } from "@/components/kit/Motion";
 import { GrainField, Grain } from "@/components/kit/Brand";

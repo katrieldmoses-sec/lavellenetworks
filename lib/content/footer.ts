@@ -1,5 +1,5 @@
-/** Footer link columns and legal links. Shared by the site footer and the
-    homepage mockups. */
+/** Footer link columns and legal links for the site footer. (The homepage
+    mockups keep a frozen copy in components/mockups/content.) */
 export const FOOTER_COLUMNS: { title: string; links: { label: string; href: string }[] }[] = [
   {
     title: "Platform",
@@ -7,9 +7,6 @@ export const FOOTER_COLUMNS: { title: string; links: { label: string; href: stri
       { label: "ScaleAOn SD-WAN", href: "/products/sd-wan" },
       { label: "ScaleAOn SD-Branch", href: "/products/secure-branch" },
       { label: "indusWall SASE", href: "/products/sase" },
-      { label: "ipDesk AI Ops", href: "/products/ai-operations" },
-      { label: "ZTNA", href: "/products/ztna" },
-      { label: "Network Analytics", href: "/products/network-analytics" },
     ],
   },
   {

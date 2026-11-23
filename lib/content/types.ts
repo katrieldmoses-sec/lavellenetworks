@@ -4,7 +4,7 @@ export type Cta = { label: string; href: string };
 
 export type Section =
   | { kind: "hero"; eyebrow: string; title: string; body?: string; ctas?: Cta[] }
-  | { kind: "challenge"; eyebrow: string; title: string; intro?: string; bullets: string[] }
+  | { kind: "challenge"; eyebrow: string; title: string; intro?: string; bullets: string[]; outro?: string }
   | { kind: "capabilities"; eyebrow: string; title: string; items: { title: string; body: string }[] }
   | { kind: "how"; eyebrow: string; title: string; steps: { title: string; body: string }[] }
   | { kind: "outcomes"; eyebrow: string; title: string; items: { title: string; body: string }[] }
@@ -17,7 +17,7 @@ export type Section =
   | { kind: "components"; eyebrow: string; title: string; intro?: string; items: { title: string; bullets: string[]; href: string; linkLabel?: string }[] }
   | { kind: "table"; eyebrow: string; title: string; headers: string[]; rows: string[][] }
   | { kind: "checklist"; eyebrow: string; title?: string; items: string[] }
-  | { kind: "people"; eyebrow: string; title: string; intro?: string; items: { category?: string; name: string; role: string; bio: string; note?: string }[] }
+  | { kind: "people"; eyebrow: string; title: string; intro?: string; items: { category?: string; name: string; role: string; bio: string; note?: string; href?: string }[] }
   | { kind: "cta"; title: string; body?: string; ctas?: Cta[] };
 
 export type PageContent = {

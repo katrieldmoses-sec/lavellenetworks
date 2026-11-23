@@ -21,8 +21,8 @@ import {
   INVESTMENT,
   FINAL_CTA,
   CHROME,
-} from "@/lib/content/home";
-import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
+} from "@/components/mockups/content/home";
+import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/components/mockups/content/footer";
 import Globe from "@/components/kit/Globe";
 import { Reveal, SplitWords, Count } from "@/components/kit/Motion";
 import { Lockup, Mark, NavMenu, MobileNav, Grain } from "@/components/kit/Brand";

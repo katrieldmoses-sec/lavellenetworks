@@ -152,16 +152,17 @@ copy, vertically centred, `min(38%, 520px, 56vh)` wide (compact heroes
 | Scene | Pictures | Pages |
 |---|---|---|
 | Paths | Branch → three transports (internet, MPLS, LTE) → DC and cloud; the active path moves in turn | SD-WAN; Hybrid WAN (two transports) |
-| Shield | Users and devices → inspection ring → apps; a threat stops at the ring | SASE, Secure Internet |
-| Zero trust | User → identity, key, posture gates verifying in turn → its own micro-perimeter app | ZTNA |
+| Shield | Users and devices → inspection ring → apps; a threat stops at the ring | SASE, Secure Internet, trustGate (provisional) |
+| Zero trust | User → identity, key, posture gates verifying in turn → its own micro-perimeter app | ZTNA, trustCore (provisional) |
 | Branch | One box (router, Wi-Fi, security, compute), devices wired in, uplink to cloud | Secure Branch, Branch Transformation |
 | Failover | Primary and secondary paths swap; heartbeat never breaks | Application Availability |
 | Telemetry | Live line, health gauge, bars or the earth | CloudStation Insights, Network Analytics, Network Monitoring |
-| AI Ops | Signal with an anomaly; the graph traced to its root cause | AI Operations |
+| AI Ops | Signal with an anomaly; the graph traced to its root cause | AI Operations (parked until January 2027) |
 | Experience | Direct path to the app, faded backhaul, experience gauge | Digital Experience, Microsoft 365 |
-| Edge | The appliance with live port lights; uplinks above, devices below | CloudPort Edge |
+| Edge | The appliance with live port lights; uplinks above, devices below. The switch variant has twelve ports, the SD-WAN edge above and wired devices below | CloudPort Edge; Ether (switch) |
+| Air | An access point broadcasting to the branch's devices, wired back to the edge | Air |
 | Hub | Many edges converge on the gateway, out to DC and cloud | CloudPort Gateway |
-| Controller | Policy waves from the controller to every device | CloudStation Controller |
+| Controller | Policy waves from the controller to every device | CloudStation Controller, trustPilot (provisional) |
 | Multi-cloud | Three clouds meshed through one fabric to the enterprise | Cloud Connectivity, Multi-Cloud pages |
 | Anywhere | Home, office, café, travel around the earth through one edge | Hybrid Workforce |
 | India | Subcontinent dot field (1° coastline mask, **no political boundaries**) with sector sites wired to a hub; logistics drives a route | Sector solutions, Partner Locator, Contact |
@@ -203,16 +204,27 @@ renders in its final state, and the globe draws one static frame.
 1. **Hero:** the blue grain card. Earth inside three orbit rings (platform /
    sources / destinations) with packets, spokes and a radar sweep. Headline
    bottom-left with the passing underline. Platform ticker along the base.
-2. **Figures:** two-tone statement over the bento of four figures.
-3. **Platform:** product bento. Two large grain tiles with a rising planet,
-   two paper tiles with orbit lines.
+2. **Figures:** two-tone statement over a four-column bento of six figures:
+   a wide sky tile and a wide deep tile at opposite corners, single ink, blue
+   and outlined tiles between. Units (Billion+, Million, Gbps) sit after the
+   counted number at 0.42em.
+3. **Platform:** product bento of the three pillars. A paper tile with orbit
+   lines beside a wide grain tile with a rising planet; the third pillar
+   spans the full row.
 4. **Architecture:** dark panel with the globe straddling its top edge, accent
    caps title, four layer cards.
 5. **Why Lavelle:** centred two-tone statement and six opening tiles.
 6. **Industries:** deep grain panel with tabs; challenge, solution and outcome
    cards.
-7. **Proof:** testimonial cards (first in ink) and the logo grid.
-8. **Decade:** pinned; scrolling moves the year cards sideways.
+7. **Proof:** testimonial cards (first in ink) and the customer logo wall:
+   logos in their own colours on white tiles, wrapping with a centred last
+   row (files in `public/customers`).
+8. **Decade (the ten-year panel):** pinned; scrolling moves the year cards
+   sideways. A progress line with a dot per year runs above the cards, era
+   tags (Build, Prove, Scale, Endure, Lead, 10 Years) mark the chapters, and
+   the cards warm from ink towards brand blue as the decade passes. The track
+   arrives at a double-width blue grain card, **2026 → The Decade Ahead**,
+   with the earth, accent caps and the sign-off; nothing follows it.
 9. **Insights:** filters and grain-thumbnail cards.
 10. **Recognition + Investment:** ruled list beside a blue grain panel.
 11. **Close:** horizon panel with the planet rising.
@@ -225,7 +237,7 @@ rendered by `components/page/Sections.tsx`:
 | Section kind | Signal treatment |
 |---|---|
 | `hero` | Blue grain card in the inset frame. The page's scene to the right (§5, Page-hero scenes; decoration only), kicker, display h1, body, CTAs |
-| `challenge` | Two-tone heading; numbered cards with an alert well |
+| `challenge` | Two-tone heading; numbered cards with an alert well; optional closing line in two-tone |
 | `capabilities` / `features` | White cards on paper with icon wells and index numerals |
 | `how` | Deep grain panel; numbered step cards on glass |
 | `outcomes` | Bento: one blue grain tile, then outlined tiles |
@@ -237,7 +249,7 @@ rendered by `components/page/Sections.tsx`:
 | `note` | Paper panel: heading left, body and action right |
 | `table` | White rounded table; first column emphasised; row hover |
 | `checklist` | Pill cards with check wells |
-| `people` | Cards with a grain band, role in blue, note pill |
+| `people` | Cards with a grain band, role in blue, note pill and an optional LinkedIn pill (opens in a new tab) |
 | `cta` | The horizon panel |
 
 Placeholder pages (stubs) use a compact blue grain hero with their scene. The 404 uses the

@@ -26,7 +26,7 @@ import {
   INVESTMENT,
   FINAL_CTA,
   HERO,
-} from "@/lib/content/home";
+} from "@/components/mockups/content/home";
 import Globe from "@/components/kit/Globe";
 import { Reveal, SplitWords, Count, useStickyProgress } from "@/components/kit/Motion";
 import { GrainField, Grain } from "@/components/kit/Brand";

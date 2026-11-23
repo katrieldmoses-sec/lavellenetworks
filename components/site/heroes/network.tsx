@@ -32,6 +32,9 @@ import {
   BrainCircuit,
   ScanEye,
   Bug,
+  EthernetPort,
+  Printer,
+  Tablet,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Globe from "@/components/kit/Globe";
@@ -301,7 +304,8 @@ export function TelemetryScene({ variant = "analytics" }: { variant?: "analytics
 
 /* ================================================================ AI Ops */
 
-/** AI Ops: a signal shows an anomaly, the model traces it back through the graph to its root cause. */
+/** AI Ops: a signal shows an anomaly, the model traces it back through the graph to its root cause.
+    Unused while the AI Ops page is parked (until January 2027). */
 export function AiOpsScene() {
   const mids = [24, 50, 76];
   const leaves = [12, 31, 50, 69, 88];
@@ -369,17 +373,30 @@ export function ExperienceScene({ variant = "dex" }: { variant?: "dex" | "m365" 
 /* ============================================================ CloudPort Edge */
 
 /** The edge appliance: ports with live status lights, uplinks above, devices below. */
-export function EdgeScene() {
-  const ups = [
-    { x: 24, y: 12, i: Cloud },
-    { x: 50, y: 8, i: GlobeIcon },
-    { x: 76, y: 12, i: Server },
-  ];
-  const downs = [
-    { x: 20, y: 88, i: Laptop },
-    { x: 50, y: 92, i: Cctv },
-    { x: 80, y: 88, i: Smartphone },
-  ];
+export function EdgeScene({ variant = "edge" }: { variant?: "edge" | "switch" }) {
+  // "switch" (Ether): the SD-WAN edge above, wired devices fanning out below.
+  const sw = variant === "switch";
+  const ups = sw
+    ? [{ x: 50, y: 8, i: Router }]
+    : [
+        { x: 24, y: 12, i: Cloud },
+        { x: 50, y: 8, i: GlobeIcon },
+        { x: 76, y: 12, i: Server },
+      ];
+  const downs = sw
+    ? [
+        { x: 12, y: 84, i: Laptop },
+        { x: 31, y: 92, i: Monitor },
+        { x: 50, y: 86, i: Cctv },
+        { x: 69, y: 92, i: Printer },
+        { x: 88, y: 84, i: Wifi },
+      ]
+    : [
+        { x: 20, y: 88, i: Laptop },
+        { x: 50, y: 92, i: Cctv },
+        { x: 80, y: 88, i: Smartphone },
+      ];
+  const Device = sw ? EthernetPort : Router;
   return (
     <Stage
       svg={
@@ -394,9 +411,9 @@ export function EdgeScene() {
       }
     >
       <div className="absolute flex items-center gap-[3%] rounded-[18px] bg-lv-ink px-[4%] shadow-[0_30px_60px_-30px_rgba(0,0,0,0.8)] ring-1 ring-white/15" style={{ left: "16%", top: "41%", width: "68%", height: "19%" }}>
-        <Router className="h-6 w-6 shrink-0 text-lv-300" strokeWidth={1.8} />
-        <div className="grid flex-1 grid-cols-8 gap-[6%]">
-          {Array.from({ length: 8 }).map((_, i) => (
+        <Device className="h-6 w-6 shrink-0 text-lv-300" strokeWidth={1.8} />
+        <div className={`grid flex-1 gap-[6%] ${sw ? "grid-cols-12" : "grid-cols-8"}`}>
+          {Array.from({ length: sw ? 12 : 8 }).map((_, i) => (
             <div key={i} className="relative aspect-[4/3] rounded-[4px] bg-white/10 ring-1 ring-white/20">
               <span className="mk-blink absolute right-1 top-1 h-1.5 w-1.5 rounded-full bg-lv-300" style={{ animationDelay: `${-i * 0.37}s`, animationDuration: `${1.2 + (i % 3) * 0.4}s` }} />
             </div>
@@ -408,6 +425,41 @@ export function EdgeScene() {
       ))}
       {downs.map((u, k) => (
         <Chip key={k} x={u.x} y={u.y} icon={u.i} tone="glass" size="sm" />
+      ))}
+    </Stage>
+  );
+}
+
+/* ================================================================= Air */
+
+/** Wi-Fi: an access point broadcasting to the devices of the branch, wired back to the edge. */
+export function AirScene() {
+  const devices = [
+    { x: 14, y: 60, i: Laptop },
+    { x: 26, y: 84, i: Smartphone },
+    { x: 50, y: 92, i: Tablet },
+    { x: 74, y: 84, i: Cctv },
+    { x: 86, y: 60, i: Monitor },
+  ];
+  return (
+    <Stage
+      svg={
+        <>
+          {[18, 30, 42].map((r) => (
+            <path key={r} d={`M${50 - r} ${46 + r * 0.05} A${r} ${r} 0 0 0 ${50 + r} ${46 + r * 0.05}`} stroke="#FFFFFF" strokeOpacity={0.22} vectorEffect="non-scaling-stroke" strokeDasharray="2 5" />
+          ))}
+          <Wire d={curve(50, 10, 50, 40, 0)} strength="bright" packets={2} speed={1.6} />
+          {devices.map((d, k) => (
+            <Wire key={k} d={curve(50, 46, d.x, d.y, k % 2 ? 5 : -5)} strength="faint" dashed packets={1} speed={2.4} delay={-k * 0.45} />
+          ))}
+        </>
+      }
+    >
+      <Pulse x={50} y={46} size={260} count={3} period={3.6} className="border-white/40" />
+      <Chip x={50} y={10} icon={Router} tone="glass" size="md" />
+      <Chip x={50} y={46} icon={Wifi} size="xl" round />
+      {devices.map((d, k) => (
+        <Chip key={k} x={d.x} y={d.y} icon={d.i} tone="glass" size="sm" round float={k % 2 ? "b" : "a"} />
       ))}
     </Stage>
   );

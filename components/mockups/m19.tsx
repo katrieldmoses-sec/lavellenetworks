@@ -23,8 +23,8 @@ import {
   INVESTMENT,
   FINAL_CTA,
   CHROME,
-} from "@/lib/content/home";
-import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
+} from "@/components/mockups/content/home";
+import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/components/mockups/content/footer";
 import Globe from "@/components/kit/Globe";
 import { Reveal, Count, DrawPath } from "@/components/kit/Motion";
 import { Lockup, NavMenu, MobileNav, Grain } from "@/components/kit/Brand";

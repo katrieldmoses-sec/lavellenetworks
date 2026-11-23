@@ -1,8 +1,8 @@
 /**
- * Homepage copy, verbatim from the live homepage sections
- * (components/sections/*). The homepage mockups render exclusively from this
- * module so every layout carries identical words; scripts/check-mockup-copy.mjs
- * verifies each mockup against the live page.
+ * Homepage copy. Updated for change set 1.0 (November 2026): figures from the
+ * corporate deck, AI Ops parked until January 2027, customer statements and
+ * logos from the deck, and the ten-year panel. The homepage mockups keep the
+ * earlier copy in components/mockups/content/home.ts.
  */
 import type { LucideIcon } from "lucide-react";
 import {
@@ -36,7 +36,7 @@ export const HERO = {
   titleLead: "Connect. Control.",
   titleAccent: "Secure.",
   words: ["Connect.", "Control.", "Secure."],
-  body: "Lavelle Networks connects, controls, and secures distributed enterprises through a unified platform for SD-WAN, SD-Branch, SASE, and AI-powered network operations.",
+  body: "Lavelle Networks connects, controls, and secures distributed enterprises through a unified platform for SD-WAN, SD-Branch, and SASE.",
   primary: { label: "Explore the Platform", href: "/products/sd-wan" },
   secondary: { label: "Request an Enterprise Demo", href: "/contact/request-demo" },
   meta: ["Built in India. Trusted by enterprises.", "Est. 2015 · Bangalore"],
@@ -52,7 +52,6 @@ export const HERO = {
       { brand: "ScaleAOn", name: "SD-WAN", icon: Network },
       { brand: "ScaleAOn", name: "SD-Branch", icon: GitBranch },
       { brand: "indusWall", name: "SASE", icon: Shield },
-      { brand: "ipDesk", name: "AI Ops", icon: Cpu },
     ],
     destinations: [
       { icon: Server, label: "Private DC" },
@@ -63,19 +62,27 @@ export const HERO = {
   },
 };
 
+/**
+ * Figures from the corporate deck. `unit` is set smaller after the counted
+ * number; `separator` groups digits Indian-style (3,00,000).
+ */
+export type Stat = { end: number; suffix: string; unit?: string; label: string; separator?: boolean };
+
 export const STATS = {
   items: [
-    { end: 10, suffix: "+", label: "Years of execution" },
-    { end: 100, suffix: "+", label: "Enterprise customers" },
-    { end: 25000, suffix: "+", label: "Deployed sites", separator: true },
-    { end: 6, suffix: "", label: "Industry verticals" },
-  ],
+    { end: 300000, suffix: "+", label: "Enterprise workforce logins daily", separator: true },
+    { end: 90, suffix: "", unit: "Billion+", label: "Network sessions inspected every year" },
+    { end: 15, suffix: "%", label: "Enterprise market share" },
+    { end: 35, suffix: "%", label: "BFSI market share" },
+    { end: 10, suffix: "", unit: "Million", label: "Enterprise transactions per day" },
+    { end: 300, suffix: "+", unit: "Gbps", label: "Network processing per day" },
+  ] as Stat[],
   statement:
     "Designed for enterprises where network reliability, visibility, security, and operational continuity are business-critical.",
 };
 
 export const PRODUCTS = {
-  kicker: "One Platform. Four Strategic Pillars.",
+  kicker: "One Platform. Three Strategic Pillars.",
   title:
     "Built for every connection, branch, user, application, and operational decision.",
   items: [
@@ -114,26 +121,12 @@ export const PRODUCTS = {
       icon: Shield,
       desc: "Cloud-delivered networking and security for users, branches, applications, and devices.",
       features: [
-        "Zero Trust Network Access",
         "Secure Web Gateway",
         "Identity-aware policies",
+        "Zero Trust Network Access",
       ],
       cta: "Explore indusWall SASE",
       href: "/products/sase",
-    },
-    {
-      brand: "ipDesk",
-      name: "AI Ops",
-      category: "Network Operations",
-      icon: Cpu,
-      desc: "AI-powered operations for predictive, autonomous, and experience-led enterprise networks.",
-      features: [
-        "Predictive anomaly detection",
-        "Automated root-cause analysis",
-        "Network health scoring",
-      ],
-      cta: "Explore ipDesk AI Ops",
-      href: "/products/ai-operations",
     },
   ],
 };
@@ -165,7 +158,6 @@ export const ARCHITECTURE = {
         { label: "ZTNA", icon: Lock },
         { label: "Secure Internet", icon: Globe },
         { label: "Network Analytics", icon: ChartNoAxesColumn },
-        { label: "ipDesk AI Ops", icon: Cpu },
       ] as Node[],
     },
     {
@@ -263,7 +255,7 @@ export const INDUSTRIES = {
       icon: Factory,
       challenge:
         "Factory floor connectivity, OT network isolation, and operational visibility across plant locations.",
-      solution: "ScaleAOn SD-WAN with ipDesk AI Ops",
+      solution: "ScaleAOn SD-WAN with CloudStation Insights",
       outcome:
         "Real-time plant network visibility with predictive issue resolution.",
     },
@@ -308,73 +300,134 @@ export const PROVEN = {
   testimonials: [
     {
       quote:
-        "[Insert verified customer quotation from an enterprise decision-maker — CTO, CIO, or Head of IT Infrastructure.]",
-      role: "[Insert verified customer role and organisation]",
+        "The rollout across our nationwide branches was remarkably smooth. We achieved secure connectivity and centralized control without downtime — something we’d struggled with for years.",
+      role: "Head of Network Infrastructure, Leading Public Sector Bank",
       sector: "BFSI",
     },
     {
       quote:
-        "[Insert verified customer quotation about deployment scale, operational impact, or business outcome.]",
-      role: "[Insert verified customer role and organisation]",
+        "With the new SD-WAN solution, we reduced branch setup time by 60% and gained full visibility into application performance. Our IT team can now troubleshoot issues in minutes instead of hours.",
+      role: "VP – IT Operations, National Retail Chain",
       sector: "Retail",
     },
     {
       quote:
-        "[Insert verified customer quotation about network reliability, visibility, or cost reduction.]",
-      role: "[Insert verified customer role and organisation]",
-      sector: "Manufacturing",
+        "Transitioning hundreds of remote offices to a unified, cloud-managed network was easier than expected. The platform delivered consistency, reliability, and measurable cost savings from day one.",
+      role: "Director – Digital Transformation",
+      sector: "Enterprise",
     },
   ],
   logosLabel: "Trusted by enterprises across India",
-  logoPlaceholder: "[Insert approved customer logo]",
-  logoCount: 8,
+  /** Files in public/customers, from the corporate deck. */
+  logos: [
+    { name: "Canara Bank", file: "canara-bank.png" },
+    { name: "Indian Bank", file: "indian-bank.png" },
+    { name: "ICICI Bank", file: "icici-bank.png" },
+    { name: "SBI Mutual Fund", file: "sbi-mutual-fund.png" },
+    { name: "Flipkart", file: "flipkart.png" },
+    { name: "Federal Bank", file: "federal-bank.png" },
+    { name: "Kerala Bank", file: "kerala-bank.png" },
+    { name: "Indian Overseas Bank", file: "indian-overseas-bank.png" },
+    { name: "CSB Bank", file: "csb-bank.png" },
+    { name: "SMFG India Credit", file: "smfg-india-credit.png" },
+    { name: "Aakash", file: "aakash.png" },
+    { name: "Motilal Oswal", file: "motilal-oswal.png" },
+    { name: "L&T Financial Services", file: "lt-financial-services.png" },
+    { name: "Karnataka Grameena Bank", file: "karnataka-grameena-bank.png" },
+    { name: "Moneyboxx", file: "moneyboxx.png" },
+    { name: "Gati", file: "gati.png" },
+    { name: "Religare Health Insurance", file: "religare-health-insurance.png" },
+    { name: "Care Health Insurance", file: "care-health-insurance.png" },
+    { name: "UTI International", file: "uti-international.png" },
+    { name: "Titan", file: "titan.png" },
+    { name: "Godrej", file: "godrej.png" },
+    { name: "Barbeque Nation", file: "barbeque-nation.png" },
+    { name: "Page Industries", file: "page-industries.png" },
+    { name: "Malabar Gold & Diamonds", file: "malabar-gold-diamonds.png" },
+    { name: "Jubilant Motorworks", file: "jubilant-motorworks.png" },
+    { name: "Forever 21", file: "forever-21.png" },
+  ],
 };
 
+/**
+ * The ten-year panel: a carousel of the first decade that arrives at a wider
+ * 2026 card, "The Decade Ahead". `era` marks the chapters of the story.
+ */
 export const TIMELINE = {
-  kicker: "Connect. Control. Secure.",
-  title: "Ten years. One coherent platform strategy.",
+  kicker: "2015 → 2025",
+  title: "A Decade of Building Networks That India Runs On",
+  intro: "Ten years of building, scaling and proving Indian enterprise networking.",
   milestones: [
     {
       year: "2015",
-      title: "Founded in Bangalore",
-      body: "Lavelle Networks incorporated with a mission to build enterprise-grade networking from India.",
+      era: "Build",
+      title: "The Journey Begins",
+      body: "Lavelle Networks is born in Bengaluru with a bold idea: simplify enterprise networking through software-defined, cloud-managed architecture.",
     },
     {
       year: "2016",
-      title: "First enterprise deployments",
-      body: "Early SD-WAN deployments across BFSI and retail customers.",
+      title: "SD-WAN Enters Indian Retail",
+      body: "Within a year of launch, one of South Asia’s largest retailers adopts our SD-WAN, becoming one of the region’s earliest large-scale retail deployments.",
+    },
+    {
+      year: "2017",
+      era: "Prove",
+      title: "Recognition. Investment. Scale.",
+      body: "Ideaspring Capital invests. Microsoft Accelerator and Jio GenNext pick Lavelle among India’s promising enterprise technology companies. Our first 1,000+ location SD-WAN network goes live.",
     },
     {
       year: "2018",
-      title: "Cloud-native platform",
-      body: "ScaleAOn rebuilt for multi-cloud environments — AWS, Azure, and GCP ready.",
+      title: "Enterprise Adoption Takes Off",
+      body: "Leading businesses across e-commerce, banking, insurance and retail begin rolling out Lavelle. Our e-commerce footprint crosses 1,000+ locations, as YourNest and other investors back our journey.",
     },
     {
-      year: "[Year]",
-      title: "SD-WAN scale milestone",
-      body: "[Insert verified deployment milestone]",
+      year: "2019",
+      era: "Scale",
+      title: "SD-WAN Reaches Banking Networks",
+      body: "One of South Asia’s first bank ATM SD-WAN networks goes live, proving Indian-built networking technology can support mission-critical financial infrastructure.",
+    },
+    {
+      year: "2020",
+      title: "Banking at Asia Scale",
+      body: "A leading PSU bank selects our Made-in-India platform. What begins with 3,000+ branches grows into one of Asia’s largest SD-WAN banking networks.",
     },
     {
       year: "2021",
-      title: "SASE capabilities",
-      body: "indusWall launched as Lavelle's cloud-native security platform.",
+      era: "Endure",
+      title: "Scaling Through the Pandemic",
+      body: "Even through COVID, we keep India’s essential networks growing. A major e-commerce deployment crosses 2,000 locations, alongside continued expansion across banking and financial services.",
     },
     {
-      year: "[Year]",
-      title: "SD-Branch expansion",
-      body: "Platform extended to cover the complete enterprise branch edge.",
+      year: "2022",
+      title: "A National Telecom Partnership",
+      body: "Bharti Airtel partners with and invests in Lavelle, taking our enterprise SD-WAN technology and go-to-market reach to the next level.",
     },
     {
       year: "2023",
-      title: "AI Operations launch",
-      body: "ipDesk AI Ops introduced for predictive, autonomous network management.",
+      era: "Lead",
+      title: "An Indian Enterprise Networking Leader",
+      body: "Lavelle reaches approximately 15% of India’s enterprise SD-WAN market, emerging as the Indian technology company competing with global networking leaders for large enterprise networks.",
     },
     {
-      year: "2024",
-      title: "Unified platform",
-      body: "Connect. Control. Secure. Four integrated platform pillars powering enterprise networks across India.",
+      year: "2024–2025",
+      title: "Leadership in Indian BFSI",
+      body: "Major wins across Canara Bank, Indian Bank, Indian Overseas Bank, Karnataka Gramin Bank and others strengthen our position in BFSI, taking Lavelle beyond 20,000 enterprise locations nationwide.",
     },
-  ],
+    {
+      year: "2025",
+      era: "10 Years",
+      title: "A Decade of Proven Innovation",
+      body: "Ten years. 150+ customers. 20,000+ locations. From an Indian SDN pioneer to a trusted enterprise networking platform powering mission-critical networks across the country.",
+    },
+  ] as { year: string; era?: string; title: string; body: string }[],
+  /** The destination card: wider, and in the language of the decade ahead. */
+  ahead: {
+    year: "2026 →",
+    title: "The Decade Ahead",
+    lines: ["From networks that connect.", "To networks that think."],
+    body: "AI-native enterprise networking, built in India for the world.",
+    signoff: "Do Great Work Anywhere.",
+  },
 };
 
 export const INSIGHTS = {
@@ -441,7 +494,7 @@ export const INVESTMENT = {
     {
       icon: Server,
       title: "Product differentiation",
-      body: "Four integrated platforms — SD-WAN, SD-Branch, SASE, and AI Ops — purpose-built for Indian enterprise requirements with no comparable local competitor.",
+      body: "Three integrated platforms — SD-WAN, SD-Branch, and SASE — purpose-built for Indian enterprise requirements with no comparable local competitor.",
     },
     {
       icon: Users,
@@ -474,7 +527,7 @@ export const CHROME = {
   },
   footerBand: {
     title: "Ready to modernise your enterprise network?",
-    body: "Talk to our team about your SD-WAN, SASE, or AI Ops requirements.",
+    body: "Talk to our team about your SD-WAN, SD-Branch, or SASE requirements.",
     expert: { label: "Talk to an Expert", href: "/contact/talk-to-expert" },
     demo: { label: "Request Enterprise Demo", href: "/contact/request-demo" },
   },
@@ -492,6 +545,6 @@ export const CHROME = {
 };
 
 /** Formats a stat the same way the live CountUp does once it settles. */
-export function formatStat(s: { end: number; suffix: string; separator?: boolean }) {
-  return (s.separator ? s.end.toLocaleString("en-IN") : String(s.end)) + s.suffix;
+export function formatStat(s: { end: number; suffix: string; unit?: string; separator?: boolean }) {
+  return (s.separator ? s.end.toLocaleString("en-IN") : String(s.end)) + s.suffix + (s.unit ? " " + s.unit : "");
 }

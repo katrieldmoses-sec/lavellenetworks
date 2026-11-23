@@ -17,13 +17,13 @@ const FORM_PAGES: Record<
     topic: "Talk to an Expert",
     eyebrow: "Contact",
     title: "Talk to a network expert.",
-    body: "Tell us about your SD-WAN, SASE, or AI Ops requirements and our team will get back to you.",
+    body: "Tell us about your SD-WAN, SD-Branch, or SASE requirements and our team will get back to you.",
   },
   "request-demo": {
     topic: "Request a Demo",
     eyebrow: "Contact",
     title: "Request an enterprise demo.",
-    body: "See ScaleAOn, indusWall, or ipDesk in action with a walkthrough tailored to your network.",
+    body: "See ScaleAOn or indusWall in action with a walkthrough tailored to your network.",
   },
 };
 

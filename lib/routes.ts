@@ -3,7 +3,6 @@ export const ALL_ROUTES: string[] = [
   "/",
   "/products/sd-wan",
   "/products/sase",
-  "/products/ai-operations",
   "/products/ztna",
   "/products/cloudport-edge",
   "/products/cloudport-gateway",
@@ -14,6 +13,11 @@ export const ALL_ROUTES: string[] = [
   "/products/network-analytics",
   "/products/secure-branch",
   "/products/secure-internet",
+  "/products/ether",
+  "/products/air",
+  "/products/trustgate",
+  "/products/trustcore",
+  "/products/trustpilot",
   "/solutions/bfsi",
   "/solutions/branch-transformation",
   "/solutions/hybrid-workforce",
@@ -67,5 +71,18 @@ export function canonicalPath(path: string): string {
   return CANONICAL_OF[path] ?? path;
 }
 
-/** Routes that belong in the sitemap (aliases excluded). */
-export const SITEMAP_ROUTES = ALL_ROUTES.filter((r) => !(r in CANONICAL_OF));
+/**
+ * Template pages waiting for their content (the new SD-Branch and SASE
+ * components). They are reachable from the navigation but marked noindex and
+ * kept out of the sitemap until the copy lands.
+ */
+export const DRAFT_ROUTES = new Set<string>([
+  "/products/ether",
+  "/products/air",
+  "/products/trustgate",
+  "/products/trustcore",
+  "/products/trustpilot",
+]);
+
+/** Routes that belong in the sitemap (aliases and drafts excluded). */
+export const SITEMAP_ROUTES = ALL_ROUTES.filter((r) => !(r in CANONICAL_OF) && !DRAFT_ROUTES.has(r));

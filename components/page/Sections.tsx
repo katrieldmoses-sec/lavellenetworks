@@ -182,6 +182,13 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
               </Reveal>
             ))}
           </ul>
+          {section.outro && (
+            <Reveal>
+              <p className="mt-12 max-w-3xl text-[24px] font-semibold leading-[1.25] tracking-[-0.025em] lg:text-[30px]">
+                <TwoTone text={section.outro} lead={6} />
+              </p>
+            </Reveal>
+          )}
         </Light>
       );
 
@@ -192,7 +199,7 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
           <Head eyebrow={section.eyebrow} title={section.title} />
           <div className={`mt-14 grid gap-3 ${cols(section.items.length)}`}>
             {section.items.map((it, i) => (
-              <Reveal key={it.title} delay={(i % 3) * 80}>
+              <Reveal key={`${i}-${it.title}`} delay={(i % 3) * 80}>
                 <div
                   className={`group flex h-full flex-col rounded-[22px] p-7 transition-transform duration-500 hover:-translate-y-1 ${
                     ground === "paper" ? "bg-white" : "border border-lv-ink/10 bg-white"
@@ -224,7 +231,7 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
               <Head eyebrow={section.eyebrow} title={section.title} dark />
               <ol className="mt-14 grid gap-3 md:grid-cols-2">
                 {section.steps.map((s, i) => (
-                  <Reveal as="li" key={s.title} delay={(i % 2) * 90}>
+                  <Reveal as="li" key={`${i}-${s.title}`} delay={(i % 2) * 90}>
                     <div className="flex h-full gap-5 rounded-[18px] border border-white/15 bg-lv-ink/30 p-6 backdrop-blur">
                       <span className="text-[34px] font-semibold leading-none tracking-[-0.04em] text-lv-300">{pad(i)}</span>
                       <div>
@@ -248,7 +255,7 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
             {section.items.map((it, i) => {
               const lead = i === 1 || section.items.length === 1;
               return (
-                <Reveal key={it.title} delay={i * 90}>
+                <Reveal key={`${i}-${it.title}`} delay={i * 90}>
                   {lead ? (
                     <GrainField tone="blue" grain={0.3} className="flex h-full min-h-[240px] flex-col rounded-[22px] p-7 text-white">
                       <span className="relative text-[13px] font-medium text-white/70">{pad(i)}</span>
@@ -288,7 +295,7 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
                   </>
                 );
                 return (
-                  <Reveal key={it.title} delay={i * 90}>
+                  <Reveal key={`${i}-${it.title}`} delay={i * 90}>
                     {tone === "ink" ? (
                       <div className="flex h-full min-h-[260px] flex-col rounded-[22px] bg-lv-ink p-7 text-white">{inner}</div>
                     ) : (
@@ -312,7 +319,7 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
           <Head eyebrow={section.eyebrow} title={section.title} intro={section.intro} />
           <div className={`mt-14 grid gap-3 md:grid-cols-2 ${section.links.length % 3 === 0 ? "lg:grid-cols-3" : ""}`}>
             {section.links.map((l, i) => (
-              <Reveal key={l.title} delay={(i % 3) * 80}>
+              <Reveal key={`${i}-${l.title}`} delay={(i % 3) * 80}>
                 <a
                   href={l.href}
                   className="group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-lv-ink/10 bg-white p-7 transition-colors duration-500 hover:border-lv-blue/40"
@@ -348,7 +355,7 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
           <Head eyebrow={section.eyebrow} title={section.title} intro={section.intro} />
           <div className="mt-14 grid gap-3 md:grid-cols-2">
             {section.items.map((it, i) => (
-              <Reveal key={it.title} delay={(i % 2) * 80}>
+              <Reveal key={`${i}-${it.title}`} delay={(i % 2) * 80}>
                 <div className="group relative flex h-full flex-col overflow-hidden rounded-[20px] border border-lv-ink/10 bg-white p-7 transition-colors duration-500 hover:border-lv-blue/40">
                   <div className="absolute -right-16 -top-16 h-56 w-56 text-lv-blue/15">
                     <OrbitLines className="mk-spin-slow h-full w-full" />
@@ -443,7 +450,23 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
                     <h3 className="mt-1.5 text-[19px] font-semibold tracking-[-0.015em]">{m.name}</h3>
                     <div className="mt-0.5 text-[14px] font-medium text-lv-700">{m.role}</div>
                     <p className="mt-3 flex-1 text-[14px] leading-[1.6] text-lv-ink/65">{m.bio}</p>
-                    {m.note && <span className="mt-5 w-fit rounded-full bg-lv-paper px-3 py-1 text-[12px] font-medium text-lv-ink/60">{m.note}</span>}
+                    {(m.note || m.href) && (
+                      <div className="mt-5 flex flex-wrap items-center gap-2">
+                        {m.note && <span className="w-fit rounded-full bg-lv-paper px-3 py-1 text-[12px] font-medium text-lv-ink/60">{m.note}</span>}
+                        {m.href && (
+                          <a
+                            href={m.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center gap-1 rounded-full border border-lv-ink/10 px-3 py-1 text-[12px] font-medium text-lv-blue transition-colors hover:border-lv-blue/40"
+                          >
+                            LinkedIn
+                            <ArrowUpRight className="h-3 w-3 transition-transform group-hover:-translate-y-px group-hover:translate-x-px" />
+                            <span className="sr-only">profile of {m.name} (opens in a new tab)</span>
+                          </a>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
               </Reveal>
@@ -460,7 +483,7 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
           <Reveal delay={200}>
             <div className="mt-12 flex flex-col items-stretch gap-2 rounded-[22px] bg-white p-4 shadow-[0_30px_60px_-45px_rgba(0,84,147,0.55)] ring-1 ring-lv-ink/5 lg:flex-row lg:items-center lg:gap-0 lg:p-5">
               {section.nodes.map((n, i) => (
-                <div key={n.title} className="flex flex-col items-stretch lg:flex-1 lg:flex-row lg:items-center">
+                <div key={`${i}-${n.title}`} className="flex flex-col items-stretch lg:flex-1 lg:flex-row lg:items-center">
                   <div
                     className={`flex-1 rounded-[16px] px-4 py-4 text-center ${
                       i === mid ? "bg-lv-blue text-white" : "bg-lv-paper"
@@ -495,7 +518,7 @@ export function SectionRenderer({ section, ground, scene }: { section: Section; 
               <Head eyebrow={section.eyebrow} title={section.title} intro={section.intro} dark />
               <div className={`mt-14 grid gap-3 ${section.items.length === 3 ? "md:grid-cols-3" : cols(section.items.length)}`}>
                 {section.items.map((it, i) => (
-                  <Reveal key={it.title} delay={i * 90}>
+                  <Reveal key={`${i}-${it.title}`} delay={i * 90}>
                     <div className={`h-full rounded-[20px] p-6 ${i === 0 ? "bg-lv-blue" : "bg-white/[0.06]"}`}>
                       <span className={`text-[13px] font-medium ${i === 0 ? "text-white/75" : "text-lv-300"}`}>{pad(i)}</span>
                       <h3 className="mt-8 text-[19px] font-semibold">{it.title}</h3>

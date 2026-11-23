@@ -1,5 +1,102 @@
 import type { PageContent, StubPage } from "./types";
 
+/**
+ * Template page for a platform component whose copy has not landed yet
+ * (change set 1.0: Ether, Air, trustGate, trustCore, trustPilot). Same
+ * structure as the CloudPort and CloudStation pages; every bracketed line is
+ * a placeholder to replace. These routes are noindex (lib/routes.ts).
+ */
+function componentTemplate(c: {
+  slug: string;
+  name: string;
+  platform: string;
+  platformHref: string;
+  platformBody: string;
+  siblings: { title: string; href: string }[];
+}): PageContent {
+  return {
+    slug: c.slug,
+    metaTitle: `${c.name} — ${c.platform}`,
+    metaDescription: `${c.name}, a component of ${c.platform}.`,
+    sections: [
+      {
+        kind: "hero",
+        eyebrow: `${c.name} · ${c.platform}`,
+        title: `[Insert ${c.name} headline]`,
+        body: `[Insert a one-paragraph overview of ${c.name} and its role in ${c.platform}.]`,
+        ctas: [
+          { label: "Request a Demo", href: "/contact/request-demo" },
+          { label: "Talk to an Expert", href: "/contact/talk-to-expert" },
+        ],
+      },
+      {
+        kind: "flow",
+        eyebrow: "Platform Role",
+        title: `[Insert where ${c.name} sits in ${c.platform}]`,
+        intro: "[Insert a short description of how traffic and control pass through this component.]",
+        nodes: [
+          { title: "[Insert]", sub: "[Insert role]" },
+          { title: c.name, sub: "[Insert role]" },
+          { title: "[Insert]", sub: "[Insert role]" },
+        ],
+      },
+      {
+        kind: "capabilities",
+        eyebrow: "Key Capabilities",
+        title: `[Insert what ${c.name} delivers]`,
+        items: Array.from({ length: 6 }, () => ({
+          title: "[Insert capability]",
+          body: "[Insert one or two sentences describing the capability and the outcome it gives the enterprise.]",
+        })),
+      },
+      {
+        kind: "deployment",
+        eyebrow: "Deployment Options",
+        title: "[Insert deployment headline]",
+        items: Array.from({ length: 3 }, () => ({
+          title: "[Insert form factor]",
+          body: "[Insert where and how this form factor is deployed.]",
+        })),
+        note: "Contact sales for current model specifications and datasheets.",
+      },
+      {
+        kind: "platform",
+        eyebrow: c.platform,
+        title: `Explore ${c.platform}.`,
+        links: [
+          { title: c.platform, body: c.platformBody, href: c.platformHref },
+          ...c.siblings.map((x) => ({ title: x.title, body: "[Insert one-line description]", href: x.href })),
+        ],
+      },
+      {
+        kind: "cta",
+        title: "[Insert closing headline]",
+        body: `Talk to a Lavelle Networks specialist about ${c.name}.`,
+        ctas: [
+          { label: "Request a Demo", href: "/contact/request-demo" },
+          { label: "Talk to an Expert", href: "/contact/talk-to-expert" },
+        ],
+      },
+    ],
+  };
+}
+
+const SD_BRANCH = {
+  platform: "ScaleAOn SD-Branch",
+  platformHref: "/products/secure-branch",
+  platformBody: "One network for the branch: SD-WAN, switching and Wi-Fi, centrally managed.",
+};
+const SASE = {
+  platform: "indusWall SASE",
+  platformHref: "/products/sase",
+  platformBody: "Cloud-delivered networking and security for users, branches, applications, and devices.",
+};
+const ETHER = { title: "Ether (Switching)", href: "/products/ether" };
+const AIR = { title: "Air (Wi-Fi)", href: "/products/air" };
+const TRUST_GATE = { title: "trustGate", href: "/products/trustgate" };
+const TRUST_CORE = { title: "trustCore", href: "/products/trustcore" };
+const TRUST_PILOT = { title: "trustPilot", href: "/products/trustpilot" };
+
 export const productPages: PageContent[] = [
   {
     slug: "sd-wan",
@@ -116,11 +213,6 @@ export const productPages: PageContent[] = [
             href: "/products/sase",
           },
           {
-            title: "ipDesk AI Ops",
-            body: "AI-powered operations and predictive network intelligence",
-            href: "/products/ai-operations",
-          },
-          {
             title: "SD-Branch",
             body: "Converged branch networking — LAN, WAN, and wireless",
             href: "/products/secure-branch",
@@ -175,12 +267,12 @@ export const productPages: PageContent[] = [
         title: "What indusWall SASE delivers",
         items: [
           {
-            title: "Zero Trust Network Access",
-            body: "Identity-aware access policies ensure users only reach authorised applications — never the broader network. Access is evaluated continuously, not just at login.",
-          },
-          {
             title: "Secure Web Gateway",
             body: "Inspect and filter all web and internet traffic across every user and branch. Block malware, enforce acceptable-use policies, and gain full visibility into web activity.",
+          },
+          {
+            title: "Zero Trust Network Access",
+            body: "Identity-aware access policies ensure users only reach authorised applications — never the broader network. Access is evaluated continuously, not just at login.",
           },
           {
             title: "Cloud Access Security Broker",
@@ -258,9 +350,9 @@ export const productPages: PageContent[] = [
             href: "/products/ztna",
           },
           {
-            title: "ipDesk AI Ops",
-            body: "AI-powered operations and predictive network intelligence",
-            href: "/products/ai-operations",
+            title: "ScaleAOn SD-Branch",
+            body: "One network for the branch: SD-WAN, switching and Wi-Fi, centrally managed",
+            href: "/products/secure-branch",
           },
         ],
       },
@@ -276,17 +368,16 @@ export const productPages: PageContent[] = [
     ],
   },
   {
-    slug: "ai-operations",
-    metaTitle: "ipDesk AI Ops — AI-Powered Network Operations",
+    slug: "secure-branch",
+    metaTitle: "ScaleAOn SD-Branch — Unified Branch Networking",
     metaDescription:
-      "AI-powered operations for predictive, autonomous, and experience-led enterprise networks — from anomaly detection to automated resolution.",
+      "Bring SD-WAN, switching and Wi-Fi together into one intelligent branch network, centrally managed and built to adapt as your business changes.",
     sections: [
       {
         kind: "hero",
-        eyebrow: "ipDesk AI Ops · AI-Powered Network Operations",
-        title:
-          "AI-powered operations for predictive, autonomous, and experience-led enterprise networks.",
-        body: "Stop reacting to network problems and start preventing them. ipDesk brings AI to every layer of enterprise network operations — from anomaly detection to automated resolution.",
+        eyebrow: "ScaleAOn SD-Branch · Unified Branch Networking",
+        title: "One branch. One network. Complete control.",
+        body: "Bring SD-WAN, switching and Wi-Fi together into one intelligent branch network, centrally managed and built to adapt as your business changes.",
         ctas: [
           { label: "Request a Demo", href: "/contact/request-demo" },
           { label: "Talk to an Expert", href: "/contact/talk-to-expert" },
@@ -295,70 +386,58 @@ export const productPages: PageContent[] = [
       {
         kind: "challenge",
         eyebrow: "The Challenge",
-        title:
-          "Reactive operations cannot keep pace with distributed enterprise networks",
+        title: "The branch has changed. Has your network?",
         intro:
-          "As networks scale across hundreds or thousands of sites, manual monitoring and reactive incident management create unsustainable operational load — and leave users experiencing problems that IT hasn't detected yet.",
+          "A branch is no longer just employees accessing business applications. It is a connected business edge supporting cloud applications, video collaboration, CCTV, IoT, access control, guest Wi-Fi and always-on digital services. Yet WAN, LAN and Wi-Fi are often still operated as separate networks. That creates complexity everywhere:",
         bullets: [
-          "IT teams spending most of their time reacting to network incidents rather than preventing them",
-          "No correlation between network events across multiple devices and sites",
-          "Application performance issues reported by users long before IT detects them",
-          "Manual troubleshooting processes that take hours or days to resolve",
-          "No predictive visibility into capacity constraints before they affect operations",
+          "Separate networks for corporate, guest, IoT, CCTV and other services",
+          "Fragmented policies across WAN, switches and Wi-Fi",
+          "Inconsistent application performance across the branch",
+          "Multiple devices, configurations and software versions to manage",
+          "Infrastructure that is difficult to scale as branch requirements change",
         ],
+        outro: "Your branch has become one digital environment. Its network should work like one too.",
       },
       {
         kind: "capabilities",
         eyebrow: "Capabilities",
-        title: "What ipDesk AI Ops delivers",
+        title: "Everything your branch needs. Working as one.",
         items: [
           {
-            title: "Predictive Anomaly Detection",
-            body: "AI identifies deviations from normal behaviour before they cause user-impacting incidents — giving IT teams time to act rather than react.",
+            title: "Unified WAN, LAN & Wi-Fi",
+            body: "Bring SD-WAN, Ethernet switching and enterprise Wi-Fi under common management, creating one integrated network from the WAN edge to every connected user and device.",
           },
           {
-            title: "Automated Root-Cause Analysis",
-            body: "Correlate events across devices, links, and applications to pinpoint the source of any issue automatically, without hours of manual investigation.",
+            title: "End-to-End Policy",
+            body: "Define access, segmentation and application policies centrally and enforce them consistently across WAN, switching and Wi-Fi.",
           },
           {
-            title: "Network Health Scoring",
-            body: "Continuous scoring of every site, link, and application with trend analysis. Know at a glance what is healthy, degraded, or at risk.",
+            title: "Application-Aware Prioritisation",
+            body: "Prioritise critical applications across the entire branch network, ensuring the traffic that matters gets the performance it needs.",
           },
           {
-            title: "Capacity Forecasting",
-            body: "AI models predict when bandwidth, CPU, or storage will reach critical thresholds — before they affect operations — so you can act proactively.",
+            title: "One Network. Multiple Services.",
+            body: "Support corporate access, guest Wi-Fi, IoT, CCTV, access control and collaboration on one infrastructure without building parallel physical networks.",
           },
           {
-            title: "Intelligent Alerting",
-            body: "Prioritised alerts based on business impact, not raw event volume. Operators see what matters first, not everything at once.",
+            title: "Centralised Lifecycle Management",
+            body: "Manage policies, configurations and software versions centrally across branch edge devices, switches and Wi-Fi.",
           },
           {
-            title: "Experience Monitoring",
-            body: "End-to-end visibility into application experience for every user at every location. Detect experience degradation before users raise a ticket.",
+            title: "Built to Adapt",
+            body: "Scale connectivity, capacity and services as branches grow, contract or change purpose, without redesigning the network.",
           },
         ],
       },
       {
         kind: "how",
         eyebrow: "How It Works",
-        title: "From telemetry to resolution, without manual effort",
+        title: "One network. From the WAN edge to every device.",
         steps: [
-          {
-            title: "Telemetry ingestion from every layer",
-            body: "Telemetry streams from every device, link, and application across the enterprise network — a continuous, high-resolution view of the entire infrastructure.",
-          },
-          {
-            title: "AI baseline establishment",
-            body: "The ipDesk AI engine processes telemetry in real time to establish normal behaviour baselines for every site, link, device, and application.",
-          },
-          {
-            title: "Actionable insights surfaced",
-            body: "Anomalies, correlations, and predictions are surfaced as prioritised, actionable insights in the operations dashboard — not raw alerts requiring interpretation.",
-          },
-          {
-            title: "Automated remediation",
-            body: "Automated remediation workflows resolve common issues without requiring manual IT intervention, reducing mean time to resolution significantly.",
-          },
+          { title: "Connect", body: "Deploy ScaleAOn SD-WAN, switching and Wi-Fi as an integrated branch network." },
+          { title: "Unify", body: "Bring users, applications and devices onto a common branch infrastructure, across wired and wireless connectivity." },
+          { title: "Control", body: "Apply access, segmentation, application priority and network policies centrally, from WAN edge to endpoint." },
+          { title: "Operate", body: "Manage every branch centrally with consistent policy, configuration and software control across the enterprise." },
         ],
       },
       {
@@ -366,49 +445,19 @@ export const productPages: PageContent[] = [
         eyebrow: "Enterprise Outcomes",
         title: "What your organisation gains",
         items: [
-          {
-            title: "Resolve issues before users notice them",
-            body: "Predictive detection gives IT teams time to act before incidents escalate. Most issues are addressed before a user reports a problem.",
-          },
-          {
-            title: "Reduce mean time to resolution",
-            body: "Automated root-cause analysis eliminates the manual detective work that turns minor incidents into extended outages.",
-          },
-          {
-            title: "Operate with confidence at scale",
-            body: "AI-powered operations scale across thousands of sites without adding headcount. Your team stays in control as the network grows.",
-          },
-        ],
-      },
-      {
-        kind: "platform",
-        eyebrow: "Platform",
-        title: "Explore the full Lavelle Networks platform",
-        links: [
-          {
-            title: "ScaleAOn SD-WAN",
-            body: "Application-aware WAN infrastructure for distributed enterprises",
-            href: "/products/sd-wan",
-          },
-          {
-            title: "SD-Branch",
-            body: "Converged branch networking — LAN, WAN, and wireless",
-            href: "/products/secure-branch",
-          },
-          {
-            title: "Digital Experience",
-            body: "End-to-end application and user experience monitoring",
-            href: "/products/digital-experience",
-          },
+          { title: "Simplify the Branch", body: "Replace fragmented branch networks with one infrastructure across WAN, switching and Wi-Fi." },
+          { title: "Move at Business Speed", body: "Open, expand or reconfigure branches without repeatedly redesigning the network underneath them." },
+          { title: "Deliver a Consistent Experience", body: "Give applications, employees, customers and connected devices the network performance and access they need across every location." },
+          { title: "Operate at Enterprise Scale", body: "Centrally control policies, configurations and software across distributed branches, reducing operational complexity as the network grows." },
         ],
       },
       {
         kind: "cta",
-        title: "Ready to move from reactive to predictive network operations?",
-        body: "Talk to a Lavelle Networks specialist and see how ipDesk AI Ops fits your enterprise operations requirements.",
+        title: "Turn every branch into an intelligent business edge.",
+        body: "One network for every connection, application and service your branch needs today, ready to adapt to what comes next.",
         ctas: [
-          { label: "Request a Demo", href: "/contact/request-demo" },
           { label: "Talk to an Expert", href: "/contact/talk-to-expert" },
+          { label: "Request a Demo", href: "/contact/request-demo" },
         ],
       },
     ],
@@ -700,10 +749,10 @@ export const productPages: PageContent[] = [
   {
     slug: "cloudstation-insights",
     metaTitle: "CloudStation Insights \u2014 Network Analytics",
-    metaDescription: "Network analytics and intelligence for the complete ScaleAOn platform, providing the analytics foundation for ipDesk AI Ops.",
+    metaDescription: "Network analytics and intelligence for the complete ScaleAOn platform, providing the analytics foundation for network operations.",
     sections: [
-      { kind: "hero", eyebrow: "CloudStation Insights \u00b7 ScaleAOn SD-WAN", title: "Network analytics and intelligence for the complete ScaleAOn platform.", body: "CloudStation Insights collects and analyses telemetry from every device, link, and application across the ScaleAOn network \u2014 providing the analytics foundation for operational decisions and the ipDesk AI Ops platform.", ctas: [{ label: "Request a Demo", href: "/contact/request-demo" }, { label: "Explore AI Ops", href: "/products/ai-operations" }] },
-      { kind: "flow", eyebrow: "Platform Role", title: "The analytics and intelligence layer of the ScaleAOn platform.", intro: "Every CloudPort Edge device and CloudPort Gateway streams continuous telemetry to CloudStation Insights. The platform processes this data to produce Network Scores, historical trend analysis, and the structured telemetry that powers the ipDesk AI Ops platform.", nodes: [{ title: "CloudPort Edge", sub: "Link + app telemetry" }, { title: "CloudStation Insights", sub: "Analytics layer" }, { title: "Network Scores", sub: "Quality / Capacity / Health" }, { title: "ipDesk AI Ops", sub: "AI-powered intelligence" }] },
+      { kind: "hero", eyebrow: "CloudStation Insights \u00b7 ScaleAOn SD-WAN", title: "Network analytics and intelligence for the complete ScaleAOn platform.", body: "CloudStation Insights collects and analyses telemetry from every device, link, and application across the ScaleAOn network \u2014 providing the analytics foundation for operational decisions.", ctas: [{ label: "Request a Demo", href: "/contact/request-demo" }, { label: "Talk to an Expert", href: "/contact/talk-to-expert" }] },
+      { kind: "flow", eyebrow: "Platform Role", title: "The analytics and intelligence layer of the ScaleAOn platform.", intro: "Every CloudPort Edge device and CloudPort Gateway streams continuous telemetry to CloudStation Insights. The platform processes this data to produce Network Scores and historical trend analysis.", nodes: [{ title: "CloudPort Edge", sub: "Link + app telemetry" }, { title: "CloudStation Insights", sub: "Analytics layer" }, { title: "Network Scores", sub: "Quality / Capacity / Health" }] },
       { kind: "capabilities", eyebrow: "Key Capabilities", title: "Analytics capabilities across every network dimension.", items: [
         { title: "Network Scores", body: "Composite scores measuring overall network quality, capacity, and health across every site and the complete enterprise network. A single, consistent view of network performance." },
         { title: "Quality Score", body: "Continuous measurement of packet loss, jitter, latency, and application performance across every WAN link. Quality degradation is detected and reported before users notice an impact." },
@@ -715,11 +764,6 @@ export const productPages: PageContent[] = [
         { title: "Quality Score", body: "Measures real-time link quality across packet loss, jitter, and latency dimensions. A low Quality Score triggers dynamic path selection in CloudPort Edge devices to route traffic away from degraded links automatically." },
         { title: "Capacity Score", body: "Measures how much of each link's capacity is being consumed relative to its available bandwidth. Consistently high Capacity Scores indicate that an upgrade or traffic optimisation is needed before performance is affected." },
         { title: "Capacity Health Score", body: "A composite score combining quality and capacity trends to give IT teams a single indicator of each link's overall operational health. Enables prioritisation of network improvements across large site portfolios." }] },
-      { kind: "capabilities", eyebrow: "Analytics to AI Ops", title: "The foundation for ipDesk AI Ops.", items: [
-        { title: "Continuous telemetry ingestion", body: "Every device, every link, every application \u2014 streamed in real time" },
-        { title: "AI anomaly detection", body: "Machine learning models identify unusual patterns before incidents occur" },
-        { title: "Predictive capacity analysis", body: "Forecast capacity constraints weeks in advance from trend data" },
-        { title: "Automated root-cause analysis", body: "AI-driven diagnosis correlates events across the network to identify causes" }] },
       { kind: "deployment", eyebrow: "Deployment Options", title: "Deploy Insights alongside your controller infrastructure.", items: [
         { title: "Physical Insights appliance", body: "Purpose-built hardware with expandable storage for long-term data retention. Sized for large enterprise networks with high telemetry volume." },
         { title: "Virtual appliance", body: "Deploy on standard server hardware in virtualised environments. Storage can be extended to meet data retention requirements without dedicated hardware." }] },
@@ -729,8 +773,162 @@ export const productPages: PageContent[] = [
       { kind: "platform", eyebrow: "Related Components", title: "Explore the full ScaleAOn platform.", links: [
         { title: "CloudPort Edge", body: "The WAN edge device streaming telemetry to CloudStation Insights", href: "/products/cloudport-edge" },
         { title: "CloudStation Controller", body: "Central orchestration and policy management for the ScaleAOn network", href: "/products/cloudstation-controller" },
-        { title: "ipDesk AI Ops", body: "AI-powered operations platform built on CloudStation Insights data", href: "/products/ai-operations" }] },
+        { title: "CloudPort Gateway", body: "The aggregation hub connecting edge locations to data centres and cloud", href: "/products/cloudport-gateway" }] },
       { kind: "cta", title: "Gain full visibility across your enterprise WAN.", body: "Talk to a Lavelle Networks specialist to understand how CloudStation Insights fits your analytics and network operations requirements.", ctas: [{ label: "Request a Demo", href: "/contact/request-demo" }, { label: "Talk to an Expert", href: "/contact/talk-to-expert" }] },
+    ],
+  },
+];
+
+// Component pages awaiting copy (see componentTemplate).
+productPages.push(
+  componentTemplate({ slug: "ether", name: "Ether", ...SD_BRANCH, siblings: [AIR] }),
+  componentTemplate({ slug: "air", name: "Air", ...SD_BRANCH, siblings: [ETHER] }),
+  componentTemplate({ slug: "trustgate", name: "trustGate", ...SASE, siblings: [TRUST_CORE, TRUST_PILOT] }),
+  componentTemplate({ slug: "trustcore", name: "trustCore", ...SASE, siblings: [TRUST_GATE, TRUST_PILOT] }),
+  componentTemplate({ slug: "trustpilot", name: "trustPilot", ...SASE, siblings: [TRUST_GATE, TRUST_CORE] }),
+);
+
+/**
+ * Pages taken off the site for now. ipDesk AI Ops returns in January 2027
+ * (change set 1.0); move it back into productPages and ALL_ROUTES then.
+ */
+export const parkedProductPages: PageContent[] = [
+  {
+    slug: "ai-operations",
+    metaTitle: "ipDesk AI Ops — AI-Powered Network Operations",
+    metaDescription:
+      "AI-powered operations for predictive, autonomous, and experience-led enterprise networks — from anomaly detection to automated resolution.",
+    sections: [
+      {
+        kind: "hero",
+        eyebrow: "ipDesk AI Ops · AI-Powered Network Operations",
+        title:
+          "AI-powered operations for predictive, autonomous, and experience-led enterprise networks.",
+        body: "Stop reacting to network problems and start preventing them. ipDesk brings AI to every layer of enterprise network operations — from anomaly detection to automated resolution.",
+        ctas: [
+          { label: "Request a Demo", href: "/contact/request-demo" },
+          { label: "Talk to an Expert", href: "/contact/talk-to-expert" },
+        ],
+      },
+      {
+        kind: "challenge",
+        eyebrow: "The Challenge",
+        title:
+          "Reactive operations cannot keep pace with distributed enterprise networks",
+        intro:
+          "As networks scale across hundreds or thousands of sites, manual monitoring and reactive incident management create unsustainable operational load — and leave users experiencing problems that IT hasn't detected yet.",
+        bullets: [
+          "IT teams spending most of their time reacting to network incidents rather than preventing them",
+          "No correlation between network events across multiple devices and sites",
+          "Application performance issues reported by users long before IT detects them",
+          "Manual troubleshooting processes that take hours or days to resolve",
+          "No predictive visibility into capacity constraints before they affect operations",
+        ],
+      },
+      {
+        kind: "capabilities",
+        eyebrow: "Capabilities",
+        title: "What ipDesk AI Ops delivers",
+        items: [
+          {
+            title: "Predictive Anomaly Detection",
+            body: "AI identifies deviations from normal behaviour before they cause user-impacting incidents — giving IT teams time to act rather than react.",
+          },
+          {
+            title: "Automated Root-Cause Analysis",
+            body: "Correlate events across devices, links, and applications to pinpoint the source of any issue automatically, without hours of manual investigation.",
+          },
+          {
+            title: "Network Health Scoring",
+            body: "Continuous scoring of every site, link, and application with trend analysis. Know at a glance what is healthy, degraded, or at risk.",
+          },
+          {
+            title: "Capacity Forecasting",
+            body: "AI models predict when bandwidth, CPU, or storage will reach critical thresholds — before they affect operations — so you can act proactively.",
+          },
+          {
+            title: "Intelligent Alerting",
+            body: "Prioritised alerts based on business impact, not raw event volume. Operators see what matters first, not everything at once.",
+          },
+          {
+            title: "Experience Monitoring",
+            body: "End-to-end visibility into application experience for every user at every location. Detect experience degradation before users raise a ticket.",
+          },
+        ],
+      },
+      {
+        kind: "how",
+        eyebrow: "How It Works",
+        title: "From telemetry to resolution, without manual effort",
+        steps: [
+          {
+            title: "Telemetry ingestion from every layer",
+            body: "Telemetry streams from every device, link, and application across the enterprise network — a continuous, high-resolution view of the entire infrastructure.",
+          },
+          {
+            title: "AI baseline establishment",
+            body: "The ipDesk AI engine processes telemetry in real time to establish normal behaviour baselines for every site, link, device, and application.",
+          },
+          {
+            title: "Actionable insights surfaced",
+            body: "Anomalies, correlations, and predictions are surfaced as prioritised, actionable insights in the operations dashboard — not raw alerts requiring interpretation.",
+          },
+          {
+            title: "Automated remediation",
+            body: "Automated remediation workflows resolve common issues without requiring manual IT intervention, reducing mean time to resolution significantly.",
+          },
+        ],
+      },
+      {
+        kind: "outcomes",
+        eyebrow: "Enterprise Outcomes",
+        title: "What your organisation gains",
+        items: [
+          {
+            title: "Resolve issues before users notice them",
+            body: "Predictive detection gives IT teams time to act before incidents escalate. Most issues are addressed before a user reports a problem.",
+          },
+          {
+            title: "Reduce mean time to resolution",
+            body: "Automated root-cause analysis eliminates the manual detective work that turns minor incidents into extended outages.",
+          },
+          {
+            title: "Operate with confidence at scale",
+            body: "AI-powered operations scale across thousands of sites without adding headcount. Your team stays in control as the network grows.",
+          },
+        ],
+      },
+      {
+        kind: "platform",
+        eyebrow: "Platform",
+        title: "Explore the full Lavelle Networks platform",
+        links: [
+          {
+            title: "ScaleAOn SD-WAN",
+            body: "Application-aware WAN infrastructure for distributed enterprises",
+            href: "/products/sd-wan",
+          },
+          {
+            title: "SD-Branch",
+            body: "Converged branch networking — LAN, WAN, and wireless",
+            href: "/products/secure-branch",
+          },
+          {
+            title: "Digital Experience",
+            body: "End-to-end application and user experience monitoring",
+            href: "/products/digital-experience",
+          },
+        ],
+      },
+      {
+        kind: "cta",
+        title: "Ready to move from reactive to predictive network operations?",
+        body: "Talk to a Lavelle Networks specialist and see how ipDesk AI Ops fits your enterprise operations requirements.",
+        ctas: [
+          { label: "Request a Demo", href: "/contact/request-demo" },
+          { label: "Talk to an Expert", href: "/contact/talk-to-expert" },
+        ],
+      },
     ],
   },
 ];
@@ -740,6 +938,5 @@ export const productStubs: StubPage[] = [
   { slug: "cloud-connectivity", heading: "CloudConnectivity Page" },
   { slug: "digital-experience", heading: "DigitalExperience Page" },
   { slug: "network-analytics", heading: "NetworkAnalytics Page" },
-  { slug: "secure-branch", heading: "SecureBranch Page" },
   { slug: "secure-internet", heading: "SecureInternet Page" },
 ];

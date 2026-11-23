@@ -11,7 +11,7 @@ import {
   ShieldScene,
   ZeroTrustScene,
   TelemetryScene,
-  AiOpsScene,
+  AirScene,
   ExperienceScene,
   EdgeScene,
   HubScene,
@@ -35,7 +35,6 @@ const SCENES: Record<string, () => ReactNode> = {
   /* products */
   "/products/sd-wan": () => <PathsScene />,
   "/products/sase": () => <ShieldScene />,
-  "/products/ai-operations": () => <AiOpsScene />,
   "/products/ztna": () => <ZeroTrustScene />,
   "/products/cloudport-edge": () => <EdgeScene />,
   "/products/cloudport-gateway": () => <HubScene />,
@@ -46,6 +45,12 @@ const SCENES: Record<string, () => ReactNode> = {
   "/products/network-analytics": () => <TelemetryScene variant="analytics" />,
   "/products/secure-branch": () => <BranchScene />,
   "/products/secure-internet": () => <ShieldScene variant="internet" />,
+  // Component pages. The SASE components' scenes are provisional until their copy lands.
+  "/products/ether": () => <EdgeScene variant="switch" />,
+  "/products/air": () => <AirScene />,
+  "/products/trustgate": () => <ShieldScene />,
+  "/products/trustcore": () => <ZeroTrustScene />,
+  "/products/trustpilot": () => <ControllerScene />,
 
   /* solutions */
   "/solutions/bfsi": () => <IndiaScene variant="bfsi" />,

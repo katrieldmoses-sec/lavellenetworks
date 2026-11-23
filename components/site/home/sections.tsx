@@ -7,6 +7,7 @@
 import { useState } from "react";
 import { ArrowRight, ArrowUpRight, Award, Check, Quote } from "lucide-react";
 import {
+  type Stat,
   STATS,
   PRODUCTS,
   ARCHITECTURE,
@@ -24,7 +25,25 @@ import { Reveal, SplitWords, Count, useStickyProgress } from "@/components/kit/M
 import { GrainField, Grain } from "@/components/kit/Brand";
 import { Kicker, TwoTone, Btn, XCAPS, OrbitLines, WRAP } from "../ui";
 
+/** The number, then its unit set smaller (90 Billion+, 300+ Gbps). */
+function Figure({ s }: { s: Stat }) {
+  return (
+    <>
+      <Count end={s.end} suffix={s.suffix} separator={s.separator} />
+      {s.unit && <span className="ml-[0.18em] text-[0.42em] font-semibold tracking-[-0.02em]">{s.unit}</span>}
+    </>
+  );
+}
+
+/**
+ * Six figures on a four-column bento: a wide sky tile and a wide deep tile
+ * at opposite corners, single tiles between.
+ */
 export function StatsBento() {
+  const tile = "flex h-full min-h-[240px] flex-col justify-between rounded-[22px] p-7";
+  const [lead, ...rest] = STATS.items;
+  const last = rest[rest.length - 1];
+  const middle = rest.slice(0, -1);
   return (
     <section className={`${WRAP} py-24 lg:py-32`}>
       <Reveal>
@@ -32,40 +51,54 @@ export function StatsBento() {
           <TwoTone text={STATS.statement} lead={4} />
         </h2>
       </Reveal>
-      <div className="mt-12 grid gap-3 md:grid-cols-2 lg:grid-cols-5">
+      <div className="mt-12 grid gap-3 md:grid-cols-2 lg:grid-cols-4">
         <Reveal className="md:col-span-2">
-          <GrainField tone="sky" grain={0.22} className="flex h-full min-h-[260px] flex-col justify-between rounded-[22px] p-7">
+          <GrainField tone="sky" grain={0.22} className={tile}>
             <div className="absolute -bottom-24 -right-16 h-72 w-72 text-lv-blue/30">
               <svg viewBox="0 0 200 200" className="mk-spin-slow h-full w-full" aria-hidden>
                 <circle cx="100" cy="100" r="96" fill="none" stroke="currentColor" />
                 <circle cx="100" cy="100" r="70" fill="none" stroke="currentColor" strokeDasharray="2 6" />
               </svg>
             </div>
-            <span className="relative text-[15px] font-medium text-lv-ink/70">{STATS.items[0].label}</span>
-            <span className="relative text-[88px] font-semibold leading-none tracking-[-0.06em] lg:text-[112px]">
-              <Count end={STATS.items[0].end} suffix={STATS.items[0].suffix} />
+            <span className="relative text-[15px] font-medium text-lv-ink/70">{lead.label}</span>
+            <span className="relative text-[48px] font-semibold leading-none tracking-[-0.06em] sm:text-[88px] lg:text-[104px]">
+              <Figure s={lead} />
             </span>
           </GrainField>
         </Reveal>
-        {STATS.items.slice(1).map((s, i) => (
-          <Reveal key={s.label} delay={(i + 1) * 90}>
-            {i === 1 ? (
-              <GrainField tone="blue" grain={0.3} className="flex h-full min-h-[260px] flex-col justify-between rounded-[22px] p-7 text-white">
-                <span className="relative text-[15px] font-medium text-white/80">{s.label}</span>
-                <span className="relative text-[46px] font-semibold leading-none tracking-[-0.05em] xl:text-[52px]">
-                  <Count end={s.end} suffix={s.suffix} separator={s.separator} />
-                </span>
-              </GrainField>
-            ) : (
-              <div className={`flex h-full min-h-[260px] flex-col justify-between rounded-[22px] p-7 ${i === 0 ? "bg-lv-ink text-white" : "border border-lv-ink/10"}`}>
-                <span className={`text-[15px] font-medium ${i === 0 ? "text-white/70" : "text-lv-ink/60"}`}>{s.label}</span>
-                <span className="text-[52px] font-semibold leading-none tracking-[-0.05em]">
-                  <Count end={s.end} suffix={s.suffix} separator={s.separator} />
-                </span>
-              </div>
-            )}
-          </Reveal>
-        ))}
+        {middle.map((s, i) => {
+          const tone = ["ink", "blue", "blue", "line"][i % 4];
+          return (
+            <Reveal key={s.label} delay={((i + 1) % 4) * 90}>
+              {tone === "blue" ? (
+                <GrainField tone="blue" grain={0.3} className={`${tile} text-white`}>
+                  <span className="relative text-[15px] font-medium text-white/80">{s.label}</span>
+                  <span className="relative text-[52px] font-semibold leading-none tracking-[-0.05em]">
+                    <Figure s={s} />
+                  </span>
+                </GrainField>
+              ) : (
+                <div className={`${tile} ${tone === "ink" ? "bg-lv-ink text-white" : "border border-lv-ink/10"}`}>
+                  <span className={`text-[15px] font-medium ${tone === "ink" ? "text-white/70" : "text-lv-ink/60"}`}>{s.label}</span>
+                  <span className="text-[52px] font-semibold leading-none tracking-[-0.05em]">
+                    <Figure s={s} />
+                  </span>
+                </div>
+              )}
+            </Reveal>
+          );
+        })}
+        <Reveal className="md:col-span-2" delay={90}>
+          <GrainField tone="deep" grain={0.3} className={`${tile} text-white`}>
+            <div className="absolute -right-10 -top-16 h-64 w-64 text-white/15">
+              <OrbitLines className="mk-spin-slow h-full w-full" />
+            </div>
+            <span className="relative text-[15px] font-medium text-white/80">{last.label}</span>
+            <span className="relative text-[48px] font-semibold leading-none tracking-[-0.06em] sm:text-[88px] lg:text-[104px]">
+              <Figure s={last} />
+            </span>
+          </GrainField>
+        </Reveal>
       </div>
     </section>
   );
@@ -81,8 +114,10 @@ export function ProductsBento() {
       <div className="mt-14 grid gap-3 lg:grid-cols-3">
         {PRODUCTS.items.map((p, i) => {
           const big = i === 1 || i === 2;
+          // With three pillars the last wide tile closes the grid on its own row.
+          const span = i === PRODUCTS.items.length - 1 && i % 2 === 0 ? "lg:col-span-3" : big ? "lg:col-span-2" : "";
           return (
-            <Reveal key={p.name} delay={(i % 2) * 90} className={big ? "lg:col-span-2" : ""}>
+            <Reveal key={p.name} delay={(i % 2) * 90} className={span}>
               {big ? (
                 <a href={p.href} className="group relative block h-full min-h-[440px] overflow-hidden rounded-[22px]">
                   <GrainField tone={i === 1 ? "blue" : "deep"} grain={0.3} className="absolute inset-0">
@@ -327,10 +362,21 @@ export function Proven({ inkFirst = false }: { inkFirst?: boolean }) {
       </div>
       <div className="mt-14 grid items-center gap-6 border-t border-lv-ink/10 pt-10 lg:grid-cols-[220px_1fr]">
         <p className="text-[13px] text-lv-ink/55">{PROVEN.logosLabel}</p>
-        <ul className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-          {Array.from({ length: PROVEN.logoCount }).map((_, i) => (
-            <li key={i} className="flex h-14 items-center justify-center rounded-[12px] border border-dashed border-lv-ink/15 px-3 text-center text-[11px] text-lv-ink/45">
-              {PROVEN.logoPlaceholder}
+        {/* Flex rather than grid so a short last row sits centred. */}
+        <ul className="flex flex-wrap justify-center gap-3">
+          {PROVEN.logos.map((l) => (
+            <li
+              key={l.file}
+              className="flex h-[72px] w-[calc(50%-6px)] items-center justify-center rounded-[12px] border border-lv-ink/10 bg-white px-4 sm:w-[calc(25%-9px)] xl:w-[calc((100%-60px)/6)]"
+            >
+              {/* eslint-disable-next-line @next/next/no-img-element -- small static logos, sized by CSS */}
+              <img
+                src={`/customers/${l.file}`}
+                alt={l.name}
+                loading="lazy"
+                decoding="async"
+                className="max-h-10 max-w-full object-contain"
+              />
             </li>
           ))}
         </ul>
@@ -339,29 +385,77 @@ export function Proven({ inkFirst = false }: { inkFirst?: boolean }) {
   );
 }
 
+/**
+ * The ten-year panel. Scrolling moves the decade sideways; the cards warm
+ * from ink towards brand blue as the years pass, joined by a progress line,
+ * and the carousel arrives at a double-width 2026 card: the decade ahead.
+ */
 export function TimelinePinned() {
   const [ref, p] = useStickyProgress<HTMLDivElement>();
+  const n = TIMELINE.milestones.length;
+  const A = TIMELINE.ahead;
   return (
-    <section ref={ref} className="relative h-[280vh] bg-lv-ink text-white">
+    <section ref={ref} className="relative h-[360vh] bg-lv-ink text-white">
       <div className="sticky top-0 flex h-screen flex-col justify-center overflow-hidden">
         <Grain opacity={0.1} />
         <div className={`${WRAP} relative w-full`}>
           <Kicker light>{TIMELINE.kicker}</Kicker>
-          <h2 className="mt-5 max-w-3xl text-[34px] font-semibold leading-[1.05] tracking-[-0.035em] lg:text-[56px]">{TIMELINE.title}</h2>
+          <h2 className="mt-5 max-w-4xl text-[32px] font-semibold leading-[1.05] tracking-[-0.035em] lg:text-[52px]">{TIMELINE.title}</h2>
+          <p className="mt-4 max-w-xl text-[15px] leading-[1.6] text-white/60 lg:text-[16px]">{TIMELINE.intro}</p>
         </div>
-        <div className="relative mt-14 pl-6 lg:pl-[max(24px,calc((100vw-1320px)/2+24px))]">
-          <ol className="flex w-max gap-3 pr-6 will-change-transform" style={{ transform: `translate3d(calc(${p} * (100vw - 100% - 48px)),0,0)` }}>
+        {/* --pl is the content column's left edge; the track travels until the
+            2026 card ends on the same margin at the right (the list's own pr-6
+            is part of 100%). */}
+        <div className="relative mt-10 pl-[var(--pl)] [--pl:24px] lg:mt-12 lg:[--pl:max(24px,calc((100vw-1320px)/2+24px))]">
+          <ol
+            className="flex w-max items-end gap-3 pr-6 will-change-transform"
+            style={{ transform: `translate3d(calc(${p} * (100vw - 100% - 2 * var(--pl) + 24px)),0,0)` }}
+          >
             {TIMELINE.milestones.map((m, i) => {
-              const last = i === TIMELINE.milestones.length - 1;
+              // 0 → 1 across the decade: the brand arrives gradually.
+              const t = i / (n - 1);
               return (
-                <li key={`${m.year}-${i}`} className={`relative flex h-[300px] w-[300px] shrink-0 flex-col overflow-hidden rounded-[20px] p-6 ${last ? "bg-lv-blue" : "bg-white/[0.06]"}`}>
-                  {last && <Grain opacity={0.25} />}
-                  <span className="relative text-[52px] font-semibold leading-none tracking-[-0.045em]">{m.year}</span>
-                  <h3 className="relative mt-auto text-[17px] font-semibold">{m.title}</h3>
-                  <p className="relative mt-2 text-[13px] leading-[1.55] text-white/60">{m.body}</p>
+                <li key={`${m.year}-${i}`} className="flex w-[280px] shrink-0 flex-col lg:w-[312px]">
+                  <div className="relative mb-4 flex h-3 items-center">
+                    <span className="absolute left-0 h-px w-[calc(100%+12px)]" style={{ background: `rgba(140,195,238,${0.18 + 0.4 * t})` }} />
+                    <span className="relative h-2.5 w-2.5 rounded-full" style={{ background: t > 0.5 ? "#8CC3EE" : "rgba(255,255,255,0.55)" }} />
+                    {m.era && <span className="relative ml-3 bg-lv-ink pr-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-lv-300">{m.era}</span>}
+                  </div>
+                  <div
+                    className="relative flex h-[340px] flex-col overflow-hidden rounded-[20px] p-6 ring-1 lg:h-[360px]"
+                    style={{
+                      background: `linear-gradient(160deg, rgba(0,120,212,${0.04 + 0.34 * t}) 0%, rgba(0,84,147,${0.02 + 0.22 * t}) 100%)`,
+                      boxShadow: `inset 0 0 0 1px rgba(255,255,255,${0.08 + 0.1 * t})`,
+                    }}
+                  >
+                    <span className="relative text-[46px] font-semibold leading-none tracking-[-0.045em] lg:text-[52px]">{m.year}</span>
+                    <h3 className="relative mt-auto text-[17px] font-semibold leading-[1.3]">{m.title}</h3>
+                    <p className="relative mt-2 text-[13px] leading-[1.55] text-white/65">{m.body}</p>
+                  </div>
                 </li>
               );
             })}
+            <li className="flex w-[min(86vw,600px)] shrink-0 flex-col lg:w-[660px]">
+              <div className="relative mb-4 flex h-3 items-center">
+                <span className="absolute left-0 h-px w-full bg-lv-300" />
+                <span className="relative h-3 w-3 rounded-full bg-white ring-4 ring-lv-blue/40" />
+              </div>
+              <GrainField tone="blue" grain={0.3} className="flex h-[340px] flex-col rounded-[24px] p-7 lg:h-[360px] lg:p-9">
+                <div className="absolute -bottom-[46%] -right-[12%] h-[110%] w-[78%] opacity-90">
+                  <Globe dot="rgba(255,255,255,0.9)" dotSize={1} density={1.7} arcs="#C2DFF6" marker="#FFFFFF" lon={78} lat={18} speed={4} outline="rgba(255,255,255,0.35)" />
+                </div>
+                <div className="absolute -left-16 -top-24 h-72 w-72 text-white/15">
+                  <OrbitLines className="mk-spin-slow h-full w-full" />
+                </div>
+                <span className="relative text-[15px] font-semibold tracking-[0.02em] text-white/80">{A.year}</span>
+                <h3 className={`relative mt-3 text-[32px] leading-none lg:text-[44px] ${XCAPS}`}>{A.title}</h3>
+                <p className="relative mt-5 max-w-[24ch] text-[22px] font-semibold leading-[1.2] tracking-[-0.025em] lg:text-[28px]">
+                  {A.lines[0]} <span className="text-white/60">{A.lines[1]}</span>
+                </p>
+                <p className="relative mt-auto max-w-[30ch] text-[14px] leading-[1.55] text-white/80">{A.body}</p>
+                <p className="relative mt-3 text-[13px] font-semibold uppercase tracking-[0.14em]">{A.signoff}</p>
+              </GrainField>
+            </li>
           </ol>
         </div>
         <div className={`${WRAP} relative mt-10 w-full`}>

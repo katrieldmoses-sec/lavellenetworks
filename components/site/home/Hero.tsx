@@ -21,11 +21,11 @@ function System() {
       <div className="absolute left-[2%] top-[2%] h-[96%] w-[96%] overflow-hidden rounded-full">
         <div className="mk-sweep absolute inset-0 rounded-full" />
       </div>
-      <div className="absolute inset-[30%]">
+      <div className="absolute inset-[32%]">
         <Globe dot="rgba(255,255,255,0.95)" dotSize={1.1} density={1.6} arcs="#C2DFF6" marker="#FFFFFF" lon={78} lat={18} speed={4} />
       </div>
-      <Orbit items={PLATFORM} radius={27} chip="bg-white text-lv-ink" packets="#FFFFFF" spokes="rgba(255,255,255,0.55)" spokeFrom={0.76} />
-      <Orbit items={HERO.diagram.sources} radius={38} offset={1 / 8} chip="bg-white/15 text-white backdrop-blur" packets="#C2DFF6" packetSpeed={13} />
+      <Orbit items={PLATFORM} radius={22} chip="bg-white text-lv-ink" packets="#FFFFFF" spokes="rgba(255,255,255,0.55)" spokeFrom={0.84} />
+      <Orbit items={HERO.diagram.sources} radius={40} offset={1 / 8} chip="bg-white/15 text-white backdrop-blur" packets="#C2DFF6" packetSpeed={13} />
       <Orbit items={HERO.diagram.destinations} radius={46} offset={1 / 4} chip="bg-lv-ink/40 text-white backdrop-blur" packets="#8CC3EE" packetSpeed={17} />
     </div>
   );
@@ -84,9 +84,11 @@ export default function HomeHero() {
     <section className="px-3 sm:px-5">
       <div ref={ptr}>
         <GrainField tone="blue" grain={0.32} className="mx-auto min-h-[calc(100svh-96px)] max-w-[1400px] rounded-[24px] text-white">
-          {/* Rings interleave by 45° (offsets 0, 1/8, 1/4) so chips on neighbouring
-              rings never share an angle at any point in the turn; the size keeps
-              the outer ring clear of the card's top edge and the ticker. */}
+          {/* Three platform chips (120° apart) against four on each outer ring:
+              radii 22 / 40 / 46 with offsets 0, 1/8, 1/4 keep every chip clear of
+              its neighbours through the whole turn (checked by sweeping the
+              rotation). The size keeps the outer ring clear of the card's top
+              edge and the ticker. */}
           <div className="absolute left-[72%] top-[45%] hidden aspect-square w-[min(78vh,700px)] -translate-x-1/2 -translate-y-1/2 md:block">
             <div className="mk-tilt absolute inset-0">
               <System />

@@ -7,8 +7,8 @@
  */
 import { useEffect, useRef, type ComponentType, type ReactNode } from "react";
 import { ArrowRight } from "lucide-react";
-import { CHROME } from "@/lib/content/home";
-import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/lib/content/footer";
+import { CHROME } from "@/components/mockups/content/home";
+import { FOOTER_COLUMNS, FOOTER_LEGAL } from "@/components/mockups/content/footer";
 import { SplitWords } from "@/components/kit/Motion";
 import { Lockup, NavMenu, MobileNav, GrainField } from "@/components/kit/Brand";
 

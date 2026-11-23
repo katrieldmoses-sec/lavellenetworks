@@ -12,7 +12,8 @@ export type NavEntry = {
   items?: NavLink[];
 };
 
-/** Mirrors the navigation data in the source design exactly. */
+/** Products follow the three platforms, each with its own components
+    (change set 1.0, November 2026). */
 export const NAV: NavEntry[] = [
   {
     label: "Products",
@@ -25,7 +26,6 @@ export const NAV: NavEntry[] = [
           { name: "ScaleAOn SD-WAN", href: "/products/sd-wan" },
           { name: "ScaleAOn SD-Branch", href: "/products/secure-branch" },
           { name: "indusWall SASE", href: "/products/sase" },
-          { name: "ipDesk AI Ops", href: "/products/ai-operations" },
         ],
       },
       {
@@ -38,18 +38,18 @@ export const NAV: NavEntry[] = [
         ],
       },
       {
-        label: "Security & Access",
+        label: "SD-Branch Components",
         items: [
-          { name: "ZTNA", href: "/products/ztna" },
-          { name: "Secure Internet Access", href: "/products/secure-internet" },
+          { name: "Ether (Switching)", href: "/products/ether" },
+          { name: "Air (Wi-Fi)", href: "/products/air" },
         ],
       },
       {
-        label: "Cloud & Intelligence",
+        label: "SASE Components",
         items: [
-          { name: "Cloud Connectivity", href: "/products/cloud-connectivity" },
-          { name: "Network Analytics", href: "/products/network-analytics" },
-          { name: "Digital Experience", href: "/products/digital-experience" },
+          { name: "trustGate", href: "/products/trustgate" },
+          { name: "trustCore", href: "/products/trustcore" },
+          { name: "trustPilot", href: "/products/trustpilot" },
         ],
       },
     ],
