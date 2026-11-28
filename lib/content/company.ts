@@ -90,7 +90,7 @@ export const companyPages: PageContent[] = [
     slug: "leadership",
     metaTitle: "Leadership — Lavelle Networks",
     metaDescription:
-      "Meet the founders, leadership team, Board and executive advisors of Lavelle Networks.",
+      "Meet the founders, leadership team and executive advisors of Lavelle Networks.",
     sections: [
       {
         kind: "hero",
@@ -169,53 +169,6 @@ export const companyPages: PageContent[] = [
               "He has built a methodology-based IT services business from zero to $25M, grown a BPO book of business from $2M to $100M in four years, and turned a $200M business from negative to double-digit positive EBITDA. He is also experienced in M&A deal structuring, from investment thesis to valuation and negotiation.",
             ],
             href: "https://www.linkedin.com/in/saxkrishna/",
-          },
-        ],
-      },
-      {
-        kind: "people",
-        eyebrow: "Board of Directors",
-        title: "The Board",
-        intro:
-          "Alongside the founders, Shyamal Kumar (Founder & Chairman) and Drritiman Boraah (Co-Founder & Board Member), Lavelle’s Board includes nominee directors from its investors.",
-        items: [
-          {
-            category: "Ideaspring Capital",
-            name: "Naganand Doraswamy",
-            role: "Nominee Director",
-            bio: "Naganand is a technologist at heart, entrepreneur by choice and investor by profession. After exiting his most recent start-up, he founded Ideaspring Capital to fund and actively support product innovation start-ups. He enjoys working with entrepreneurs who have the vision and passion to build products for the global markets. Naganand is very well networked and respected in the start-up ecosystem and he actively participates in various organizations focusing on Entrepreneurship and Innovation. Naganand has co-authored a book on “IPSec” published by Prentice Hall.",
-            photo: "/leadership/naganand-doraswamy.jpg",
-            note: "Board since 2017",
-          },
-          {
-            category: "YourNest Venture Capital",
-            name: "Vipul Arora",
-            role: "Nominee Director",
-            bio: [
-              "Vipul Arora is a Principal at YourNest Venture Capital, with more than a decade of experience in venture capital and financial advisory. He focuses on portfolio management and strategic value creation, aligning investments with long-term goals through portfolio oversight, team leadership and founder enablement.",
-              "At YourNest he has led multiple exits and built the investment management team, helping scale portfolio companies from Seed to Series-B. His focus on compliance, governance and data-driven decision-making supports sustainable value for stakeholders across the portfolio.",
-            ],
-            photo: "/leadership/vipul-arora.jpg",
-            note: "Board since 2022",
-          },
-          {
-            category: "Bharti Airtel",
-            name: "Pradipt Kapoor",
-            role: "Nominee Director",
-            // No description or portrait in the profile doc; this summary is from the leadership note.
-            bio: "Chief Digital & Information Officer at Bharti Airtel and CEO of Xtelify. His background includes senior global product-engineering roles at A.P. Moller–Maersk and SITA.",
-            note: "Board since 2023",
-          },
-          {
-            category: "Indus Towers",
-            name: "Abhishek Maheshwari",
-            role: "Nominee Director",
-            bio: [
-              "Abhishek Maheshwari brings 21 years of experience across finance: business partnering, commercials, strategy, business modelling, budgeting, planning and reporting, investor relations, consolidation, taxation, mergers and acquisitions, ICOFR and compliance, and partnering with government and strategic vendors.",
-              "He is proficient in financial reporting, forecasting and performance analysis, has designed internal controls and streamlined accounting systems, and is well versed in US GAAP, Indian GAAP and IFRS, including Bharti Airtel’s transition from Indian GAAP to IFRS.",
-            ],
-            photo: "/leadership/abhishek-maheshwari.jpg",
-            note: "Board since 2024",
           },
         ],
       },

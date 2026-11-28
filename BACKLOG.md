@@ -21,13 +21,13 @@ template pages, Our Story, Leadership, ten-year panel. Still open:
   indusWall.
 - **Awards and PR carousel** for Our Story (best recognitions of the last 5+
   years). The homepage Recognition section still shows placeholders.
-- **Leadership photos.** Still missing: headshots for Sax Krishna and Pradipt
-  Kapoor (their cards show a monogram), a description for Pradipt Kapoor (the
-  leadership note's summary stands in), and higher-resolution photos of
-  Nishant Verma, Thompson P. Gnanam, BV Jagadeesh and Shoaib Ahmed (200px
-  sources). Profiles are condensed to 8–10 lines from
-  "Lavelle_Leadership_Profiles.docx"; the two executive advisors come from the
-  previous site.
+- **Leadership photos.** Still missing: a headshot for Sax Krishna (his card
+  shows a monogram) and higher-resolution photos of Nishant Verma, Thompson
+  P. Gnanam, BV Jagadeesh and Shoaib Ahmed (200px sources). Profiles are
+  condensed to 8–10 lines from "Lavelle_Leadership_Profiles.docx"; the two
+  executive advisors come from the previous site. The Board of Directors
+  section was removed at the user's request (Nov 2026); its content is in git
+  history (commit c352cd2) if it is ever wanted back.
 - **Blogs:** re-cast 3–5 of the best pieces from the last ten years for 2026.
 - **Datasheets:** updated, downloadable datasheets for every product line.
 - **Final technical review** of the product pages once the above lands.
