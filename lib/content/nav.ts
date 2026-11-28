@@ -47,9 +47,9 @@ export const NAV: NavEntry[] = [
       {
         label: "SASE Components",
         items: [
-          { name: "trustGate", href: "/products/trustgate" },
-          { name: "trustCore", href: "/products/trustcore" },
-          { name: "trustPilot", href: "/products/trustpilot" },
+          { name: "Zero Trust Gateway", href: "/products/zero-trust-gateway" },
+          { name: "SSE", href: "/products/sse" },
+          { name: "Pilot", href: "/products/pilot" },
         ],
       },
     ],

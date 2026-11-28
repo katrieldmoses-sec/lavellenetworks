@@ -2,7 +2,7 @@ import type { PageContent, StubPage } from "./types";
 
 /**
  * Template page for a platform component whose copy has not landed yet
- * (change set 1.0: Ether, Air, trustGate, trustCore, trustPilot). Same
+ * (change set 1.0: Ether, Air, Zero Trust Gateway, SSE, Pilot). Same
  * structure as the CloudPort and CloudStation pages; every bracketed line is
  * a placeholder to replace. These routes are noindex (lib/routes.ts).
  */
@@ -93,9 +93,9 @@ const SASE = {
 };
 const ETHER = { title: "Ether (Switching)", href: "/products/ether" };
 const AIR = { title: "Air (Wi-Fi)", href: "/products/air" };
-const TRUST_GATE = { title: "trustGate", href: "/products/trustgate" };
-const TRUST_CORE = { title: "trustCore", href: "/products/trustcore" };
-const TRUST_PILOT = { title: "trustPilot", href: "/products/trustpilot" };
+const ZT_GATEWAY = { title: "Zero Trust Gateway", href: "/products/zero-trust-gateway" };
+const SSE_PAGE = { title: "SSE", href: "/products/sse" };
+const PILOT_PAGE = { title: "Pilot", href: "/products/pilot" };
 
 export const productPages: PageContent[] = [
   {
@@ -783,9 +783,9 @@ export const productPages: PageContent[] = [
 productPages.push(
   componentTemplate({ slug: "ether", name: "Ether", ...SD_BRANCH, siblings: [AIR] }),
   componentTemplate({ slug: "air", name: "Air", ...SD_BRANCH, siblings: [ETHER] }),
-  componentTemplate({ slug: "trustgate", name: "trustGate", ...SASE, siblings: [TRUST_CORE, TRUST_PILOT] }),
-  componentTemplate({ slug: "trustcore", name: "trustCore", ...SASE, siblings: [TRUST_GATE, TRUST_PILOT] }),
-  componentTemplate({ slug: "trustpilot", name: "trustPilot", ...SASE, siblings: [TRUST_GATE, TRUST_CORE] }),
+  componentTemplate({ slug: "zero-trust-gateway", name: "Zero Trust Gateway", ...SASE, siblings: [SSE_PAGE, PILOT_PAGE] }),
+  componentTemplate({ slug: "sse", name: "SSE", ...SASE, siblings: [ZT_GATEWAY, PILOT_PAGE] }),
+  componentTemplate({ slug: "pilot", name: "Pilot", ...SASE, siblings: [ZT_GATEWAY, SSE_PAGE] }),
 );
 
 /**

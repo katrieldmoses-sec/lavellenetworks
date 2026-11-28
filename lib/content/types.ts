@@ -32,18 +32,15 @@ export type PageContent = {
 /** A page that exists in the source but is only a placeholder heading. */
 export type StubPage = { slug: string; heading: string };
 
-/** A block of a person's profile: a paragraph, or a short list with an optional heading. */
-export type BioBlock = string | { title?: string; list: string[] };
-
 /**
- * A card on a people section. The first bio block is always shown; any
- * further blocks sit behind a "Full profile" disclosure.
+ * A card on a people section. Keep each profile to 8–10 lines on desktop
+ * (roughly 550–750 characters); `category` shows under the title.
  */
 export type Person = {
   category?: string;
   name: string;
   role: string;
-  bio: string | BioBlock[];
+  bio: string | string[];
   note?: string;
   href?: string;
   photo?: string;

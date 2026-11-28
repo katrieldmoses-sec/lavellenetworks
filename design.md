@@ -152,8 +152,8 @@ copy, vertically centred, `min(38%, 520px, 56vh)` wide (compact heroes
 | Scene | Pictures | Pages |
 |---|---|---|
 | Paths | Branch → three transports (internet, MPLS, LTE) → DC and cloud; the active path moves in turn | SD-WAN; Hybrid WAN (two transports) |
-| Shield | Users and devices → inspection ring → apps; a threat stops at the ring | SASE, Secure Internet, trustGate (provisional) |
-| Zero trust | User → identity, key, posture gates verifying in turn → its own micro-perimeter app | ZTNA, trustCore (provisional) |
+| Shield | Users and devices → inspection ring → apps; a threat stops at the ring | SASE, Secure Internet, Zero Trust Gateway (provisional) |
+| Zero trust | User → identity, key, posture gates verifying in turn → its own micro-perimeter app | ZTNA, SSE (provisional) |
 | Branch | One box (router, Wi-Fi, security, compute), devices wired in, uplink to cloud | Secure Branch, Branch Transformation |
 | Failover | Primary and secondary paths swap; heartbeat never breaks | Application Availability |
 | Telemetry | Live line, health gauge, bars or the earth | CloudStation Insights, Network Analytics, Network Monitoring |
@@ -162,7 +162,7 @@ copy, vertically centred, `min(38%, 520px, 56vh)` wide (compact heroes
 | Edge | The appliance with live port lights; uplinks above, devices below. The switch variant has twelve ports, the SD-WAN edge above and wired devices below | CloudPort Edge; Ether (switch) |
 | Air | An access point broadcasting to the branch's devices, wired back to the edge | Air |
 | Hub | Many edges converge on the gateway, out to DC and cloud | CloudPort Gateway |
-| Controller | Policy waves from the controller to every device | CloudStation Controller, trustPilot (provisional) |
+| Controller | Policy waves from the controller to every device | CloudStation Controller, Pilot (provisional) |
 | Multi-cloud | Three clouds meshed through one fabric to the enterprise | Cloud Connectivity, Multi-Cloud pages |
 | Anywhere | Home, office, café, travel around the earth through one edge | Hybrid Workforce |
 | India | Subcontinent dot field (1° coastline mask, **no political boundaries**) with sector sites wired to a hub; logistics drives a route | Sector solutions, Partner Locator, Contact |
@@ -249,7 +249,7 @@ rendered by `components/page/Sections.tsx`:
 | `note` | Paper panel: heading left, body and action right |
 | `table` | White rounded table; first column emphasised; row hover |
 | `checklist` | Pill cards with check wells |
-| `people` | Cards with a monochrome portrait (or a grain band; a monogram tile when siblings have portraits), role in blue, the first bio block with the rest behind a native "Full profile" disclosure (paragraphs or dotted lists), note pill and an optional LinkedIn pill (opens in a new tab) |
+| `people` | Cards after the previous site's leadership page: a round monochrome portrait (or a monogram) beside the name, title in blue capitals and an optional organisation line; then a profile of 8–10 lines; note pill and optional LinkedIn pill (opens in a new tab). Two to a row; an odd last card centres |
 | `cta` | The horizon panel |
 
 Placeholder pages (stubs) use a compact blue grain hero with their scene. The 404 uses the

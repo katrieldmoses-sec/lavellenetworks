@@ -15,9 +15,9 @@ export const ALL_ROUTES: string[] = [
   "/products/secure-internet",
   "/products/ether",
   "/products/air",
-  "/products/trustgate",
-  "/products/trustcore",
-  "/products/trustpilot",
+  "/products/zero-trust-gateway",
+  "/products/sse",
+  "/products/pilot",
   "/solutions/bfsi",
   "/solutions/branch-transformation",
   "/solutions/hybrid-workforce",
@@ -79,9 +79,9 @@ export function canonicalPath(path: string): string {
 export const DRAFT_ROUTES = new Set<string>([
   "/products/ether",
   "/products/air",
-  "/products/trustgate",
-  "/products/trustcore",
-  "/products/trustpilot",
+  "/products/zero-trust-gateway",
+  "/products/sse",
+  "/products/pilot",
 ]);
 
 /** Routes that belong in the sitemap (aliases and drafts excluded). */

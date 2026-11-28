@@ -48,9 +48,9 @@ const SCENES: Record<string, () => ReactNode> = {
   // Component pages. The SASE components' scenes are provisional until their copy lands.
   "/products/ether": () => <EdgeScene variant="switch" />,
   "/products/air": () => <AirScene />,
-  "/products/trustgate": () => <ShieldScene />,
-  "/products/trustcore": () => <ZeroTrustScene />,
-  "/products/trustpilot": () => <ControllerScene />,
+  "/products/zero-trust-gateway": () => <ShieldScene />,
+  "/products/sse": () => <ZeroTrustScene />,
+  "/products/pilot": () => <ControllerScene />,
 
   /* solutions */
   "/solutions/bfsi": () => <IndiaScene variant="bfsi" />,

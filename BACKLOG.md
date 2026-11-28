@@ -8,22 +8,26 @@ Applied: homepage figures, AI Ops parked, indusWall feature order, customer
 statements and logos, SD-Branch page, Products menu by platform, component
 template pages, Our Story, Leadership, ten-year panel. Still open:
 
-- **Component copy** for Ether, Air, trustGate, trustCore and trustPilot. The
+- **Component copy** for Ether, Air, Zero Trust Gateway, SSE and Pilot. The
   pages are templates (`componentTemplate` in `lib/content/products.ts`) and
   noindex (`DRAFT_ROUTES` in `lib/routes.ts`); drop a slug from
   `DRAFT_ROUTES` once its copy lands. Their hero scenes for the SASE
   components are provisional.
-- **Trademark checks** for Ether, Air, trustGate, trustCore, trustPilot and
+- **SASE component names** (Zero Trust Gateway, SSE, Pilot) are working
+  names, to be finalised after studying competitors' datasheets and
+  nomenclature. Renaming means the label and slug in `lib/content/nav.ts`,
+  `lib/routes.ts`, `lib/content/products.ts` and the hero registry.
+- **Trademark checks** for Ether, Air, the SASE component names and
   indusWall.
 - **Awards and PR carousel** for Our Story (best recognitions of the last 5+
   years). The homepage Recognition section still shows placeholders.
-- **Leadership photos.** Profiles, titles and portraits now follow
-  "Lavelle_Leadership_Profiles.docx". Still missing: headshots for Sax
-  Krishna and Pradipt Kapoor (their cards show a monogram tile), a description
-  for Pradipt Kapoor (the leadership note's summary stands in), and
-  higher-resolution photos of Nishant Verma and Thompson P. Gnanam (supplied
-  at 200px, so they look soft on large screens). Save to
-  `public/leadership/<name>.jpg` and add `photo:` in `lib/content/company.ts`.
+- **Leadership photos.** Still missing: headshots for Sax Krishna and Pradipt
+  Kapoor (their cards show a monogram), a description for Pradipt Kapoor (the
+  leadership note's summary stands in), and higher-resolution photos of
+  Nishant Verma, Thompson P. Gnanam, BV Jagadeesh and Shoaib Ahmed (200px
+  sources). Profiles are condensed to 8–10 lines from
+  "Lavelle_Leadership_Profiles.docx"; the two executive advisors come from the
+  previous site.
 - **Blogs:** re-cast 3–5 of the best pieces from the last ten years for 2026.
 - **Datasheets:** updated, downloadable datasheets for every product line.
 - **Final technical review** of the product pages once the above lands.
